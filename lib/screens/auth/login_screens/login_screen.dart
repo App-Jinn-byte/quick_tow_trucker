@@ -220,6 +220,10 @@ class _LoginScreenState extends State<LoginScreen> {
     var password = passwordController.text.toString().trim();
     print("Email: $email, Password: $password");
 
+    await loginProvider.loginApi(email: email, password: password);
+
+    if (loginProvider.isLoginSuccessful == true) {}
+
     Navigator.push(context, SlideRightRoute(page: const FindBookingScreen()));
   }
 }

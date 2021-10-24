@@ -3,14 +3,20 @@ import 'package:flutter/material.dart';
 class LoginProvider extends ChangeNotifier {
   BuildContext? context;
 
-  init({@required BuildContext? context}) {
+  bool isLoginSuccessful = false;
+
+  Future<void> init({@required BuildContext? context}) async {
     // PreferenceUtils.init();
     this.context = context;
-    // navigateToNextScreen();
+    isLoginSuccessful = false;
   }
 
   Future<void> loginApi(
       {@required String? email, @required String? password}) async {
-    print("Email: $email, password $password");
+    try {
+      print("Email: $email, password $password");
+    } catch (e) {
+      print("Catch-Error: ${e.toString()}");
+    }
   }
 }
