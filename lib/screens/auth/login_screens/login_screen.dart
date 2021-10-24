@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/welcome_back_popup_screen/welcome_back_screen.dart';
+import 'package:quick_tow_trucker/screens/auth/login_screens/login_provider.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -16,9 +18,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late LoginProvider loginProvider;
+
   late bool isValidEmail;
   late bool isValidPassword;
   late bool isValidForgetEmail;
+  late bool hiddenPassword;
 
   late TextEditingController emailController;
   late TextEditingController passwordController;
@@ -37,11 +42,47 @@ class _LoginScreenState extends State<LoginScreen> {
     emailController = TextEditingController();
     passwordController = TextEditingController();
 
+    loginProvider = LoginProvider();
+    loginProvider = Provider.of<LoginProvider>(context, listen: false);
+    loginProvider.init(context: context);
+
+    hiddenPassword = true;
+    isValidEmail = true;
+    isValidPassword = true;
+
+    emailController.addListener(() async {
+      isValidEmail = emailController.text.validateLoginEmail();
+      setState(() {
+        if (isValidEmail && emailController.text.isNotEmpty) {
+          emailIcon = Icons.check;
+          emailIconColor = AppColors.appTheme;
+        } else {
+          emailIcon = Icons.clear;
+          emailIconColor = AppColors.redColor;
+        }
+      });
+    });
+
+    passwordController.addListener(() {
+      isValidPassword = passwordController.text.length >= 8;
+      setState(() {
+        if (passwordController.text.length >= 8) {
+          passwordIcon = Icons.check;
+          passwordIconColor = AppColors.appTheme;
+        } else {
+          passwordIcon = Icons.clear;
+          passwordIconColor = AppColors.redColor;
+        }
+      });
+    });
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    loginProvider = Provider.of<LoginProvider>(context, listen: true);
+
     return SafeArea(
         child: Scaffold(
       resizeToAvoidBottomInset: true,
@@ -111,10 +152,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                    placeHolder: "Example@Gmail.Com",
-                    icon: "assets/png/email_icon@2x.png",
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress),
+                  placeHolder: "Example@Gmail.Com",
+                  icon: "assets/png/email_icon@2x.png",
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  isValid: isValidEmail,
+                ),
               ),
               SizedBox(
                 height: sizes!.heightRatio * 12,
@@ -135,11 +178,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.only(
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
-                child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                    placeHolder: "******",
-                    icon: "assets/png/password_icon@2x.png",
-                    controller: passwordController,
-                    keyboardType: TextInputType.text),
+                child: CommonWidgets
+                    .customTextFieldWithPasswordCustomContainerIcon(
+                        placeHolder: "******",
+                        icon: "assets/png/password_icon@2x.png",
+                        hidePassword: hiddenPassword,
+                        clickIcon: clickIcon,
+                        isValid: isValidPassword,
+                        controller: passwordController,
+                        keyboardType: TextInputType.text),
               ),
               SizedBox(
                 height: sizes!.heightRatio * 35, //40
@@ -162,11 +209,29 @@ class _LoginScreenState extends State<LoginScreen> {
     ));
   }
 
+  void clickIcon() {
+    setState(() {
+      hiddenPassword = !hiddenPassword;
+    });
+  }
+
   void moveToHomeScreen() async {
     var email = emailController.text.toString().trim();
     var password = passwordController.text.toString().trim();
     print("Email: $email, Password: $password");
 
-    Navigator.push(context, SlideRightRoute(page: const WelcomeBackScreen()));
+    Navigator.push(context, SlideRightRoute(page: const FindBookingScreen()));
+  }
+}
+
+extension StringLoginExtensions on String {
+  bool validateLoginEmail() {
+    return RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(this);
+  }
+
+  String removeSpaces() {
+    return this.replaceAll(' ', '');
   }
 }

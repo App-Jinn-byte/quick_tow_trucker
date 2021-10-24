@@ -486,8 +486,9 @@ class PopUpComponents {
                   CommonWidgets.getStartButton(
                     'Continue',
                     onPress: () {
-                      Navigator.pushReplacement(context,
-                          SlideRightRoute(page: const FindBookingScreen()));
+                      Navigator.pop(context);
+                      // Navigator.pushReplacement(context,
+                      //     SlideRightRoute(page: const FindBookingScreen()));
                     },
                   ),
                   SizedBox(

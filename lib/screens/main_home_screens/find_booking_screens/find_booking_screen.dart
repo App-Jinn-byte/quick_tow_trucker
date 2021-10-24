@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as maps;
@@ -27,7 +26,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
   final Set<maps.Marker> _markers = {};
 
   late BitmapDescriptor pinLocationIcon;
-  LatLng pinPosition = LatLng(37.3797536, -122.1017334);
+  LatLng pinPosition = const LatLng(37.3797536, -122.1017334);
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -43,7 +42,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
       pinLocationIcon = onValue;
     });
 
-    _markers.add(maps.Marker(
+    _markers.add(const maps.Marker(
       // This marker id can be anything that uniquely identifies each marker.
       markerId: MarkerId("111"),
       position: LatLng(31.464796339004113, 74.38949657281934),
@@ -59,13 +58,13 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
 
   void setCustomMapPin() async {
     pinLocationIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.5),
+        const ImageConfiguration(devicePixelRatio: 2.5),
         'assets/png/menu_icon@2x.png');
   }
 
   @override
   Widget build(BuildContext context) {
-    LatLng pinPosition = LatLng(37.3797536, -122.1017334);
+    LatLng pinPosition = const LatLng(37.3797536, -122.1017334);
 
     return SafeArea(
       child: Scaffold(
@@ -75,7 +74,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                   ),
                   child: Row(
@@ -169,6 +168,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                   zoomControlsEnabled: false,
                   onMapCreated: (GoogleMapController controller) {
                     mapController = controller;
+                    // welcomeBackPopUp(context);
                   },
                 )),
                 Positioned(
@@ -192,10 +192,15 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(18)),
                         color: AppColors.whiteTextColor,
                       ),
-                      child: Center(
-                        child: TextView.getRegular13Text(
-                            "Searching for User", Assets.poppinsMedium,
-                            color: AppColors.pass, lines: 1),
+                      child: GestureDetector(
+                        onTap: () {
+                          welcomeBackPopUp(context);
+                        },
+                        child: Center(
+                          child: TextView.getRegular13Text(
+                              "Searching for User", Assets.poppinsMedium,
+                              color: AppColors.pass, lines: 1),
+                        ),
                       ),
                     )),
               ],
@@ -204,7 +209,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
     );
   }
 
-  void welcomeBackPopUp() {
+  void welcomeBackPopUp(context) {
     showGeneralDialog(
         barrierColor: Colors.black.withOpacity(0.5),
         //SHADOW EFFECT
@@ -217,7 +222,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
             child: widget,
           );
         },
-        transitionDuration: const Duration(milliseconds: 1000),
+        transitionDuration: const Duration(milliseconds: 500),
         // DURATION FOR ANIMATION
         barrierDismissible: false,
         barrierLabel: 'LABEL',

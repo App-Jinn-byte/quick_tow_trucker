@@ -8,4 +8,9 @@ class LoginProvider extends ChangeNotifier {
     this.context = context;
     // navigateToNextScreen();
   }
+
+  Future<void> loginApi(
+      {@required String? email, @required String? password}) async {
+    print("Email: $email, password $password");
+  }
 }

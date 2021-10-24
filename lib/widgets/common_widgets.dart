@@ -589,9 +589,10 @@ class CommonWidgets {
   static Widget customTextFieldWithCustomContainerIcon(
       {@required String? placeHolder,
       @required dynamic icon,
+      @required bool? isValid,
       @required TextEditingController? controller,
       @required dynamic keyboardType}) {
-    // isValid ??= true;
+    isValid ??= true;
 
     return Container(
       padding: EdgeInsets.only(
@@ -600,10 +601,11 @@ class CommonWidgets {
       height: sizes!.heightRatio * 45,
       decoration: BoxDecoration(
         border: Border.all(
-            color: AppColors.textFieldBorderColor,
-            //isValid ? AppColors.smallButtonBorder : AppColors.redColor,
-            width: 0.25 //isValid ? 0.25 : 1,
-            ),
+          color: isValid
+              ? AppColors.textFieldBorderColor
+              : AppColors.redColor, //AppColors.textFieldBorderColor,
+          width: isValid ? 0.25 : 1,
+        ),
         borderRadius: const BorderRadius.all(Radius.circular(6)),
         color: AppColors.whiteTextColor,
         boxShadow: [
@@ -641,6 +643,88 @@ class CommonWidgets {
                       bottom: sizes!.heightRatio * 10,
                       top: sizes!.heightRatio * 10),
                   border: InputBorder.none,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget customTextFieldWithPasswordCustomContainerIcon(
+      {@required String? placeHolder,
+      @required dynamic icon,
+      @required bool? hidePassword,
+      @required bool? isValid,
+      @required Function? clickIcon,
+      @required TextEditingController? controller,
+      @required dynamic keyboardType}) {
+    isValid ??= true;
+
+    hidePassword ??= true;
+
+    return Container(
+      padding: EdgeInsets.only(
+          left: sizes!.widthRatio * 8, right: sizes!.widthRatio * 7),
+      width: sizes!.widthRatio * 325,
+      height: sizes!.heightRatio * 45,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: isValid ? AppColors.textFieldBorderColor : AppColors.redColor,
+          //AppColors.textFieldBorderColor,
+          width: isValid ? 0.25 : 1,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(6)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.smallButtonShadow,
+            blurRadius: 18,
+            offset: const Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Row(
+          children: [
+            SizedBox(
+              height: sizes!.heightRatio * 29,
+              width: sizes!.widthRatio * 36,
+              child: Image.asset(icon),
+            ),
+            SizedBox(
+              width: sizes!.widthRatio * 13,
+            ),
+            Expanded(
+              child: TextField(
+                textAlignVertical: TextAlignVertical.center,
+                obscureText: hidePassword,
+                controller: controller,
+                keyboardType: keyboardType,
+                decoration: InputDecoration(
+                  hintText: placeHolder,
+                  hintStyle: const TextStyle(
+                      color: AppColors.lightGreyTextColor,
+                      fontFamily: Assets.poppinsLight,
+                      fontSize: 14),
+                  contentPadding: EdgeInsets.only(
+                      bottom: sizes!.heightRatio * 10,
+                      top: sizes!.heightRatio * 10),
+                  border: InputBorder.none,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      hidePassword
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: AppColors.appTheme,
+                    ),
+                    onPressed: () {
+                      if (clickIcon != null) {
+                        clickIcon.call();
+                      }
+                    },
+                  ),
                 ),
               ),
             ),
@@ -905,10 +989,11 @@ class CommonWidgets {
     );
   }
 
-  static Widget customMenuButton({BuildContext? context, @required Function? onPress}) {
+  static Widget customMenuButton(
+      {BuildContext? context, @required Function? onPress}) {
     return GestureDetector(
       onTap: () {
-        if(onPress != null){
+        if (onPress != null) {
           onPress.call();
         }
       },
