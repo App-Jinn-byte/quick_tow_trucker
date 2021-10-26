@@ -2,6 +2,7 @@ class Assets {
   // images
 
   static const String appBgImage = "assets/png/app_bg.png";
+  static const String mainBgImage = "assets/png/main_bg.png";
   static const String splashLogo = "assets/png/splash_trucker_screen_logo@2x.png";
   static const String loginLogo = "assets/png/login_screen_logo@2x.png";
   static const String backIcon = "assets/png/icon_back2x.png";

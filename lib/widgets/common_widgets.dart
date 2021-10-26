@@ -1008,7 +1008,7 @@ class CommonWidgets {
             color: AppColors.backButtonColor,
             width: 0.25,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
           color: AppColors.backButtonColor,
           boxShadow: const [
             BoxShadow(
@@ -1018,10 +1018,54 @@ class CommonWidgets {
             ),
           ],
         ),
-        child: Image.asset(
-          "assets/png/menu_icon@3x.png",
-          // height: sizes!.heightRatio * 32.0,
-          // width: sizes!.widthRatio * 32.0,
+        child: SizedBox(
+          height: sizes!.heightRatio * 32.0,
+          width: sizes!.widthRatio * 32.0,
+          child: Image.asset(
+            "assets/png/menu_icon@2x.png",
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget getAppBarIconAndText(
+      {BuildContext? context,
+      @required Function? onPress,
+      @required dynamic icon}) {
+    return GestureDetector(
+      onTap: () {
+        if (onPress != null) {
+          onPress.call();
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(
+            horizontal: sizes!.widthRatio * 5,
+            vertical: sizes!.heightRatio * 5),
+        width: sizes!.widthRatio * 40,
+        height: sizes!.heightRatio * 40,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColors.backButtonColor,
+            width: 0.25,
+          ),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          color: AppColors.backButtonColor,
+          boxShadow: const [
+            BoxShadow(
+              color: AppColors.backButtonColor,
+              blurRadius: 18,
+              offset: Offset(0, 0),
+            ),
+          ],
+        ),
+        child: SizedBox(
+          height: sizes!.heightRatio * 32.0,
+          width: sizes!.widthRatio * 32.0,
+          child: Image.asset(
+            icon ?? "",
+          ),
         ),
       ),
     );

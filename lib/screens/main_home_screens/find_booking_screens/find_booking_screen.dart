@@ -19,6 +19,7 @@ class FindBookingScreen extends StatefulWidget {
 }
 
 class _FindBookingScreenState extends State<FindBookingScreen> {
+
   final CameraPosition _initialLocation = const CameraPosition(
       target: LatLng(31.464796339004113, 74.38949657281934), zoom: 12.0);
 
@@ -80,6 +81,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+
                       Container(
                         height: sizes!.heightRatio * 44,
                         width: sizes!.widthRatio * 44,
@@ -109,6 +111,8 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                           ],
                         ),
                       )
+
+
                     ],
                   )),
               ListTile(

@@ -22,6 +22,25 @@ class TextView {
     );
   }
 
+  static Text getMediumText18(final text, final fontFamily,
+      {@required final color,
+        final TextAlign textAlign = TextAlign.start,
+        @required final lines}) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      softWrap: true,
+      maxLines: lines,
+      style: TextStyle(
+        fontSize: sizes!.jumbo18FontSize,
+        fontWeight: FontWeight.bold,
+        fontFamily: fontFamily,
+        color: color,
+      ),
+    );
+  }
+
+
   static Text getWelcomeTextWith28(
       final text, final fontFamily,
       {@required final color,

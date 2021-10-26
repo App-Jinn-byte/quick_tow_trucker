@@ -25,6 +25,8 @@ class AppSizes {
   late double jumboFontSize;
   late double jumbo28FontSize;
   late double jumbo24FontSize;
+  late double jumbo18FontSize;
+
 
   //padding
   late double smallPadding;
@@ -67,6 +69,8 @@ class AppSizes {
     jumboFontSize = 32.0 * fontRatio;
     jumbo28FontSize = 28.0 * fontRatio;
     jumbo24FontSize = 24.0 * fontRatio;
+    jumbo18FontSize = 18.0 * fontRatio;
+
 
     smallPadding = 4.0 * widthRatio;
     regularPadding = 8.0 * widthRatio;
