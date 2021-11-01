@@ -7,7 +7,6 @@ import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -30,9 +29,9 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
-        decoration:  BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(Assets.appBgImage), fit: BoxFit.fill)),
+                image: AssetImage(Assets.splashBgImage), fit: BoxFit.fill)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -47,8 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
             const Spacer(),
             Padding(
               padding: const EdgeInsets.only(right: 30.0, left: 30.0),
-              child:
-              CommonWidgets.getStartButton("Get Started", onPress: () {
+              child: CommonWidgets.getStartButton("Get Started", onPress: () {
                 moveToLoginScreen();
               }),
             ),

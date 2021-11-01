@@ -23,6 +23,10 @@ class AppColors {
   static const textFieldBorderColor = Color.fromRGBO(209, 242, 209, 1);
   static const backButtonColor = Color.fromRGBO(219, 235, 219, 1);
   static const radioButtonTextColor = Color.fromRGBO(97, 97, 97, 1);
+  static const cardShadowColor = Color.fromRGBO(0, 0, 0, 0.12);
+
+  static const routeTextColor = Color.fromRGBO(119, 118, 118, 1);
+
 
 
   static const appTheme = Color.fromRGBO(117, 176, 46, 1);
@@ -76,6 +80,10 @@ class AppColors {
   static const darkGreyBlueTextColor = Color.fromRGBO(38, 47, 86, 1);
   static const lightGreyBlueTextColor = Color.fromRGBO(124, 132, 148, 1);
   static const greyButtonTextColor = Color.fromRGBO(179, 179, 179, 1);
+  static const activeTextColor = Color.fromRGBO(47, 92, 181, 1);
+
+
+
 
   static const clr_light_black = Color.fromRGBO(29, 29, 29, 1);
   static const clr_bg_button = Color.fromRGBO(18, 65, 191, 1);

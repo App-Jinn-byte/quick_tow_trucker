@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
         width: sizes!.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(Assets.appBgImage), fit: BoxFit.fill)),
+                image: AssetImage(Assets.mainBgImageWithLogoOnBottom), fit: BoxFit.fill)),
         child: SingleChildScrollView(
           child: Column(
             children: [

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
+import 'package:quick_tow_trucker/screens/auth/edit_profile_screens/edit_profile_screen.dart';
+import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/driver_license_screens/driver_license_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/insurance_info_screens/insurance_info_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/vehicle_details_screens/vehicle_detail_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -27,45 +33,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                height: sizes!.heightRatio * 65.0,
-                decoration:
-                    const BoxDecoration(color: AppColors.whiteTextColor),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: sizes!.widthRatio * 31),
-                          child: CommonWidgets.getAppBarIconAndText(
-                              context: context,
-                              onPress: () {},
-                              icon: "assets/png/menu_icon@2x.png"),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: sizes!.widthRatio * 20),
-                          child: TextView.getMediumText18(
-                              "Profile", Assets.poppinsMedium,
-                              color: AppColors.blackTextColor, lines: 1),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: sizes!.widthRatio * 31),
-                      child: CommonWidgets.getAppBarIconAndText(
-                        context: context,
-                        icon: "assets/png/edit_icon@2x.png",
-                        onPress: () {
-                          Toasts.getSuccessToast(text: "Try it later :)");
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              CommonWidgets.getAppBarWithTitleAndDoubleButton(
+                  context: context,
+                  title: "Profile",
+                  firstIcon: "assets/png/menu_icon@2x.png",
+                  secondIcon: "assets/png/edit_icon@2x.png",
+                  onFirstIconPress: () {
+                    // Navigator.pop(context);
+                  },
+                  onSecondIconPress: () {
+                    Navigator.push(context,
+                        SlideRightRoute(page: const EditProfileScreen()));
+                  }),
 
               SizedBox(
                 height: sizes!.heightRatio * 30.0,
@@ -154,7 +133,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppColors.blackTextColor, lines: 1),
                     GestureDetector(
                       onTap: () {
-                        Toasts.getSuccessToast(text: "Try it Later :)");
+                        Navigator.push(context,
+                            SlideRightRoute(page: const VehicleDetailScreen()));
                       },
                       child: Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
@@ -192,45 +172,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppColors.blackTextColor, lines: 1),
                     GestureDetector(
                       onTap: () {
-                        Toasts.getSuccessToast(text: "Try it Later :)");
-                      },
-                      child: Image.asset(
-                        "assets/png/profile_back_btn_icon@2x.png",
-                        height: sizes!.heightRatio * 23.0,
-                        width: sizes!.widthRatio * 23.0,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30.0,
-                    right: sizes!.widthRatio * 30.0),
-                child: const Divider(),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30.0,
-                    right: sizes!.heightRatio * 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegular13Text(
-                        "Ratings & Reviews", Assets.poppinsMedium,
-                        color: AppColors.blackTextColor, lines: 1),
-                    GestureDetector(
-                      onTap: () {
-                        Toasts.getSuccessToast(text: "Try it Later :)");
+                        Navigator.push(context,
+                            SlideRightRoute(page: const DriverLicenseScreen()));
                       },
                       child: Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
@@ -268,7 +211,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppColors.blackTextColor, lines: 1),
                     GestureDetector(
                       onTap: () {
-                        Toasts.getSuccessToast(text: "Try it Later :)");
+                        Navigator.push(context,
+                            SlideRightRoute(page: const InsuranceInfoScreen()));
                       },
                       child: Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
@@ -279,6 +223,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
+
               SizedBox(
                 height: sizes!.heightRatio * 10.0,
               ),
@@ -316,6 +261,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: sizes!.heightRatio * 10.0,
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(
+                    left: sizes!.widthRatio * 30.0,
+                    right: sizes!.widthRatio * 30.0),
+                child: const Divider(),
+              ),
+              SizedBox(
+                height: sizes!.heightRatio * 10.0,
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(
+                    left: sizes!.widthRatio * 30.0,
+                    right: sizes!.heightRatio * 30.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextView.getRegular13Text(
+                        "Account Details", Assets.poppinsMedium,
+                        color: AppColors.blackTextColor, lines: 1),
+                    GestureDetector(
+                      onTap: () {
+                        Toasts.getSuccessToast(text: "Try it Later :)");
+                      },
+                      child: Image.asset(
+                        "assets/png/profile_back_btn_icon@2x.png",
+                        height: sizes!.heightRatio * 23.0,
+                        width: sizes!.widthRatio * 23.0,
+                      ),
+                    )
+                  ],
+                ),
+              ),
 
               SizedBox(
                 height: sizes!.heightRatio * 10.0,
@@ -331,11 +313,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: sizes!.heightRatio * 10.0,
               ),
 
+              Padding(
+                padding: EdgeInsets.only(
+                    left: sizes!.widthRatio * 30.0,
+                    right: sizes!.heightRatio * 30.0),
+                child: InkWell(
+                  onTap: () {
+                    logout();
+                  },
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        height: sizes!.heightRatio * 33.0,
+                        width: sizes!.widthRatio * 33.0,
+                        child: Image.asset("assets/png/logout_icon@2x.png"),
+                      ),
+                      SizedBox(
+                        width: sizes!.widthRatio * 15,
+                      ),
+                      TextView.getMediumText16("Logout", Assets.poppinsMedium,
+                          color: AppColors.redColor,
+                          lines: 1,
+                          fontWeight: FontWeight.bold),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(
+                height: sizes!.heightRatio * 20.0,
+              ),
+
               // CommonWidgets.getAppBarText(context, text: "text")
             ],
           ),
         ),
       ),
     ));
+  }
+
+  Future<void> logout() async {
+    Navigator.push(context, SlideRightRoute(page: const LoginScreen()));
   }
 }

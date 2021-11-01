@@ -4,6 +4,75 @@ import 'package:quick_tow_trucker/res/res.dart';
 
 class TextView {
 
+
+
+  // Project Text
+
+
+  static Text getMediumText16(final text, final fontFamily,
+      {@required final color,
+        final TextAlign textAlign = TextAlign.start,
+        @required FontWeight? fontWeight,
+        @required final lines}) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      softWrap: true,
+      maxLines: lines,
+      style: TextStyle(
+        fontSize: sizes!.mediumLargeFontSize,
+        fontWeight: fontWeight ?? FontWeight.w400,
+        fontFamily: fontFamily,
+        color: color,
+      ),
+    );
+  }
+
+
+
+  static Text getRegularWith13(final text, final fontFamily,
+      {@required final color,
+        final TextAlign textAlign = TextAlign.start,
+        @required final lines}) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      softWrap: true,
+      maxLines: lines,
+      style: TextStyle(
+        fontSize: sizes!.regularFontSize,
+        fontWeight: FontWeight.w400,
+        fontFamily: fontFamily,
+        color: color,
+      ),
+    );
+  }
+
+  static Text getRegularBoldText(final text, final fontFamily,
+      {@required final color,
+        final TextAlign textAlign = TextAlign.start,
+        @required final lines}) {
+    return Text(
+      text ?? "",
+      textAlign: textAlign,
+      softWrap: true,
+      maxLines: lines,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        fontSize: sizes!.regularFontSize,
+        fontWeight: FontWeight.bold,
+        fontFamily: fontFamily,
+        color: color,
+      ),
+    );
+  }
+
+
+  // Project End
+
+
+
+
   static Text getJumboText(final text, final fontFamily,
       {@required final color,
       final TextAlign textAlign = TextAlign.start,
@@ -133,23 +202,23 @@ class TextView {
     );
   }
 
-  static Text getMediumText16(final text, final fontFamily,
-      {@required final color,
-      final TextAlign textAlign = TextAlign.start,
-      @required final lines}) {
-    return Text(
-      text,
-      textAlign: textAlign,
-      softWrap: true,
-      maxLines: lines,
-      style: TextStyle(
-        fontSize: sizes!.mediumLargeFontSize,
-        fontWeight: FontWeight.w400,
-        fontFamily: fontFamily,
-        color: color,
-      ),
-    );
-  }
+  // static Text getMediumText16(final text, final fontFamily,
+  //     {@required final color,
+  //     final TextAlign textAlign = TextAlign.start,
+  //     @required final lines}) {
+  //   return Text(
+  //     text,
+  //     textAlign: textAlign,
+  //     softWrap: true,
+  //     maxLines: lines,
+  //     style: TextStyle(
+  //       fontSize: sizes!.mediumLargeFontSize,
+  //       fontWeight: FontWeight.w400,
+  //       fontFamily: fontFamily,
+  //       color: color,
+  //     ),
+  //   );
+  // }
 
   static Text getMediumTextItalic(final text, final fontFamily,
       {@required final color,

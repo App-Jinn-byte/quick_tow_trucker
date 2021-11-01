@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:date_time_format/date_time_format.dart';
+import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
@@ -11,6 +12,464 @@ import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
 class CommonWidgets {
+  //Project Widgets
+
+  static Widget getAppBarWithoutContainerTitleAndBackButton(
+      {@required BuildContext? context,
+      @required String? title,
+      @required String? icon,
+      @required Function? onPress}) {
+    return Container(
+      // height: sizes!.heightRatio * 60.0,
+      // decoration: const BoxDecoration(
+      //   color: AppColors.whiteTextColor,
+      //   boxShadow: [
+      //     BoxShadow(
+      //       color: AppColors.cardShadowColor,
+      //       blurRadius: 2,
+      //       offset: Offset(0, 0),
+      //     ),
+      //   ],
+      // ),
+      child: Padding(
+        padding: EdgeInsets.only(left: sizes!.widthRatio * 30.0),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: sizes!.heightRatio * 32,
+              width: sizes!.widthRatio * 32,
+              child: GestureDetector(
+                  onTap: () {
+                    if (onPress != null) {
+                      onPress.call();
+                    }
+                  },
+                  child: Image.asset(icon!)),
+            ),
+            SizedBox(
+              width: sizes!.widthRatio * 18,
+            ),
+            TextView.getMediumText18(title ?? "", Assets.poppinsMedium,
+                color: AppColors.blackTextColor, lines: 1),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget getAppBarWithoutContainerTitle24AndBackButton(
+      {@required BuildContext? context,
+      @required String? title,
+      @required String? icon,
+      @required Function? onPress}) {
+    return Container(
+      // height: sizes!.heightRatio * 60.0,
+      // decoration: const BoxDecoration(
+      //   color: AppColors.whiteTextColor,
+      //   boxShadow: [
+      //     BoxShadow(
+      //       color: AppColors.cardShadowColor,
+      //       blurRadius: 2,
+      //       offset: Offset(0, 0),
+      //     ),
+      //   ],
+      // ),
+      child: Padding(
+        padding: EdgeInsets.only(left: sizes!.widthRatio * 30.0),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: sizes!.heightRatio * 32,
+              width: sizes!.widthRatio * 32,
+              child: GestureDetector(
+                  onTap: () {
+                    if (onPress != null) {
+                      onPress.call();
+                    }
+                  },
+                  child: Image.asset(icon!)),
+            ),
+            SizedBox(
+              width: sizes!.widthRatio * 18,
+            ),
+            TextView.getTextWith24(title ?? "", Assets.poppinsMedium,
+                color: AppColors.blackTextColor, lines: 1),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget getAppBarCustomBackButton(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        // Navigator.of(context).pop();
+        Navigator.pop(context);
+      },
+      child: Container(
+        width: sizes!.widthRatio * 30,
+        height: sizes!.heightRatio * 30,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColors.backButtonColor,
+            width: 0.25,
+          ),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          color: AppColors.backButtonColor,
+          boxShadow: const [
+            BoxShadow(
+              color: AppColors.backButtonColor,
+              blurRadius: 2,
+              offset: Offset(0, 0),
+            ),
+          ],
+        ),
+        child: Image.asset(
+          "assets/png/back_btn_icon@3x.png",
+          // height: sizes!.heightRatio * 14.68,
+          // width: sizes!.widthRatio * 8.8,
+        ),
+      ),
+    );
+  }
+
+  static Widget getProfileImage({
+    @required String? profileImg,
+    @required Function? onEditImage,
+    @required bool? isImageUploaded,
+    @required dynamic selectedImage,
+  }) {
+    return Align(
+      alignment: Alignment.center,
+      child: Container(
+        child: CircleAvatar(
+          child: Stack(
+            children: [
+              Positioned(
+                  bottom: 5,
+                  right: 10,
+                  child: GestureDetector(
+                    onTap: () {
+                      if (onEditImage != null) {
+                        onEditImage.call();
+                      }
+                    },
+                    child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          color: AppColors.greenColor,
+                          border: Border.all(color: AppColors.whiteTextColor),
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ),
+                        ),
+                        child: Image.asset("assets/png/edit_icon.png")),
+                  )),
+            ],
+          ),
+          backgroundImage: (isImageUploaded ?? false)
+              ? NetworkImage("$baseUrl$profileImg")
+              : const AssetImage(
+                  "assets/png/photo@2x.png",
+                ) as ImageProvider,
+          radius: 60.0,
+          backgroundColor: AppColors.transparentColor,
+        ),
+      ),
+    );
+  }
+
+  static Widget getNotificationCard() {
+    return Row(
+      children: [
+        Image.asset(
+          "assets/png/avatar_user_icon@2x.png",
+          height: sizes!.heightRatio * 42.0,
+          width: sizes!.widthRatio * 42.0,
+        ),
+        SizedBox(
+          width: sizes!.widthRatio * 10.0,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                TextView.getRegular13Text(
+                    "Patricia Bailey", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+                SizedBox(
+                  width: sizes!.widthRatio * 5.0,
+                ),
+                TextView.getSmallText12("rated you", Assets.poppinsRegular,
+                    color: AppColors.subHeadingTextColor, lines: 1),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RatingBar.builder(
+                  initialRating: 4.0,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemSize: 16,
+                  itemPadding:
+                      EdgeInsets.symmetric(horizontal: sizes!.widthRatio * 0),
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  ignoreGestures: true,
+                  onRatingUpdate: (rating) {
+                    // onPress!.call(rating);
+                    // print(rating);
+                  },
+                ),
+                SizedBox(
+                  width: sizes!.widthRatio * 120.0,
+                ),
+                TextView.getSmallText12("12:30 AM", Assets.poppinsRegular,
+                    color: AppColors.subHeadingTextColor, lines: 1),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  static Widget getAppBarWithTitleAndBackButton(
+      {@required BuildContext? context,
+      @required String? title,
+      @required String? icon,
+      @required Function? onPress}) {
+    return Container(
+      height: sizes!.heightRatio * 60.0,
+      decoration: const BoxDecoration(
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(left: sizes!.widthRatio * 30.0),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: sizes!.heightRatio * 32,
+              width: sizes!.widthRatio * 32,
+              child: GestureDetector(
+                  onTap: () {
+                    if (onPress != null) {
+                      onPress.call();
+                    }
+                  },
+                  child: Image.asset(icon!)),
+            ),
+            SizedBox(
+              width: sizes!.widthRatio * 18,
+            ),
+            TextView.getMediumText18(title ?? "", Assets.poppinsMedium,
+                color: AppColors.blackTextColor, lines: 1),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget getAppBarWithTitleAndDoubleButton({
+    @required BuildContext? context,
+    @required String? title,
+    @required String? firstIcon,
+    @required String? secondIcon,
+    @required Function? onFirstIconPress,
+    @required Function? onSecondIconPress,
+  }) {
+    return Container(
+      height: sizes!.heightRatio * 60.0,
+      decoration: const BoxDecoration(
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(left: sizes!.widthRatio * 30.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Container(
+                  height: sizes!.heightRatio * 32,
+                  width: sizes!.widthRatio * 32,
+                  child: GestureDetector(
+                      onTap: () {
+                        if (onFirstIconPress != null) {
+                          onFirstIconPress.call();
+                        }
+                      },
+                      child: Image.asset(firstIcon!)),
+                ),
+                SizedBox(
+                  width: sizes!.widthRatio * 18,
+                ),
+                TextView.getMediumText18(title ?? "", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: sizes!.widthRatio * 30.0),
+              child: SizedBox(
+                height: sizes!.heightRatio * 32,
+                width: sizes!.widthRatio * 32,
+                child: GestureDetector(
+                    onTap: () {
+                      if (onSecondIconPress != null) {
+                        onSecondIconPress.call();
+                      }
+                    },
+                    child: Image.asset(secondIcon!)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget getAppBarWithSimpleDesignAndText({
+    @required BuildContext? context,
+    @required String? title,
+  }) {
+    return Container(
+      height: sizes!.heightRatio * 60.0,
+      decoration: const BoxDecoration(
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 18,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+            child: TextView.getMediumText18(title ?? "", Assets.poppinsMedium,
+                color: AppColors.blackTextColor, lines: 1),
+          ),
+        ],
+      ),
+    );
+  }
+
+  static Widget getBookingHistoryCard(
+      {@required String? title,
+      @required String? date,
+      @required String? time,
+      @required String? price,
+      @required double? rating}) {
+    return Container(
+      height: sizes!.heightRatio * 217.0,
+      width: sizes!.widthRatio * 315.0,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: sizes!.heightRatio * 14,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 12, right: sizes!.widthRatio * 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getRegularBoldText(
+                    "13-01-2021, 6:00 PM", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+                TextView.getRegularBoldText(
+                    "\$${price ?? 0.0}", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1)
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 6,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 12, right: sizes!.widthRatio * 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getRegularText(
+                    title ?? "Tow Truck", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+                RatingBar.builder(
+                  initialRating: rating ?? 0.0,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemSize: 14,
+                  itemPadding:
+                      EdgeInsets.symmetric(horizontal: sizes!.widthRatio * 0),
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  ignoreGestures: true,
+                  onRatingUpdate: (rating) {
+                    // onPress!.call(rating);
+                    // print(rating);
+                  },
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 14.0,
+          ),
+          Image.asset(
+            "assets/png/google_map_demo_02@2x.png",
+            height: sizes!.heightRatio * 137.0,
+            width: sizes!.widthRatio * 315.0,
+          )
+        ],
+      ),
+    );
+  }
+
+  // Project Widgets End
+
   static Widget homeScreenOfferContainer({
     @required String? imageUrl,
     @required String? title,
@@ -561,7 +1020,7 @@ class CommonWidgets {
       ),
       child: Center(
         child: TextField(
-          textAlignVertical: TextAlignVertical.center,
+          textAlignVertical: TextAlignVertical(y: 0.0),
           obscureText: isPassword,
           controller: controller,
           keyboardType: keyboardType,
@@ -629,7 +1088,7 @@ class CommonWidgets {
             ),
             Expanded(
               child: TextField(
-                textAlignVertical: TextAlignVertical.center,
+                textAlignVertical: TextAlignVertical(y: 0.0),
                 obscureText: false,
                 controller: controller,
                 keyboardType: keyboardType,
@@ -698,7 +1157,7 @@ class CommonWidgets {
             ),
             Expanded(
               child: TextField(
-                textAlignVertical: TextAlignVertical.center,
+                textAlignVertical: TextAlignVertical(y: 0.0),
                 obscureText: hidePassword,
                 controller: controller,
                 keyboardType: keyboardType,
@@ -775,7 +1234,7 @@ class CommonWidgets {
             ),
             Expanded(
               child: TextField(
-                textAlignVertical: TextAlignVertical.center,
+                textAlignVertical: TextAlignVertical(y: 0.0),
                 obscureText: false,
                 controller: controller,
                 keyboardType: keyboardType,
@@ -830,7 +1289,7 @@ class CommonWidgets {
       ),
       child: Center(
         child: TextField(
-          textAlignVertical: TextAlignVertical.center,
+          textAlignVertical: TextAlignVertical(y: 0.0),
           obscureText: hidePassword,
           controller: controller,
           decoration: InputDecoration(
@@ -884,7 +1343,7 @@ class CommonWidgets {
         ],
       ),
       child: TextField(
-        textAlignVertical: TextAlignVertical.center,
+        textAlignVertical: TextAlignVertical(y: 0.0),
         obscureText: isPassword,
         controller: controller,
         decoration: InputDecoration(
@@ -926,7 +1385,7 @@ class CommonWidgets {
         ],
       ),
       child: TextField(
-        textAlignVertical: TextAlignVertical.center,
+        textAlignVertical: TextAlignVertical(y: 0.0),
         decoration: InputDecoration(
           hintText: placeHolder ?? "",
           hintStyle: TextStyle(
@@ -1171,7 +1630,7 @@ class CommonWidgets {
         ],
       ),
       child: TextField(
-        textAlignVertical: TextAlignVertical.center,
+        textAlignVertical: TextAlignVertical(y: 0.0),
         decoration: InputDecoration(
           hintText: "(303)148-6535",
           hintStyle: TextStyle(
@@ -1846,7 +2305,7 @@ class CommonWidgets {
                 fontFamily: Assets.latoLight,
               ),
             ),
-            textAlignVertical: TextAlignVertical.top),
+            textAlignVertical: TextAlignVertical(y: -1.0)),
       ),
     );
   }

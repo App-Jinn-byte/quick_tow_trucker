@@ -8,6 +8,8 @@ import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/screens/auth/profile_screens/profile_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/history_screens/history_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/notification_screens/notification_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -19,7 +21,6 @@ class FindBookingScreen extends StatefulWidget {
 }
 
 class _FindBookingScreenState extends State<FindBookingScreen> {
-
   final CameraPosition _initialLocation = const CameraPosition(
       target: LatLng(31.464796339004113, 74.38949657281934), zoom: 12.0);
 
@@ -81,7 +82,6 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
                       Container(
                         height: sizes!.heightRatio * 44,
                         width: sizes!.widthRatio * 44,
@@ -111,8 +111,6 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                           ],
                         ),
                       )
-
-
                     ],
                   )),
               ListTile(
@@ -123,7 +121,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                       color: AppColors.blackTextColor, lines: 1),
                 ),
                 leading: Image.asset(
-                  "assets/png/email_icon@2x.png",
+                  "assets/png/home_icon@2x.png",
                   height: sizes!.heightRatio * 32,
                   width: sizes!.widthRatio * 32,
                 ),
@@ -148,6 +146,44 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                   // Navigator.pop(context);
                   Navigator.push(
                       context, SlideRightRoute(page: const ProfileScreen()));
+                },
+              ),
+              const Divider(),
+              ListTile(
+                title: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextView.getDrawerMenuText13(
+                      "Notification", Assets.poppinsMedium,
+                      color: AppColors.blackTextColor, lines: 1),
+                ),
+                leading: Image.asset(
+                  "assets/png/notification_icon@2x.png",
+                  height: sizes!.heightRatio * 32,
+                  width: sizes!.widthRatio * 32,
+                ),
+                onTap: () {
+                  // Navigator.pop(context);
+                  Navigator.push(context,
+                      SlideRightRoute(page: const NotificationScreen()));
+                },
+              ),
+              const Divider(),
+              ListTile(
+                title: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextView.getDrawerMenuText13(
+                      "History", Assets.poppinsMedium,
+                      color: AppColors.blackTextColor, lines: 1),
+                ),
+                leading: Image.asset(
+                  "assets/png/history_drawer_icon@2x.png",
+                  height: sizes!.heightRatio * 32,
+                  width: sizes!.widthRatio * 32,
+                ),
+                onTap: () {
+                  // Navigator.pop(context);
+                  Navigator.push(
+                      context, SlideRightRoute(page: const HistoryScreen()));
                 },
               ),
               const Divider(),
@@ -185,6 +221,17 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                         scaffoldKey.currentState?.openDrawer();
                       }),
                 ),
+                Positioned(
+                    top: sizes!.heightRatio * 110.0,
+                    left: sizes!.widthRatio * 45.0,
+                    right: sizes!.widthRatio * 45,
+                    child: GestureDetector(
+                        onTap: () {
+                          // Navigator.push(context,
+                          //     SlideRightRoute(page: const TrackingScreen()));
+                        },
+                        child:
+                            Image.asset("assets/png/simple_pin_icon@2x.png"))),
                 Positioned(
                     bottom: sizes!.heightRatio * 65.0,
                     left: sizes!.widthRatio * 80.0,

@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
 
-class MainHomeProvider extends ChangeNotifier {
+class VehicleDetailProvider extends ChangeNotifier {
   BuildContext? context;
 
   Future<void> init({@required BuildContext? context}) async {
