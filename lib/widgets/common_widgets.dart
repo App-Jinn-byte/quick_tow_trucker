@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -76,7 +75,8 @@ class CommonWidgets {
               if (isCurrentScreen == 1) {
                 Navigator.pop(context);
               } else {
-                Navigator.push(
+                // Navigator.pop(context);
+                Navigator.pushReplacement(
                     context, SlideRightRoute(page: const FindBookingScreen()));
               }
             },
@@ -98,7 +98,8 @@ class CommonWidgets {
               if (isCurrentScreen == 2) {
                 Navigator.pop(context);
               } else {
-                Navigator.push(
+                // Navigator.pop(context);
+                Navigator.pushReplacement(
                     context, SlideRightRoute(page: const ProfileScreen()));
               }
             },
@@ -120,7 +121,8 @@ class CommonWidgets {
               if (isCurrentScreen == 3) {
                 Navigator.pop(context);
               } else {
-                Navigator.push(
+                // Navigator.pop(context);
+                Navigator.pushReplacement(
                     context, SlideRightRoute(page: const NotificationScreen()));
               }
             },
@@ -142,14 +144,16 @@ class CommonWidgets {
               if (isCurrentScreen == 4) {
                 Navigator.pop(context);
               } else {
-                Navigator.push(
+                // Navigator.pop(context);
+                Navigator.pushReplacement(
                     context, SlideRightRoute(page: const HistoryScreen()));
+                //  TODO: Kindly double-check Push Replacement
               }
             },
           ),
           const Divider(),
-          TextView.getDrawerMenuText13("V: 1.0.0", Assets.poppinsMedium,
-              color: AppColors.getStartedButtonColor, lines: 1)
+          // TextView.getDrawerMenuText13("V: 1.0.0", Assets.poppinsMedium,
+          //     color: AppColors.getStartedButtonColor, lines: 1)
         ],
       ),
     );

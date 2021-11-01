@@ -509,4 +509,439 @@ class PopUpComponents {
       ),
     );
   }
+
+  static Widget getBookingPopUp(BuildContext context) {
+    bool _value = true;
+    int val = -1;
+
+    return BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      child: Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Stack(
+          alignment: Alignment.center,
+          overflow: Overflow.visible,
+          children: [
+            Container(
+              height: sizes!.heightRatio * 550,
+              width: sizes!.widthRatio * 326,
+              padding: EdgeInsets.only(
+                  left: sizes!.pagePadding,
+                  right: sizes!.pagePadding,
+                  top: sizes!.pagePadding * 2),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "assets/png/avatar_user_icon@2x.png",
+                          height: sizes!.heightRatio * 42.0,
+                          width: sizes!.widthRatio * 42.0,
+                        ),
+                        SizedBox(
+                          width: sizes!.widthRatio * 5.0,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextView.getSubHeadingTextWith15(
+                                "John Doe", Assets.poppinsMedium,
+                                color: AppColors.blackTextColor,
+                                lines: 1,
+                                fontWeight: FontWeight.normal),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/png/star_icon@2x.png",
+                                  height: sizes!.heightRatio * 15.0,
+                                  width: sizes!.widthRatio * 14.0,
+                                ),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 5.0,
+                                ),
+                                TextView.getRegularText(
+                                    "5.00", Assets.poppinsLight,
+                                    color: AppColors.blackTextColor, lines: 1)
+                              ],
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: sizes!.widthRatio * 65.0,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextView.getRegularText(
+                                "Total Price", Assets.poppinsRegular,
+                                color: AppColors.subHeadingTextColor, lines: 1),
+                            TextView.getMediumText16(
+                                "\$ 234.45", Assets.poppinsMedium,
+                                color: AppColors.blackTextColor,
+                                lines: 1,
+                                fontWeight: FontWeight.bold),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 10.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextView.getSmallText12("You", Assets.poppinsMedium,
+                            color: AppColors.getStartedButtonColor, lines: 1),
+                        TextView.getSmallText12("Pick-up", Assets.poppinsMedium,
+                            color: AppColors.subHeadingTextColor, lines: 1)
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 5.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: const Divider(),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 5.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: sizes!.widthRatio * 5),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextView.getSubHeadingTextWith15(
+                          "Vehicle Information", Assets.poppinsMedium,
+                          color: AppColors.openTheTruckerAppTextColor,
+                          lines: 1,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 14.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextView.getSmallText12(
+                            "Vehicle Name", Assets.poppinsMedium,
+                            color: AppColors.blackTextColor, lines: 1),
+                        TextView.getSmallText12(
+                            "Vehicle Name", Assets.poppinsMedium,
+                            color: AppColors.blackTextColor, lines: 1),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 5.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextView.getSmallText12("Honda", Assets.poppinsLight,
+                            color: AppColors.subHeadingTextColor, lines: 1),
+                        TextView.getSmallText12(
+                            "Civic - X", Assets.poppinsLight,
+                            color: AppColors.subHeadingTextColor, lines: 1),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 5.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: const Divider(),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 5.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextView.getSmallText12(
+                            "Vehicle Number", Assets.poppinsMedium,
+                            color: AppColors.blackTextColor, lines: 1),
+                        TextView.getSmallText12(
+                            "Vehicle Category", Assets.poppinsMedium,
+                            color: AppColors.blackTextColor, lines: 1),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 5.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextView.getSmallText12("LEU-7652", Assets.poppinsLight,
+                            color: AppColors.subHeadingTextColor, lines: 1),
+                        TextView.getSmallText12("4 wheel", Assets.poppinsLight,
+                            color: AppColors.subHeadingTextColor, lines: 1),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 15.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: sizes!.widthRatio * 5.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextView.getSubHeadingTextWith15(
+                          "Road - side services", Assets.poppinsMedium,
+                          color: AppColors.openTheTruckerAppTextColor,
+                          lines: 1,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 15.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextView.getSmallText12(
+                            "Flat tyre replacement", Assets.poppinsMedium,
+                            color: AppColors.blackTextColor, lines: 1),
+                        TextView.getMediumText16("\$ 32", Assets.poppinsMedium,
+                            color: AppColors.popUpTextColor,
+                            lines: 1,
+                            fontWeight: FontWeight.bold),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 2.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: TextView.getSmallText12(
+                        "Keys available", Assets.poppinsLight,
+                        color: AppColors.subHeadingTextColor, lines: 1),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 2.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: TextView.getSmallText12(
+                        "Spare Tyre Available", Assets.poppinsLight,
+                        color: AppColors.subHeadingTextColor, lines: 1),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 5.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: const Divider(),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 5.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextView.getSmallText12(
+                            "Fuel deliveries", Assets.poppinsMedium,
+                            color: AppColors.blackTextColor, lines: 1),
+                        TextView.getMediumText16("\$ 42", Assets.poppinsMedium,
+                            color: AppColors.popUpTextColor,
+                            lines: 1,
+                            fontWeight: FontWeight.bold),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 2.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 5.0,
+                        right: sizes!.widthRatio * 5.0),
+                    child: TextView.getSmallText12(
+                        "2 Liters", Assets.poppinsLight,
+                        color: AppColors.subHeadingTextColor, lines: 1),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 14.0,
+                  ),
+                  Container(
+                    width: sizes!.widthRatio * 285,
+                    height: sizes!.heightRatio * 65,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppColors.getStartedButtonColor,
+                        width: 0.5,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(6)),
+                      color: AppColors.whiteTextColor,
+                      boxShadow: const [
+                        BoxShadow(
+                          color: AppColors.getStartedButtonColorShadow,
+                          blurRadius: 1, // 12
+                          offset: Offset(0, 0), // 3
+                        ),
+                      ],
+                    ),
+                    child: Expanded(
+                      child: Center(
+                          child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: SingleChildScrollView(
+                          child: TextView.getSmallText12(
+                              "Hello, I have problem with the front right wheel. "
+                              "Hello, I have problem with the front right wheel. "
+                              "Hello, I have problem with the front right wheel. "
+                              "Hello, I have problem with the front right wheel. "
+                              "Hello, I have problem with the front right wheel. "
+                              "Hello, I have problem with the front right wheel.",
+                              Assets.poppinsLight,
+                              color: AppColors.subHeadingTextColor,
+                              lines: 5),
+                        ),
+                      )),
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 14.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      PopUpComponents.getCustomOutlineBtn("Decline",
+                          onPress: () {}),
+                      PopUpComponents.getPopUpButton("Accept", onPress: () {})
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget getPopUpButton(
+    String text, {
+    Function? onPress,
+    Color? buttonColor,
+  }) {
+    return Container(
+      width: sizes!.widthRatio * 125,
+      height: sizes!.heightRatio * 45,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: buttonColor ?? AppColors.getStartedButtonColor,
+          width: 1,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
+        color: buttonColor ?? AppColors.getStartedButtonColor,
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.getStartedButtonColorShadow,
+            blurRadius: 4, // 12
+            offset: Offset(0, 1), // 3
+          ),
+        ],
+      ),
+      child: TextButton(
+        onPressed: () {
+          if (onPress != null) {
+            onPress.call();
+          }
+        },
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontFamily: Assets.poppinsMedium,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget getCustomOutlineBtn(
+    String text, {
+    Function? onPress,
+    Color? buttonColor,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        if (onPress != null) {
+          onPress.call();
+        }
+      },
+      child: Container(
+          width: sizes!.widthRatio * 125,
+          height: sizes!.heightRatio * 45,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: AppColors.redColor,
+              width: 1.5,
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(4)),
+            color: AppColors.whiteTextColor,
+            boxShadow: const [
+              BoxShadow(
+                color: AppColors.getStartedButtonColorShadow,
+                blurRadius: 4, // 12
+                offset: Offset(0, 0), // 3
+              ),
+            ],
+          ),
+          child: Center(
+            child: TextView.getRegularBoldText(text, Assets.poppinsMedium,
+                color: AppColors.redColor, lines: 1),
+          )),
+    );
+  }
 }

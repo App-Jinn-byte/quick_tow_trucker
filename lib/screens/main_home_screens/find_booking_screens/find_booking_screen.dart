@@ -7,6 +7,7 @@ import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/auth/profile_screens/profile_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/history_screens/history_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/notification_screens/notification_screen.dart';
@@ -109,8 +110,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                     right: sizes!.widthRatio * 45,
                     child: GestureDetector(
                         onTap: () {
-                          // Navigator.push(context,
-                          //     SlideRightRoute(page: const TrackingScreen()));
+                          bookingPopUp(context);
                         },
                         child:
                             Image.asset("assets/png/simple_pin_icon@2x.png"))),
@@ -163,6 +163,32 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
         pageBuilder: (context, animation, animationTime) {
           return Center(
               child: PopUpComponents.welcomeBackScreenCustomPopUp(
+            context,
+          ));
+        });
+  }
+
+  void bookingPopUp(context) {
+    showGeneralDialog(
+        barrierColor: Colors.black.withOpacity(0.5),
+        //SHADOW EFFECT
+        transitionBuilder: (context, animation, animationTime, widget) {
+          animation =
+              CurvedAnimation(parent: animation, curve: Curves.decelerate);
+          return ScaleTransition(
+            alignment: Alignment.center,
+            scale: animation,
+            child: widget,
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 500),
+        // DURATION FOR ANIMATION
+        barrierDismissible: false,
+        barrierLabel: 'LABEL',
+        context: context,
+        pageBuilder: (context, animation, animationTime) {
+          return Center(
+              child: PopUpComponents.getBookingPopUp(
             context,
           ));
         });

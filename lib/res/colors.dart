@@ -26,6 +26,8 @@ class AppColors {
   static const cardShadowColor = Color.fromRGBO(0, 0, 0, 0.12);
 
   static const routeTextColor = Color.fromRGBO(119, 118, 118, 1);
+  static const popUpTextColor = Color.fromRGBO(19, 72, 19, 1);
+
 
 
 
