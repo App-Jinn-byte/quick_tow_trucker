@@ -20,10 +20,14 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      key: scaffoldKey,
+      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 2),
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
@@ -39,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   firstIcon: "assets/png/menu_icon@2x.png",
                   secondIcon: "assets/png/edit_icon@2x.png",
                   onFirstIconPress: () {
-                    // Navigator.pop(context);
+                    scaffoldKey.currentState?.openDrawer();
                   },
                   onSecondIconPress: () {
                     Navigator.push(context,

@@ -15,27 +15,29 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      key: scaffoldKey,
+      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 4),
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
-        decoration:  const BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(Assets.mainBgImage), fit: BoxFit.fill)),
         child: Column(
           children: [
-
             CommonWidgets.getAppBarWithTitleAndBackButton(
                 context: context,
                 title: "Booking History",
                 icon: "assets/png/menu_icon@2x.png",
                 onPress: () {
-                  // Navigator.pop(context);
+                  scaffoldKey.currentState?.openDrawer();
                 }),
-
             SizedBox(
               height: sizes!.heightRatio * 10,
             ),

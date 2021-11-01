@@ -38,7 +38,8 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
 
     // setCustomMapPin();
 
-    BitmapDescriptor.fromAssetImage(ImageConfiguration(devicePixelRatio: 2.5),
+    BitmapDescriptor.fromAssetImage(
+            const ImageConfiguration(devicePixelRatio: 2.5),
             'assets/destination_map_marker.png')
         .then((onValue) {
       pinLocationIcon = onValue;
@@ -71,127 +72,8 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: sizes!.heightRatio * 44,
-                        width: sizes!.widthRatio * 44,
-                        child: const CircleAvatar(
-                          backgroundImage: AssetImage(
-                            "assets/png/image_profile_placeholder.png",
-                          ),
-                          radius: 50.0,
-                          backgroundColor: AppColors.transparentColor,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: sizes!.heightRatio * 40),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextView.getSubHeadingTextWith15(
-                                "Alan Thor", Assets.poppinsMedium,
-                                color: AppColors.blackTextColor,
-                                lines: 1,
-                                fontWeight: FontWeight.bold),
-                            TextView.getRegular13Text(
-                                "John Doe.ellis@gmail.com",
-                                Assets.poppinsRegular,
-                                color: AppColors.blackTextColor,
-                                lines: 1)
-                          ],
-                        ),
-                      )
-                    ],
-                  )),
-              ListTile(
-                title: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextView.getDrawerMenuText13(
-                      "Home", Assets.poppinsMedium,
-                      color: AppColors.blackTextColor, lines: 1),
-                ),
-                leading: Image.asset(
-                  "assets/png/home_icon@2x.png",
-                  height: sizes!.heightRatio * 32,
-                  width: sizes!.widthRatio * 32,
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              const Divider(),
-              ListTile(
-                title: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextView.getDrawerMenuText13(
-                      "Profile", Assets.poppinsMedium,
-                      color: AppColors.blackTextColor, lines: 1),
-                ),
-                leading: Image.asset(
-                  "assets/png/profile_icon@2x.png",
-                  height: sizes!.heightRatio * 32,
-                  width: sizes!.widthRatio * 32,
-                ),
-                onTap: () {
-                  // Navigator.pop(context);
-                  Navigator.push(
-                      context, SlideRightRoute(page: const ProfileScreen()));
-                },
-              ),
-              const Divider(),
-              ListTile(
-                title: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextView.getDrawerMenuText13(
-                      "Notification", Assets.poppinsMedium,
-                      color: AppColors.blackTextColor, lines: 1),
-                ),
-                leading: Image.asset(
-                  "assets/png/notification_icon@2x.png",
-                  height: sizes!.heightRatio * 32,
-                  width: sizes!.widthRatio * 32,
-                ),
-                onTap: () {
-                  // Navigator.pop(context);
-                  Navigator.push(context,
-                      SlideRightRoute(page: const NotificationScreen()));
-                },
-              ),
-              const Divider(),
-              ListTile(
-                title: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextView.getDrawerMenuText13(
-                      "History", Assets.poppinsMedium,
-                      color: AppColors.blackTextColor, lines: 1),
-                ),
-                leading: Image.asset(
-                  "assets/png/history_drawer_icon@2x.png",
-                  height: sizes!.heightRatio * 32,
-                  width: sizes!.widthRatio * 32,
-                ),
-                onTap: () {
-                  // Navigator.pop(context);
-                  Navigator.push(
-                      context, SlideRightRoute(page: const HistoryScreen()));
-                },
-              ),
-              const Divider(),
-              TextView.getDrawerMenuText13("V: 1.0.0", Assets.poppinsMedium,
-                  color: AppColors.getStartedButtonColor, lines: 1)
-            ],
-          ),
-        ),
+        drawer:
+            CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 1),
         body: Container(
             height: sizes!.height,
             width: sizes!.width,

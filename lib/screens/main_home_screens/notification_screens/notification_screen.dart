@@ -12,10 +12,14 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      key: scaffoldKey,
+      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 3),
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
@@ -29,7 +33,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 title: "Notifications",
                 icon: "assets/png/menu_icon@2x.png",
                 onPress: () {
-                  // Navigator.pop(context);
+                  scaffoldKey.currentState?.openDrawer();
                 }),
             SizedBox(
               height: sizes!.heightRatio * 10.0,
