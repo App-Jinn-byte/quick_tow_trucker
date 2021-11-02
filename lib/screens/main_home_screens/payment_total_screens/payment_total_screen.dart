@@ -323,8 +323,10 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
           return Center(
               child: PopUpComponents.completeRidePopUp(context,
                   confirmOnPress: () {
-            Navigator.push(
+            Navigator.pop(context);
+            Navigator.pushReplacement(
                 context, SlideRightRoute(page: const RatingReviewScreen()));
+            //  TODO: Please double-check pushReplacement
           }));
         });
   }
