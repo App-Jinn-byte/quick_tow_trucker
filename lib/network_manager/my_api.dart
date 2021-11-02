@@ -6,6 +6,8 @@ import 'package:quick_tow_trucker/res/toasts.dart';
 import 'models.dart';
 
 class MyApi {
+
+
   static Future<dynamic> callPostApi(
       {String? url,
       dynamic body,

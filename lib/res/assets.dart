@@ -9,6 +9,7 @@ class Assets {
   static const String mainBgImageWithLogoOnBottom =
       "assets/png/main_bg_with_logo_01.png";
   static const String splashBgImage = "assets/png/splash_screen_bg_01.png";
+  static const String icon_send = "assets/png/message_sender_icon@2x.png";
 
 
 
@@ -84,7 +85,6 @@ class Assets {
   static const String food2Icon = "assets/png/food.png";
   static const String coffee = "assets/png/coffee@3x.png";
   static const String informationIcon = "assets/png/information@3x.png";
-  static const String icon_send = "assets/png/icon_send.png";
   static const String feedbackIcon = "assets/png/icon_feedback2x.png";
   static const String privacyPolicyIcon = "assets/png/check@3x.png";
   static const String bookingPopUpIcon = "assets/png/diamond.png";

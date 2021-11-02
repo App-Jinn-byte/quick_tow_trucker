@@ -207,7 +207,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         width: sizes!.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(Assets.mainBgImage), fit: BoxFit.fill)),
+                image: AssetImage(Assets.mainBgImageWithLogoOnTop), fit: BoxFit.fill)),
         child: SingleChildScrollView(
 
           child: Column(

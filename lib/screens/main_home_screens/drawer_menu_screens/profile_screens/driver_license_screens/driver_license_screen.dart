@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
+import 'package:quick_tow_trucker/res/common_padding.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 
@@ -35,6 +36,23 @@ class _DriverLicenseScreenState extends State<DriverLicenseScreen> {
                   onPress: () {
                     Navigator.pop(context);
                   }),
+              SizedBox(
+                height: sizes!.heightRatio * 50.0,
+              ),
+              Padding(
+                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+                child: Image.asset("assets/png/license_photo@2x.png"),
+              ),
+              SizedBox(
+                height: sizes!.heightRatio * 180.0,
+              ),
+              Padding(
+                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+                child: CommonWidgets.getStartButton("Update License", onPress: (){
+
+                }),
+              )
+              
             ],
           ),
         ),

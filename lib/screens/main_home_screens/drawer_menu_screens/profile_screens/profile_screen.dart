@@ -4,13 +4,15 @@ import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
-import 'package:quick_tow_trucker/screens/auth/edit_profile_screens/edit_profile_screen.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/driver_license_screens/driver_license_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/insurance_info_screens/insurance_info_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/vehicle_details_screens/vehicle_detail_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
+
+import 'company_support_screens/message_screen.dart';
+import 'driver_license_screens/driver_license_screen.dart';
+import 'edit_profile_screens/edit_profile_screen.dart';
+import 'insurance_info_screens/insurance_info_screen.dart';
+import 'vehicle_details_screens/vehicle_detail_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -117,8 +119,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: TextView.getMediumText16(
-                      "Account", Assets.poppinsLight,
-                      color: AppColors.openTheTruckerAppTextColor, lines: 2),
+                      "Account Details", Assets.poppinsLight,
+                      color: AppColors.openTheTruckerAppTextColor,
+                      lines: 2,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(
@@ -254,7 +258,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppColors.blackTextColor, lines: 1),
                     GestureDetector(
                       onTap: () {
-                        Toasts.getSuccessToast(text: "Try it Later :)");
+                        Navigator.push(context,
+                            SlideRightRoute(page: const MessageScreen()));
                       },
                       child: Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
@@ -357,6 +362,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> logout() async {
-    Navigator.push(context, SlideRightRoute(page: const LoginScreen()));
+    Navigator.pushReplacement(
+        context, SlideRightRoute(page: const LoginScreen()));
   }
 }

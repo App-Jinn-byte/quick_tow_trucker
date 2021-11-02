@@ -7,16 +7,803 @@ import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
+import 'package:quick_tow_trucker/res/common_padding.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
-import 'package:quick_tow_trucker/screens/auth/profile_screens/profile_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/history_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/notification_screens/notification_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/profile_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/history_screens/history_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/notification_screens/notification_screen.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
 class CommonWidgets {
   //Project Widgets
+
+  static Widget customTextFieldWithMultipleLinesCustomContainerIcon(
+      {@required String? placeHolder,
+      @required dynamic icon,
+      @required bool? isValid,
+      @required TextEditingController? controller,
+      @required dynamic keyboardType}) {
+    isValid ??= true;
+
+    return Container(
+      padding: EdgeInsets.only(
+          left: sizes!.widthRatio * 8, right: sizes!.widthRatio * 7),
+      width: sizes!.widthRatio * 325,
+      height: sizes!.heightRatio * 90,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: isValid
+              ? AppColors.textFieldBorderColor
+              : AppColors.redColor, //AppColors.textFieldBorderColor,
+          width: isValid ? 0.25 : 1,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(6)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.smallButtonShadow,
+            blurRadius: 2, //18
+            offset: const Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.only(bottom: sizes!.heightRatio * 40),
+          child: Row(
+            children: [
+              SizedBox(
+                height: sizes!.heightRatio * 29,
+                width: sizes!.widthRatio * 36,
+                child: Image.asset(icon),
+              ),
+              SizedBox(
+                width: sizes!.widthRatio * 13,
+              ),
+              Expanded(
+                child: TextField(
+                  obscureText: false,
+                  controller: controller,
+                  keyboardType: keyboardType,
+                  minLines: 1,
+                  maxLines: 5,
+                  decoration: InputDecoration(
+                    hintText: placeHolder,
+                    hintStyle: const TextStyle(
+                        color: AppColors.lightGreyTextColor,
+                        fontFamily: Assets.poppinsLight,
+                        fontSize: 14),
+                    contentPadding: EdgeInsets.only(
+                        bottom: sizes!.heightRatio * 10,
+                        top: sizes!.heightRatio * 10),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget getPopUpConfirmButton(
+    String text, {
+    Function? onPress,
+    Color? buttonColor,
+  }) {
+    return Container(
+      width: sizes!.widthRatio * 125,
+      height: sizes!.heightRatio * 45,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: buttonColor ?? AppColors.getStartedButtonColor,
+          width: 1,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
+        color: buttonColor ?? AppColors.getStartedButtonColor,
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.getStartedButtonColorShadow,
+            blurRadius: 4, // 12
+            offset: Offset(0, 1), // 3
+          ),
+        ],
+      ),
+      child: TextButton(
+        onPressed: () {
+          if (onPress != null) {
+            onPress.call();
+          }
+        },
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontFamily: Assets.poppinsMedium,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget getPopUpRedCancelButton(
+    String text, {
+    Function? onPress,
+    Color? buttonColor,
+  }) {
+    return Container(
+      width: sizes!.widthRatio * 127,
+      height: sizes!.heightRatio * 45,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: AppColors.redColor,
+          width: 1,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
+        color: AppColors.whiteTextColor,
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.getStartedButtonColorShadow,
+            blurRadius: 4, // 12
+            offset: Offset(0, 1), // 3
+          ),
+        ],
+      ),
+      child: TextButton(
+        onPressed: () {
+          if (onPress != null) {
+            onPress.call();
+          }
+        },
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.red,
+            fontSize: 14,
+            fontFamily: Assets.poppinsMedium,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget getBottomCard({
+    @required Function? onChatPress,
+    @required Function? onViewDetailPress,
+    @required Function? onCancelRidePress,
+    @required Function? onStartRidePress,
+    @required String? btn4Text,
+  }) {
+    return Container(
+      height: sizes!.heightRatio * 260,
+      width: sizes!.width,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: sizes!.heightRatio * 20.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+            child: Row(
+              children: [
+                Container(
+                  child: Image.asset(
+                    "assets/png/map_route_icon@2x.png",
+                    height: sizes!.heightRatio * 50.0,
+                    width: sizes!.widthRatio * 9.0,
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 20.0,
+                        right: sizes!.widthRatio * 20.0,
+                        top: sizes!.heightRatio * 10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextView.getRegularWith13(
+                              "227 Sector FF DHA Phase 4 Qatar",
+                              Assets.poppinsRegular,
+                              color: AppColors.routeTextColor,
+                              lines: 3),
+                        ),
+                        SizedBox(
+                          height: sizes!.heightRatio * 8.0,
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextView.getRegularWith13(
+                              "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Qatar",
+                              Assets.poppinsRegular,
+                              color: AppColors.routeTextColor,
+                              lines: 3),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 10.0,
+          ),
+          const Divider(),
+          SizedBox(
+            height: sizes!.heightRatio * 20.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 20.0,
+                right: sizes!.widthRatio * 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CommonWidgets.getCustomOutlineBtn("Chat", onPress: () {
+                  if (onChatPress != null) {
+                    onChatPress.call();
+                  }
+                }),
+                SizedBox(
+                  width: sizes!.widthRatio * 10.0,
+                ),
+                CommonWidgets.getCustomOutlineBtn("View Details", onPress: () {
+                  if (onViewDetailPress != null) {
+                    onViewDetailPress.call();
+                  }
+                }),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 12.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 20.0,
+                right: sizes!.widthRatio * 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CommonWidgets.getCustomBtn("Cancel Ride",
+                    buttonColor: AppColors.redColor, onPress: () {
+                  if (onCancelRidePress != null) {
+                    onCancelRidePress.call();
+                  }
+                }),
+                SizedBox(
+                  width: sizes!.widthRatio * 10.0,
+                ),
+                CommonWidgets.getCustomBtn(btn4Text ?? "Start Ride",
+                    onPress: () {
+                  if (onStartRidePress != null) {
+                    onStartRidePress.call();
+                  }
+                }),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  static Widget getBottomCardEndRideScreen({
+    @required Function? onChatPress,
+    @required Function? onViewDetailPress,
+    @required Function? onAddServicePress,
+    @required Function? onEndRidePress,
+  }) {
+    return Container(
+      height: sizes!.heightRatio * 260,
+      width: sizes!.width,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: sizes!.heightRatio * 20.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+            child: Row(
+              children: [
+                Container(
+                  child: Image.asset(
+                    "assets/png/map_route_icon@2x.png",
+                    height: sizes!.heightRatio * 50.0,
+                    width: sizes!.widthRatio * 9.0,
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 20.0,
+                        right: sizes!.widthRatio * 20.0,
+                        top: sizes!.heightRatio * 10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextView.getRegularWith13(
+                              "227 Sector FF DHA Phase 4 Qatar",
+                              Assets.poppinsRegular,
+                              color: AppColors.routeTextColor,
+                              lines: 3),
+                        ),
+                        SizedBox(
+                          height: sizes!.heightRatio * 8.0,
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextView.getRegularWith13(
+                              "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Qatar",
+                              Assets.poppinsRegular,
+                              color: AppColors.routeTextColor,
+                              lines: 3),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 10.0,
+          ),
+          const Divider(),
+          SizedBox(
+            height: sizes!.heightRatio * 20.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 20.0,
+                right: sizes!.widthRatio * 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CommonWidgets.getCustomOutlineBtn("Chat", onPress: () {
+                  if (onChatPress != null) {
+                    onChatPress.call();
+                  }
+                }),
+                SizedBox(
+                  width: sizes!.widthRatio * 10.0,
+                ),
+                CommonWidgets.getCustomOutlineBtn("View Details", onPress: () {
+                  if (onViewDetailPress != null) {
+                    onViewDetailPress.call();
+                  }
+                }),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 12.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 20.0,
+                right: sizes!.widthRatio * 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CommonWidgets.getCustomBtn("Add Service",
+                    buttonColor: AppColors.addServiceBtnColor, onPress: () {
+                  if (onAddServicePress != null) {
+                    onAddServicePress.call();
+                  }
+                }),
+                SizedBox(
+                  width: sizes!.widthRatio * 10.0,
+                ),
+                CommonWidgets.getCustomBtn("End Ride", onPress: () {
+                  if (onEndRidePress != null) {
+                    onEndRidePress.call();
+                  }
+                }),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  static Widget getArrivedContainer(
+      {@required dynamic truckerPhoto, @required dynamic arrivingTime}) {
+    return Container(
+      height: sizes!.heightRatio * 43.0,
+      width: sizes!.widthRatio * 110.0,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(28)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: sizes!.widthRatio * 10.0),
+            child: Image.asset(
+              truckerPhoto ?? "assets/png/avatar_user_icon@2x.png",
+              height: sizes!.heightRatio * 33.0,
+              width: sizes!.widthRatio * 33.0,
+            ),
+          ),
+          SizedBox(
+            width: sizes!.widthRatio * 5.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: sizes!.heightRatio * 8.0),
+            child: Column(
+              children: [
+                TextView.getSmallBoldText12("Arriving", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+                SizedBox(
+                  height: sizes!.heightRatio * 2.0,
+                ),
+                TextView.getSmallText12(
+                    arrivingTime ?? "15 mins", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  static Widget getCustomOutlineBtn(
+    String text, {
+    Function? onPress,
+    Color? buttonColor,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        if (onPress != null) {
+          onPress.call();
+        }
+      },
+      child: Container(
+          width: sizes!.widthRatio * 152,
+          height: sizes!.heightRatio * 45,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: AppColors.getStartedButtonColor,
+              width: 1.5,
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(4)),
+            color: AppColors.whiteTextColor,
+            boxShadow: const [
+              BoxShadow(
+                color: AppColors.getStartedButtonColorShadow,
+                blurRadius: 4, // 12
+                offset: Offset(0, 0), // 3
+              ),
+            ],
+          ),
+          child: Center(
+            child: TextView.getRegularBoldText(text, Assets.poppinsMedium,
+                color: AppColors.getStartedButtonColor, lines: 1),
+          )),
+    );
+  }
+
+  static Widget getCustomBtn(
+    String text, {
+    Function? onPress,
+    Color? buttonColor,
+  }) {
+    return Container(
+      width: sizes!.widthRatio * 152,
+      height: sizes!.heightRatio * 45,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: buttonColor ?? AppColors.getStartedButtonColor,
+          width: 1,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
+        color: buttonColor ?? AppColors.getStartedButtonColor,
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.getStartedButtonColorShadow,
+            blurRadius: 4, // 12
+            offset: Offset(0, 1), // 3
+          ),
+        ],
+      ),
+      child: TextButton(
+        onPressed: () {
+          if (onPress != null) {
+            onPress.call();
+          }
+        },
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontFamily: Assets.poppinsMedium,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget getSendMessageInputContainer(
+      {@required Function? onSendMessagePress}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: sizes!.height * 0.07,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColors.chatBorderColor,
+            width: 1,
+          ),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          color: AppColors.whiteTextColor,
+          boxShadow: const [
+            BoxShadow(
+              color: AppColors.cardShadowColor,
+              blurRadius: 2, // 12
+              offset: Offset(0, 0), // 3
+            ),
+          ],
+        ),
+        child: TextFormField(
+          keyboardType: TextInputType.text,
+          style: const TextStyle(
+            fontFamily: Assets.poppinsRegular,
+          ),
+          decoration: InputDecoration(
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  if (onSendMessagePress != null) {
+                    onSendMessagePress.call();
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(right: sizes!.widthRatio * 10),
+                  child: Image.asset(
+                    Assets.icon_send,
+                    height: sizes!.heightRatio * 32.0,
+                    width: sizes!.widthRatio * 32.0,
+                  ),
+                ),
+              ),
+              enabledBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                  borderSide: BorderSide(color: Colors.white)),
+              focusedBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                  borderSide: BorderSide(color: Colors.white)),
+              filled: true,
+              fillColor: AppColors.offWhite,
+              hintText: "Type Message Here...",
+              hintStyle: TextStyle(
+                  color: Colors.grey[500],
+                  fontFamily: Assets.poppinsRegular,
+                  fontSize: 14.0)),
+          // controller: controller,
+          cursorColor: AppColors.appBackground,
+          validator: (val) {
+            if (val!.isEmpty) {
+              return "Please type message";
+            } else {
+              return null;
+            }
+          },
+        ),
+      ),
+    );
+  }
+
+  static Widget getSenderMessageContainer() {
+    return Container(
+      padding: EdgeInsets.only(
+        left: sizes!.widthRatio * 10,
+        right: sizes!.widthRatio * 10,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TextView.getSmallText12("10:00 PM", Assets.poppinsMedium,
+              color: AppColors.blackTextColor, lines: 1),
+          SizedBox(
+            width: sizes!.widthRatio * 10,
+          ),
+          Expanded(
+            child: Container(
+                padding: EdgeInsets.all(sizes!.heightRatio * 12),
+                margin: EdgeInsets.only(
+                    top: sizes!.heightRatio * 12.0,
+                    bottom: sizes!.heightRatio * 12.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: AppColors.chatBorderColor,
+                    width: 1,
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  color: AppColors.getStartedButtonColor,
+                  boxShadow: const [
+                    BoxShadow(
+                      color: AppColors.cardShadowColor,
+                      blurRadius: 2, // 12
+                      offset: Offset(0, 0), // 3
+                    ),
+                  ],
+                ),
+                child: TextView.getRegularWith13(
+                    "This is the message sent. chatBorderColor, chatBorderColor",
+                    Assets.poppinsRegular,
+                    color: AppColors.whiteTextColor,
+                    textAlign: TextAlign.left,
+                    lines: 5)),
+          ),
+          SizedBox(
+            width: sizes!.widthRatio * 10,
+          ),
+          SizedBox(
+              width: sizes!.widthRatio * 30.0,
+              child: const CircleAvatar(
+                backgroundImage:
+                    AssetImage("assets/png/avatar_user_icon@2x.png"),
+              )),
+        ],
+      ),
+    );
+  }
+
+  static Widget getReceiverMessageContainer() {
+    return Container(
+      padding: EdgeInsets.only(
+        left: sizes!.widthRatio * 10,
+        right: sizes!.widthRatio * 10,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+              width: sizes!.widthRatio * 30.0,
+              child: const CircleAvatar(
+                backgroundImage:
+                    AssetImage("assets/png/avatar_user_icon@2x.png"),
+              )),
+          SizedBox(
+            width: sizes!.widthRatio * 10,
+          ),
+          Expanded(
+            child: Container(
+                padding: EdgeInsets.all(sizes!.heightRatio * 12),
+                margin: EdgeInsets.only(
+                    top: sizes!.heightRatio * 12.0,
+                    bottom: sizes!.heightRatio * 12.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: AppColors.chatBorderColor,
+                    width: 1,
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  color: AppColors.whiteTextColor,
+                  boxShadow: const [
+                    BoxShadow(
+                      color: AppColors.cardShadowColor,
+                      blurRadius: 2, // 12
+                      offset: Offset(0, 0), // 3
+                    ),
+                  ],
+                ),
+                child: TextView.getRegularWith13(
+                    "This is the message received. chatBorderColor, chatBorderColor",
+                    Assets.poppinsRegular,
+                    color: AppColors.blackTextColor,
+                    lines: 5)),
+          ),
+          SizedBox(
+            width: sizes!.widthRatio * 10,
+          ),
+          TextView.getSmallText12("10:00 PM", Assets.poppinsMedium,
+              color: AppColors.blackTextColor, lines: 1),
+        ],
+      ),
+    );
+  }
+
+  static Widget getAppBarWithTitleBackButtonAndUserIcon({
+    @required BuildContext? context,
+    @required String? title,
+    @required String? icon,
+    @required String? userIcon,
+    @required Function? onPress,
+  }) {
+    return Container(
+      height: sizes!.heightRatio * 60.0,
+      decoration: const BoxDecoration(
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(left: sizes!.widthRatio * 30.0),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: sizes!.heightRatio * 32,
+              width: sizes!.widthRatio * 32,
+              child: GestureDetector(
+                  onTap: () {
+                    if (onPress != null) {
+                      onPress.call();
+                    }
+                  },
+                  child: Image.asset(icon!)),
+            ),
+            SizedBox(
+              width: sizes!.widthRatio * 10,
+            ),
+            Container(
+                height: sizes!.heightRatio * 32,
+                width: sizes!.widthRatio * 32,
+                child: Image.asset(
+                  userIcon ?? "assets/png/avatar_user_icon@2x.png",
+                  height: sizes!.heightRatio * 40.0,
+                  width: sizes!.widthRatio * 40.0,
+                )),
+            SizedBox(
+              width: sizes!.widthRatio * 10,
+            ),
+            TextView.getMediumText18(title ?? "", Assets.poppinsMedium,
+                color: AppColors.blackTextColor, lines: 1),
+          ],
+        ),
+      ),
+    );
+  }
 
   static Widget getDrawerBar(
       {required BuildContext context, @required int? isCurrentScreen}) {
@@ -2000,7 +2787,7 @@ class CommonWidgets {
       height: sizes!.heightRatio * 145,
       width: sizes!.widthRatio * 325,
       decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
                 color: AppColors.lightGreyTextColor,
                 blurRadius: 2,

@@ -5,6 +5,7 @@ import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
@@ -91,7 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
         width: sizes!.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(Assets.mainBgImageWithLogoOnBottom), fit: BoxFit.fill)),
+                image: AssetImage(Assets.mainBgImageWithLogoOnBottom),
+                fit: BoxFit.fill)),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -220,9 +222,11 @@ class _LoginScreenState extends State<LoginScreen> {
     var password = passwordController.text.toString().trim();
     print("Email: $email, Password: $password");
 
-    await loginProvider.loginApi(email: email, password: password);
-
-    if (loginProvider.isLoginSuccessful == true) {}
+    // await loginProvider.loginApi(email: email, password: password);
+    //
+    // if (loginProvider.isLoginSuccessful == true) {
+    //   Toasts.getSuccessToast(text: "Login Response Successfully");
+    // }
 
     Navigator.push(context, SlideRightRoute(page: const FindBookingScreen()));
   }

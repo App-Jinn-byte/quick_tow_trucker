@@ -25,8 +25,15 @@ class AppColors {
   static const radioButtonTextColor = Color.fromRGBO(97, 97, 97, 1);
   static const cardShadowColor = Color.fromRGBO(0, 0, 0, 0.12);
 
+  static const checkBoxBorderColor = Color.fromRGBO(16, 85, 16, 1);
+
+
   static const routeTextColor = Color.fromRGBO(119, 118, 118, 1);
   static const popUpTextColor = Color.fromRGBO(19, 72, 19, 1);
+  static const chatBorderColor = Color.fromRGBO(225, 225, 225, 1);
+  static const addServiceBtnColor = Color.fromRGBO(13, 78, 63, 1);
+  static const pass = Color.fromRGBO(75, 75, 75, 1);
+
 
 
 
@@ -91,7 +98,6 @@ class AppColors {
   static const clr_bg_button = Color.fromRGBO(18, 65, 191, 1);
   static const blackHeading = Color.fromRGBO(15, 14, 14, 1);
   static const messageColor = Color.fromRGBO(60, 70, 67, 0.61);
-  static const pass = Color.fromRGBO(75, 75, 75, 1);
   static const blueHomeColor = Color.fromRGBO(26, 112, 228, 1);
   static const greenColor = Color.fromRGBO(117, 176, 46, 1);
   static const walletColor = Color.fromRGBO(70, 97, 134, 1);
