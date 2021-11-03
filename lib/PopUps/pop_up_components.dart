@@ -43,14 +43,12 @@ class PopUpComponents {
                     padding: EdgeInsets.only(left: sizes!.widthRatio * 12),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Expanded(
-                        child: TextView.getMediumText16(
-                            "Your Ride has been Completed successfully.",
-                            Assets.poppinsMedium,
-                            color: AppColors.blackTextColor,
-                            textAlign: TextAlign.center,
-                            lines: 2),
-                      ),
+                      child: TextView.getMediumText16(
+                          "Your Ride has been Completed successfully.",
+                          Assets.poppinsMedium,
+                          color: AppColors.blackTextColor,
+                          textAlign: TextAlign.center,
+                          lines: 2),
                     ),
                   ),
                   SizedBox(
@@ -657,6 +655,9 @@ class PopUpComponents {
                       ],
                     ),
                   ),
+
+
+
                   SizedBox(
                     height: sizes!.heightRatio * 10.0,
                   ),
@@ -897,24 +898,22 @@ class PopUpComponents {
                         ),
                       ],
                     ),
-                    child: Expanded(
-                      child: Center(
-                          child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: SingleChildScrollView(
-                          child: TextView.getSmallText12(
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel.",
-                              Assets.poppinsLight,
-                              color: AppColors.subHeadingTextColor,
-                              lines: 5),
-                        ),
-                      )),
-                    ),
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SingleChildScrollView(
+                        child: TextView.getSmallText12(
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel.",
+                            Assets.poppinsLight,
+                            color: AppColors.subHeadingTextColor,
+                            lines: 5),
+                      ),
+                    )),
                   ),
                   SizedBox(
                     height: sizes!.heightRatio * 14.0,
@@ -1245,24 +1244,22 @@ class PopUpComponents {
                         ),
                       ],
                     ),
-                    child: Expanded(
-                      child: Center(
-                          child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: SingleChildScrollView(
-                          child: TextView.getSmallText12(
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel. "
-                              "Hello, I have problem with the front right wheel.",
-                              Assets.poppinsLight,
-                              color: AppColors.subHeadingTextColor,
-                              lines: 5),
-                        ),
-                      )),
-                    ),
+                    child: Center(
+                        child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: SingleChildScrollView(
+                        child: TextView.getSmallText12(
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel. "
+                            "Hello, I have problem with the front right wheel.",
+                            Assets.poppinsLight,
+                            color: AppColors.subHeadingTextColor,
+                            lines: 5),
+                      ),
+                    )),
                   ),
                   SizedBox(
                     height: sizes!.heightRatio * 14.0,
