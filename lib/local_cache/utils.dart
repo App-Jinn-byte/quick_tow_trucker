@@ -59,36 +59,60 @@ class PreferenceUtils {
     return userImage;
   }
 
+
   static Future setLoginResponse(loginResponse) async {
-    if (loginResponse.data.subscription.isEmpty) {
-      await PreferenceUtils.setBool(Strings.isSubscription, false);
-    } else {
-      await PreferenceUtils.setBool(Strings.isSubscription, true);
-    }
-    await PreferenceUtils.setInt(
-        Strings.loginUserId, loginResponse.data?.userId ?? 0);
     await PreferenceUtils.setString(
-        Strings.loginName, loginResponse.data?.name ?? "");
+        Strings.loginUserToken, loginResponse.data?.token ?? "");
 
-    PreferenceUtils.setString(
-        Strings.loginEmail, loginResponse.data?.email ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginUserId, loginResponse.data?.user?.id ?? "");
 
-    PreferenceUtils.setString(
-        Strings.loginPhoneNo, loginResponse.data?.phone ?? "");
-    PreferenceUtils.setString(
-        Strings.loginPassword, loginResponse.data?.password ?? "");
-    PreferenceUtils.setString(
-        Strings.loginProfilePicture, loginResponse.data?.profilePicture ?? "");
-    PreferenceUtils.setInt(
-        Strings.loginUserTypeId, loginResponse.data?.userTypeId ?? 0);
-    PreferenceUtils.setString(
-        Strings.loginUserType, loginResponse.data?.userType ?? "");
-    PreferenceUtils.setString(
-        Strings.loginDeviceId, loginResponse.data?.deviceId ?? "");
-
-    PreferenceUtils.setString(Strings.userSubscriptionPlanKey,
-        loginResponse.data?.subscription[0].subscriptionPlan ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginFirstName, loginResponse.data?.user?.firstName ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginLastName, loginResponse.data?.user?.lastName ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginEmail, loginResponse.data?.user?.email ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginPassword, loginResponse.data?.user?.password ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginPhoneNo, loginResponse.data?.user?.phoneNumber ?? "");
   }
+
+
+
+
+
+  // static Future setLoginResponse(loginResponse) async {
+  //   if (loginResponse.data.subscription.isEmpty) {
+  //     await PreferenceUtils.setBool(Strings.isSubscription, false);
+  //   } else {
+  //     await PreferenceUtils.setBool(Strings.isSubscription, true);
+  //   }
+  //   await PreferenceUtils.setInt(
+  //       Strings.loginUserId, loginResponse.data?.userId ?? 0);
+  //   await PreferenceUtils.setString(
+  //       Strings.loginName, loginResponse.data?.name ?? "");
+  //
+  //   PreferenceUtils.setString(
+  //       Strings.loginEmail, loginResponse.data?.email ?? "");
+  //
+  //   PreferenceUtils.setString(
+  //       Strings.loginPhoneNo, loginResponse.data?.phone ?? "");
+  //   PreferenceUtils.setString(
+  //       Strings.loginPassword, loginResponse.data?.password ?? "");
+  //   PreferenceUtils.setString(
+  //       Strings.loginProfilePicture, loginResponse.data?.profilePicture ?? "");
+  //   PreferenceUtils.setInt(
+  //       Strings.loginUserTypeId, loginResponse.data?.userTypeId ?? 0);
+  //   PreferenceUtils.setString(
+  //       Strings.loginUserType, loginResponse.data?.userType ?? "");
+  //   PreferenceUtils.setString(
+  //       Strings.loginDeviceId, loginResponse.data?.deviceId ?? "");
+  //
+  //   PreferenceUtils.setString(Strings.userSubscriptionPlanKey,
+  //       loginResponse.data?.subscription[0].subscriptionPlan ?? "");
+  // }
 
   // --- Google and Facebook Login --- //
   // static Future setSocialLoginResponse(socialLoginResponse) async {

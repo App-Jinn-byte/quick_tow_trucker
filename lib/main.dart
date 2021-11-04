@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/providers/multi_provider.dart';
 import 'package:quick_tow_trucker/routes/routes.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();

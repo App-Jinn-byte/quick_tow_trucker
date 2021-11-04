@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
+import 'package:quick_tow_trucker/screens/splash_screens/splash_provider.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -15,15 +17,21 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late SplashProvider splashProvider;
+
   @override
   void initState() {
-    // TODO: implement initState
+    splashProvider = SplashProvider();
+    splashProvider = Provider.of<SplashProvider>(context, listen: false);
+    splashProvider.init(context: context);
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     initializeResources(context: context);
+    splashProvider = Provider.of<SplashProvider>(context, listen: true);
 
     return Scaffold(
       body: Container(

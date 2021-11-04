@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:date_time_format/date_time_format.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
+import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
@@ -807,6 +808,12 @@ class CommonWidgets {
 
   static Widget getDrawerBar(
       {required BuildContext context, @required int? isCurrentScreen}) {
+    String firstName =
+        PreferenceUtils.getString(Strings.loginFirstName) ?? "Loading...";
+    String lastName = PreferenceUtils.getString(Strings.loginLastName) ?? "";
+    String email =
+        PreferenceUtils.getString(Strings.loginEmail) ?? "Loading...";
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -816,11 +823,11 @@ class CommonWidgets {
                 color: Colors.white,
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    height: sizes!.heightRatio * 44,
-                    width: sizes!.widthRatio * 44,
+                  SizedBox(
+                    height: sizes!.heightRatio * 45,
+                    width: sizes!.widthRatio * 45,
                     child: const CircleAvatar(
                       backgroundImage: AssetImage(
                         "assets/png/image_profile_placeholder.png",
@@ -833,14 +840,14 @@ class CommonWidgets {
                     padding: EdgeInsets.only(top: sizes!.heightRatio * 40),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextView.getSubHeadingTextWith15(
-                            "Alan Thor", Assets.poppinsMedium,
+                            firstName + " " + lastName, Assets.poppinsMedium,
                             color: AppColors.blackTextColor,
                             lines: 1,
                             fontWeight: FontWeight.bold),
-                        TextView.getRegular13Text(
-                            "John Doe.ellis@gmail.com", Assets.poppinsRegular,
+                        TextView.getRegular13Text(email, Assets.poppinsRegular,
                             color: AppColors.blackTextColor, lines: 1)
                       ],
                     ),

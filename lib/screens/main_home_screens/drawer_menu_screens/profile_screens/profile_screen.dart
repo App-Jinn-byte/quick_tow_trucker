@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
+import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
+import '../../../../main.dart';
 import 'company_support_screens/message_screen.dart';
 import 'driver_license_screens/driver_license_screen.dart';
 import 'edit_profile_screens/edit_profile_screen.dart';
@@ -23,6 +26,13 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
+
+  String firstName =
+      PreferenceUtils.getString(Strings.loginFirstName) ?? "Loading...";
+  String lastName = PreferenceUtils.getString(Strings.loginLastName) ?? "";
+  String email = PreferenceUtils.getString(Strings.loginEmail) ?? "Loading...";
+  String phone =
+      PreferenceUtils.getString(Strings.loginPhoneNo) ?? "Loading...";
 
   @override
   Widget build(BuildContext context) {
@@ -80,16 +90,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextView.getMediumText18(
-                            "Alan Thor",
+                            firstName + " " + lastName,
                             Assets.poppinsMedium,
                             color: AppColors.blackTextColor,
                             lines: 1,
                           ),
                           TextView.getRegular13Text(
-                              "AlanThor@Asgard.com", Assets.poppinsRegular,
+                              email, Assets.poppinsRegular,
                               color: AppColors.blackTextColor, lines: 1),
                           TextView.getRegular13Text(
-                              "(900)-1234567", Assets.poppinsRegular,
+                              phone, Assets.poppinsRegular,
                               color: AppColors.blackTextColor, lines: 1)
                         ],
                       ),
@@ -362,7 +372,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> logout() async {
-    Navigator.pushReplacement(
-        context, SlideRightRoute(page: const LoginScreen()));
+    PreferenceUtils.clearPreferences();
+    const MyApp().restartApp(context: context);
   }
 }

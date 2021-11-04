@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/models/auth/login_response.dart';
-import 'package:quick_tow_trucker/models/auth/login_response_demo.dart';
 import 'package:quick_tow_trucker/models/error_model/error_model.dart';
 
 class Models {

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
@@ -23,11 +25,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   late TextEditingController _phoneNumberController;
   late TextEditingController _passwordController;
 
-  late TextEditingController _vehicleMakeController;
-  late TextEditingController _vehicleModelController;
-  late TextEditingController _licensePhoneNumberModelController;
-  late TextEditingController _transmissionTypeController;
-
   late EditProfileProvider editProfileProvider;
 
   late bool _isFirstNameValid;
@@ -37,10 +34,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   late bool _isValidPassword;
   late bool _hiddenPassword;
 
-  late bool _isValidVehicleMake;
-  late bool _isValidVehicleModel;
-  late bool _isValidLicensePlateNumber;
-  late bool _isValidTransmissionType;
+  String firstName =
+      PreferenceUtils.getString(Strings.loginFirstName) ?? "Randy Joe";
+  String lastName =
+      PreferenceUtils.getString(Strings.loginLastName) ?? "Hudson William";
+  String email =
+      PreferenceUtils.getString(Strings.loginEmail) ?? "RandyJoe@gmail.com";
+  String phoneNumber =
+      PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(303) 148-6555";
+  String password =
+      PreferenceUtils.getString(Strings.loginPassword) ?? "******";
 
   @override
   void initState() {
@@ -49,11 +52,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _emailController = TextEditingController();
     _phoneNumberController = TextEditingController();
     _passwordController = TextEditingController();
-
-    _vehicleMakeController = TextEditingController();
-    _vehicleModelController = TextEditingController();
-    _licensePhoneNumberModelController = TextEditingController();
-    _transmissionTypeController = TextEditingController();
 
     editProfileProvider = EditProfileProvider();
     editProfileProvider =
@@ -66,11 +64,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _isPhoneNumberValid = true;
     _isValidPassword = true;
     _hiddenPassword = true;
-
-    _isValidVehicleMake = true;
-    _isValidVehicleModel = true;
-    _isValidLicensePlateNumber = true;
-    _isValidTransmissionType = true;
 
     _firstNameController.addListener(() {
       _isFirstNameValid = _firstNameController.text.length >= 4;
@@ -139,59 +132,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       });
     });
 
-    _vehicleMakeController.addListener(() {
-      _isValidVehicleMake = _vehicleMakeController.text.length >= 4;
-      setState(() {
-        if (_vehicleMakeController.text.length >= 4) {
-          // userNameIcon = Icons.check;
-          // userNameIconColor = AppColors.appTheme;
-        } else {
-          // userNameIcon = Icons.clear;
-          // userNameIconColor = AppColors.redColor;
-        }
-      });
-    });
-
-    _vehicleModelController.addListener(() {
-      _isValidVehicleModel = _vehicleModelController.text.length >= 4;
-      setState(() {
-        if (_vehicleModelController.text.length >= 4) {
-          // userNameIcon = Icons.check;
-          // userNameIconColor = AppColors.appTheme;
-        } else {
-          // userNameIcon = Icons.clear;
-          // userNameIconColor = AppColors.redColor;
-        }
-      });
-    });
-
-    _licensePhoneNumberModelController.addListener(() {
-      _isValidLicensePlateNumber =
-          _licensePhoneNumberModelController.text.length >= 4;
-      setState(() {
-        if (_licensePhoneNumberModelController.text.length >= 4) {
-          // userNameIcon = Icons.check;
-          // userNameIconColor = AppColors.appTheme;
-        } else {
-          // userNameIcon = Icons.clear;
-          // userNameIconColor = AppColors.redColor;
-        }
-      });
-    });
-
-    _transmissionTypeController.addListener(() {
-      _isValidTransmissionType = _transmissionTypeController.text.length >= 4;
-      setState(() {
-        if (_transmissionTypeController.text.length >= 4) {
-          // userNameIcon = Icons.check;
-          // userNameIconColor = AppColors.appTheme;
-        } else {
-          // userNameIcon = Icons.clear;
-          // userNameIconColor = AppColors.redColor;
-        }
-      });
-    });
-
     super.initState();
   }
 
@@ -207,21 +147,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         width: sizes!.width,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(Assets.mainBgImageWithLogoOnTop), fit: BoxFit.fill)),
+                image: AssetImage(Assets.mainBgImageWithLogoOnTop),
+                fit: BoxFit.fill)),
         child: SingleChildScrollView(
-
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
-
               Padding(
                 padding: EdgeInsets.only(
                     left: sizes!.widthRatio * 30.0,
                     top: sizes!.heightRatio * 30.0),
                 child: CommonWidgets.getAppBarCustomBackButton(context),
               ),
-
 
               // CommonWidgets.getAppBarWithTitleAndBackButton(
               //     context: context,
@@ -265,7 +202,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "Randy Joe",
+                  placeHolder: firstName,
                   icon: "assets/png/profile_icon@2x.png",
                   controller: _firstNameController,
                   keyboardType: TextInputType.text,
@@ -292,7 +229,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "Hudson William",
+                  placeHolder: lastName,
                   icon: "assets/png/profile_icon@2x.png",
                   controller: _lastNameController,
                   keyboardType: TextInputType.text,
@@ -319,7 +256,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "HudsonWilliam@Gmail.Com",
+                  placeHolder: email,
                   icon: "assets/png/email_icon@2x.png",
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -346,7 +283,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "(303)148-6555",
+                  placeHolder: phoneNumber,
                   icon: "assets/png/phone_number_icon@2x.png",
                   controller: _phoneNumberController,
                   keyboardType: TextInputType.phone,
@@ -374,7 +311,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets
                     .customTextFieldWithPasswordCustomContainerIcon(
-                  placeHolder: "*******",
+                  placeHolder: password,
                   icon: "assets/png/password_icon@2x.png",
                   keyboardType: TextInputType.text,
                   hidePassword: _hiddenPassword,
