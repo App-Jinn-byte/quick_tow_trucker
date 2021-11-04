@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/models/auth/login_response.dart';
 import 'package:quick_tow_trucker/network_manager/api_url.dart';
@@ -6,6 +7,7 @@ import 'package:quick_tow_trucker/network_manager/models.dart';
 import 'package:quick_tow_trucker/network_manager/my_api.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 import 'package:quick_tow_trucker/widgets/loader.dart';
 
 class LoginProvider extends ChangeNotifier {
@@ -54,6 +56,10 @@ class LoginProvider extends ChangeNotifier {
           print("loginResponse: ${loginResponse.data!.toJson()}");
           isLoginSuccessful = true;
           _loader.hideLoader(context!);
+
+          Navigator.pushReplacement(
+              context!, SlideRightRoute(page: const FindBookingScreen()));
+
           notifyListeners();
         }).onError((error, stackTrace) {
           print("Save Error: ${error.toString()}");

@@ -8,13 +8,13 @@ import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens
 class SplashProvider extends ChangeNotifier {
   BuildContext? context;
 
-  init({@required BuildContext? context}) {
+  Future<void> init({@required BuildContext? context}) async {
     PreferenceUtils.init();
     this.context = context;
-    navigateToNextScreen();
+    await navigateToNextScreen();
   }
 
-  void navigateToNextScreen() async {
+  Future<void> navigateToNextScreen() async {
     await Future.delayed(const Duration(
       seconds: 3,
     ));
