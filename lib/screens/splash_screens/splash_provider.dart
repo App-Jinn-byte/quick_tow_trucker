@@ -16,9 +16,9 @@ class SplashProvider extends ChangeNotifier {
 
   void navigateToNextScreen() async {
     await Future.delayed(const Duration(
-      seconds: 1,
+      seconds: 3,
     ));
-    if (PreferenceUtils.getString(Strings.loginEmail)!.isNotEmpty &&
+    if (PreferenceUtils.getString(Strings.loginFirstName)!.isNotEmpty &&
         PreferenceUtils.getString(Strings.loginPassword)!.isNotEmpty) {
       Navigator.pushReplacement(
           context!, SlideRightRoute(page: const FindBookingScreen()));

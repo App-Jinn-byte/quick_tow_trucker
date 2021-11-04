@@ -225,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
     await loginProvider.callLoginApi(email: email, password: password);
 
     if (loginProvider.isLoginSuccessful == true) {
-      Toasts.getSuccessToast(text: "Login Response Successfully");
+      // Toasts.getSuccessToast(text: "Login Response Successfully");
       Navigator.pushReplacement(
           context, SlideRightRoute(page: const FindBookingScreen()));
     }
