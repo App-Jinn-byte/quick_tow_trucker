@@ -373,6 +373,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> logout() async {
     PreferenceUtils.clearPreferences();
-    const MyApp().restartApp(context: context);
+    Navigator.pushReplacement(
+        context, SlideRightRoute(page: const LoginScreen()));
+    // const MyApp().restartApp(context: context);
   }
 }
