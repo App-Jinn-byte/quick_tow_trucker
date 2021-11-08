@@ -1,6 +1,6 @@
 /// message : "Operation performed successfully"
 /// code : 1
-/// data : {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSWtyaXMzQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE2MzYwMTc2ODcsImlzcyI6IlF1aWNrVG93QVBJIn0.TwbRtrjjp0IWb7QwpvNWENvajAKJpVBFqZzHG_fNx3A","user":{"id":"cf6a7798-8908-4cb0-80b3-0c3df9d932ff","createdOn":"2021-11-04T04:06:27.7952828-05:00","firstName":"Ikris","lastName":"Power","phoneNumber":"012-29490239","vehicles":[{"make":"Honda","model":"Civic-x","licensePlateNumber":"LEU-2990","picture":"","transmissionTypeId":1}],"email":"Ikris3@gmail.com","password":"Password@1!"}}
+/// data : {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZHJpdmVyQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkRyaXZlciIsImV4cCI6MTYzNjM4MjQ4MywiaXNzIjoiUXVpY2tUb3dBUEkifQ.0MZdMhTcjFSSRhfME2wS_-e64DR1dtTsYh1CXEp9hkg","user":{"id":"b03de875-0643-48da-b26c-ec7fcbf1f1ea","createdOn":"2021-11-08T16:37:09.2402032","firstName":"Driver","lastName":"Test","phoneNumber":"90233023021090","profilePhoto":"https://i.ibb.co/LzYRN2w/User1.jpg","email":"driver@gmail.com","password":"123Qw#"}}
 
 class LoginResponse {
   LoginResponse({
@@ -40,8 +40,8 @@ class LoginResponse {
   }
 }
 
-/// token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSWtyaXMzQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE2MzYwMTc2ODcsImlzcyI6IlF1aWNrVG93QVBJIn0.TwbRtrjjp0IWb7QwpvNWENvajAKJpVBFqZzHG_fNx3A"
-/// user : {"id":"cf6a7798-8908-4cb0-80b3-0c3df9d932ff","createdOn":"2021-11-04T04:06:27.7952828-05:00","firstName":"Ikris","lastName":"Power","phoneNumber":"012-29490239","vehicles":[{"make":"Honda","model":"Civic-x","licensePlateNumber":"LEU-2990","picture":"","transmissionTypeId":1}],"email":"Ikris3@gmail.com","password":"Password@1!"}
+/// token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZHJpdmVyQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkRyaXZlciIsImV4cCI6MTYzNjM4MjQ4MywiaXNzIjoiUXVpY2tUb3dBUEkifQ.0MZdMhTcjFSSRhfME2wS_-e64DR1dtTsYh1CXEp9hkg"
+/// user : {"id":"b03de875-0643-48da-b26c-ec7fcbf1f1ea","createdOn":"2021-11-08T16:37:09.2402032","firstName":"Driver","lastName":"Test","phoneNumber":"90233023021090","profilePhoto":"https://i.ibb.co/LzYRN2w/User1.jpg","email":"driver@gmail.com","password":"123Qw#"}
 
 class Data {
   Data({
@@ -74,14 +74,14 @@ class Data {
   }
 }
 
-/// id : "cf6a7798-8908-4cb0-80b3-0c3df9d932ff"
-/// createdOn : "2021-11-04T04:06:27.7952828-05:00"
-/// firstName : "Ikris"
-/// lastName : "Power"
-/// phoneNumber : "012-29490239"
-/// vehicles : [{"make":"Honda","model":"Civic-x","licensePlateNumber":"LEU-2990","picture":"","transmissionTypeId":1}]
-/// email : "Ikris3@gmail.com"
-/// password : "Password@1!"
+/// id : "b03de875-0643-48da-b26c-ec7fcbf1f1ea"
+/// createdOn : "2021-11-08T16:37:09.2402032"
+/// firstName : "Driver"
+/// lastName : "Test"
+/// phoneNumber : "90233023021090"
+/// profilePhoto : "https://i.ibb.co/LzYRN2w/User1.jpg"
+/// email : "driver@gmail.com"
+/// password : "123Qw#"
 
 class User {
   User({
@@ -90,7 +90,7 @@ class User {
     String? firstName,
     String? lastName,
     String? phoneNumber,
-    List<Vehicles>? vehicles,
+    String? profilePhoto,
     String? email,
     String? password,
   }) {
@@ -99,7 +99,7 @@ class User {
     _firstName = firstName;
     _lastName = lastName;
     _phoneNumber = phoneNumber;
-    _vehicles = vehicles;
+    _profilePhoto = profilePhoto;
     _email = email;
     _password = password;
   }
@@ -110,12 +110,7 @@ class User {
     _firstName = json['firstName'];
     _lastName = json['lastName'];
     _phoneNumber = json['phoneNumber'];
-    if (json['vehicles'] != null) {
-      _vehicles = [];
-      json['vehicles'].forEach((v) {
-        _vehicles?.add(Vehicles.fromJson(v));
-      });
-    }
+    _profilePhoto = json['profilePhoto'];
     _email = json['email'];
     _password = json['password'];
   }
@@ -125,7 +120,7 @@ class User {
   String? _firstName;
   String? _lastName;
   String? _phoneNumber;
-  List<Vehicles>? _vehicles;
+  String? _profilePhoto;
   String? _email;
   String? _password;
 
@@ -139,7 +134,7 @@ class User {
 
   String? get phoneNumber => _phoneNumber;
 
-  List<Vehicles>? get vehicles => _vehicles;
+  String? get profilePhoto => _profilePhoto;
 
   String? get email => _email;
 
@@ -152,67 +147,9 @@ class User {
     map['firstName'] = _firstName;
     map['lastName'] = _lastName;
     map['phoneNumber'] = _phoneNumber;
-    if (_vehicles != null) {
-      map['vehicles'] = _vehicles?.map((v) => v.toJson()).toList();
-    }
+    map['profilePhoto'] = _profilePhoto;
     map['email'] = _email;
     map['password'] = _password;
-    return map;
-  }
-}
-
-/// make : "Honda"
-/// model : "Civic-x"
-/// licensePlateNumber : "LEU-2990"
-/// picture : ""
-/// transmissionTypeId : 1
-
-class Vehicles {
-  Vehicles({
-    String? make,
-    String? model,
-    String? licensePlateNumber,
-    String? picture,
-    int? transmissionTypeId,
-  }) {
-    _make = make;
-    _model = model;
-    _licensePlateNumber = licensePlateNumber;
-    _picture = picture;
-    _transmissionTypeId = transmissionTypeId;
-  }
-
-  Vehicles.fromJson(dynamic json) {
-    _make = json['make'];
-    _model = json['model'];
-    _licensePlateNumber = json['licensePlateNumber'];
-    _picture = json['picture'];
-    _transmissionTypeId = json['transmissionTypeId'];
-  }
-
-  String? _make;
-  String? _model;
-  String? _licensePlateNumber;
-  String? _picture;
-  int? _transmissionTypeId;
-
-  String? get make => _make;
-
-  String? get model => _model;
-
-  String? get licensePlateNumber => _licensePlateNumber;
-
-  String? get picture => _picture;
-
-  int? get transmissionTypeId => _transmissionTypeId;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['make'] = _make;
-    map['model'] = _model;
-    map['licensePlateNumber'] = _licensePlateNumber;
-    map['picture'] = _picture;
-    map['transmissionTypeId'] = _transmissionTypeId;
     return map;
   }
 }

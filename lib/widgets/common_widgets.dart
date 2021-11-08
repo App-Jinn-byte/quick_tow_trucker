@@ -2038,8 +2038,8 @@ class CommonWidgets {
                       fontFamily: Assets.poppinsLight,
                       fontSize: 14),
                   contentPadding: EdgeInsets.only(
-                      bottom: sizes!.heightRatio * 10,
-                      top: sizes!.heightRatio * 10),
+                      bottom: sizes!.heightRatio * 15,
+                      top: sizes!.heightRatio * 15),
                   border: InputBorder.none,
                 ),
               ),
@@ -2107,8 +2107,8 @@ class CommonWidgets {
                       fontFamily: Assets.poppinsLight,
                       fontSize: 14),
                   contentPadding: EdgeInsets.only(
-                      bottom: sizes!.heightRatio * 10,
-                      top: sizes!.heightRatio * 10),
+                      bottom: sizes!.heightRatio * 15,
+                      top: sizes!.heightRatio * 15),
                   border: InputBorder.none,
                   suffixIcon: IconButton(
                     icon: Icon(
