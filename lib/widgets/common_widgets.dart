@@ -835,7 +835,9 @@ class CommonWidgets {
                       backgroundColor: AppColors.transparentColor,
                     ),
                   ),
-                  SizedBox(width: sizes!.widthRatio * 10.0,),
+                  SizedBox(
+                    width: sizes!.widthRatio * 10.0,
+                  ),
                   Padding(
                     padding: EdgeInsets.only(top: sizes!.heightRatio * 50),
                     child: Column(
@@ -847,7 +849,8 @@ class CommonWidgets {
                             color: AppColors.blackTextColor,
                             lines: 1,
                             fontWeight: FontWeight.bold),
-                        TextView.getRegular13Text("Alan@gmail.com", Assets.poppinsRegular,
+                        TextView.getRegular13Text(
+                            "Alan@gmail.com", Assets.poppinsRegular,
                             color: AppColors.blackTextColor, lines: 1)
                       ],
                     ),
@@ -921,6 +924,7 @@ class CommonWidgets {
               }
             },
           ),
+
           const Divider(),
           ListTile(
             title: Align(
@@ -946,6 +950,31 @@ class CommonWidgets {
             },
           ),
           const Divider(),
+          ListTile(
+            title: Align(
+              alignment: Alignment.centerLeft,
+              child: TextView.getDrawerMenuText13(
+                  "Settings", Assets.poppinsMedium,
+                  color: AppColors.blackTextColor, lines: 1),
+            ),
+            leading: Image.asset(
+              "assets/png/setting_icon@2x.png",
+              height: sizes!.heightRatio * 32,
+              width: sizes!.widthRatio * 32,
+            ),
+            onTap: () {
+              if (isCurrentScreen == 4) {
+                Navigator.pop(context);
+              } else {
+                // Navigator.pop(context);
+                Navigator.pushReplacement(
+                    context, SlideRightRoute(page: const HistoryScreen()));
+                //  TODO: Kindly double-check Push Replacement
+              }
+            },
+          ),
+          const Divider(),
+
           // TextView.getDrawerMenuText13("V: 1.0.0", Assets.poppinsMedium,
           //     color: AppColors.getStartedButtonColor, lines: 1)
         ],

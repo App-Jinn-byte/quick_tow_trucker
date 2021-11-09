@@ -21,8 +21,8 @@ class PopUpComponents {
           alignment: Alignment.center,
           overflow: Overflow.visible,
           children: [
-            Container(
-              height: sizes!.heightRatio * 290,
+            SizedBox(
+              height: sizes!.heightRatio * 320,
               width: sizes!.widthRatio * 322,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
