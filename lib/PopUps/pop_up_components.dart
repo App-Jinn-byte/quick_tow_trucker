@@ -588,7 +588,7 @@ class PopUpComponents {
           overflow: Overflow.visible,
           children: [
             Container(
-              height: sizes!.heightRatio * 550,
+              height: sizes!.heightRatio * 600,
               width: sizes!.widthRatio * 326,
               padding: EdgeInsets.only(
                   left: sizes!.pagePadding,
@@ -955,7 +955,7 @@ class PopUpComponents {
           overflow: Overflow.visible,
           children: [
             Container(
-              height: sizes!.heightRatio * 510,
+              height: sizes!.heightRatio * 540,
               width: sizes!.widthRatio * 326,
               padding: EdgeInsets.only(
                   left: sizes!.pagePadding,
