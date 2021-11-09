@@ -222,11 +222,14 @@ class _LoginScreenState extends State<LoginScreen> {
     var password = passwordController.text.toString().trim();
     print("Email: $email, Password: $password");
 
-    await loginProvider.callLoginApi(email: email, password: password);
+    // await loginProvider.callLoginApi(email: email, password: password);
+    //
+    // if (loginProvider.isLoginSuccessful == true) {
+    //   Toasts.getSuccessToast(text: "Login Response Successfully");
+    // }
 
-    if (loginProvider.isLoginSuccessful == true) {
-      Toasts.getSuccessToast(text: "Login Response Successfully");
-    }
+    Navigator.pushReplacement(
+        context, SlideRightRoute(page: const FindBookingScreen()));
   }
 }
 

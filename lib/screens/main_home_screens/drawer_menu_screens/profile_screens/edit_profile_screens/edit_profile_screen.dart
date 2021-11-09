@@ -202,7 +202,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: firstName,
+                  placeHolder: "Alan",
                   icon: "assets/png/profile_icon@2x.png",
                   controller: _firstNameController,
                   keyboardType: TextInputType.text,
@@ -229,7 +229,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: lastName,
+                  placeHolder: "Thor",
                   icon: "assets/png/profile_icon@2x.png",
                   controller: _lastNameController,
                   keyboardType: TextInputType.text,
@@ -256,7 +256,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: email,
+                  placeHolder: "alan@gmail.com",
                   icon: "assets/png/email_icon@2x.png",
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -283,7 +283,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: phoneNumber,
+                  placeHolder: "(099) 098765",
                   icon: "assets/png/phone_number_icon@2x.png",
                   controller: _phoneNumberController,
                   keyboardType: TextInputType.phone,
@@ -311,7 +311,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets
                     .customTextFieldWithPasswordCustomContainerIcon(
-                  placeHolder: password,
+                  placeHolder: "******",
                   icon: "assets/png/password_icon@2x.png",
                   keyboardType: TextInputType.text,
                   hidePassword: _hiddenPassword,

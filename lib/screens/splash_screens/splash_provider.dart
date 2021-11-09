@@ -11,7 +11,7 @@ class SplashProvider extends ChangeNotifier {
   Future<void> init({@required BuildContext? context}) async {
     PreferenceUtils.init();
     this.context = context;
-    await navigateToNextScreen();
+    // await navigateToNextScreen();
   }
 
   Future<void> navigateToNextScreen() async {

@@ -73,7 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
+                    SizedBox(
                       height: sizes!.heightRatio * 88,
                       width: sizes!.widthRatio * 88,
                       child: const CircleAvatar(
@@ -90,16 +90,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextView.getMediumText18(
-                            firstName + " " + lastName,
+                            "Alan Driver",
                             Assets.poppinsMedium,
                             color: AppColors.blackTextColor,
                             lines: 1,
                           ),
                           TextView.getRegular13Text(
-                              email, Assets.poppinsRegular,
+                              "Alan@gmail.com", Assets.poppinsRegular,
                               color: AppColors.blackTextColor, lines: 1),
                           TextView.getRegular13Text(
-                              phone, Assets.poppinsRegular,
+                              "(900) 900987", Assets.poppinsRegular,
                               color: AppColors.blackTextColor, lines: 1)
                         ],
                       ),

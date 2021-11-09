@@ -823,7 +823,6 @@ class CommonWidgets {
                 color: Colors.white,
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SizedBox(
                     height: sizes!.heightRatio * 45,
@@ -836,18 +835,19 @@ class CommonWidgets {
                       backgroundColor: AppColors.transparentColor,
                     ),
                   ),
+                  SizedBox(width: sizes!.widthRatio * 10.0,),
                   Padding(
-                    padding: EdgeInsets.only(top: sizes!.heightRatio * 40),
+                    padding: EdgeInsets.only(top: sizes!.heightRatio * 50),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextView.getSubHeadingTextWith15(
-                            firstName + " " + lastName, Assets.poppinsMedium,
+                            "Alan", Assets.poppinsMedium,
                             color: AppColors.blackTextColor,
                             lines: 1,
                             fontWeight: FontWeight.bold),
-                        TextView.getRegular13Text(email, Assets.poppinsRegular,
+                        TextView.getRegular13Text("Alan@gmail.com", Assets.poppinsRegular,
                             color: AppColors.blackTextColor, lines: 1)
                       ],
                     ),
