@@ -347,8 +347,25 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   Future<void> updateProfile() async {
-    Toasts.getSuccessToast(text: "Try it Later");
-    Navigator.pop(context);
+    var firstName = _firstNameController.text.toString().trim();
+    var lastName = _lastNameController.text.toString().trim();
+    var email = _emailController.text.toString().trim();
+    var phoneNumber = _phoneNumberController.text.toString().trim();
+    var password = _passwordController.text.toString().trim();
+
+    await editProfileProvider.callEditProfileApi(
+        id: "id",
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        email: email,
+        password: password,
+        profilePhoto: "profilePhoto");
+
+    if (editProfileProvider.isEditProfileSuccessful == true) {
+      Toasts.getSuccessToast(text: "Profile Updated");
+      Navigator.pop(context);
+    }
   }
 }
 

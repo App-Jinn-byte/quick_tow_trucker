@@ -449,8 +449,7 @@ class PopUpComponents {
               padding: EdgeInsets.only(
                   left: sizes!.pagePadding,
                   right: sizes!.pagePadding,
-                  top: sizes!.pagePadding * 2.0
-              ),
+                  top: sizes!.pagePadding * 2.0),
               child: Column(
                 //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -478,7 +477,8 @@ class PopUpComponents {
                       child: TextView.getMediumText16(
                           "Select Your Truck", Assets.poppinsMedium,
                           color: AppColors.openTheTruckerAppTextColor,
-                          lines: 1, fontWeight: FontWeight.normal),
+                          lines: 1,
+                          fontWeight: FontWeight.normal),
                     ),
                   ),
                   SizedBox(
@@ -656,9 +656,6 @@ class PopUpComponents {
                       ],
                     ),
                   ),
-
-
-
                   SizedBox(
                     height: sizes!.heightRatio * 10.0,
                   ),
