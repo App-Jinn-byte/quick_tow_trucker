@@ -444,12 +444,13 @@ class PopUpComponents {
           overflow: Overflow.visible,
           children: [
             Container(
-              height: sizes!.heightRatio * 475,
+              height: sizes!.heightRatio * 488,
               width: sizes!.widthRatio * 326,
               padding: EdgeInsets.only(
                   left: sizes!.pagePadding,
                   right: sizes!.pagePadding,
-                  top: sizes!.pagePadding * 3),
+                  top: sizes!.pagePadding * 2.0
+              ),
               child: Column(
                 //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -477,14 +478,14 @@ class PopUpComponents {
                       child: TextView.getMediumText16(
                           "Select Your Truck", Assets.poppinsMedium,
                           color: AppColors.openTheTruckerAppTextColor,
-                          lines: 1),
+                          lines: 1, fontWeight: FontWeight.normal),
                     ),
                   ),
                   SizedBox(
                     height: sizes!.heightRatio * 15,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       CommonWidgets.getPopUpButton("FWD Only", onPress: () {}),
                       CommonWidgets.getPopUpButtonWithBlackTextColor(

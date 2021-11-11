@@ -11,14 +11,185 @@ import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/common_padding.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
+import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/history_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/notification_screens/notification_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/profile_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/setting_screens/setting_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
 class CommonWidgets {
   //Project Widgets
+
+  static Widget getVehicleDetailContainer({@required Function? onEditPress}) {
+    return Container(
+      height: sizes!.heightRatio * 253.0,
+      width: sizes!.widthRatio * 315.0,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.homeScreenContainerColorShadow,
+            blurRadius: 3,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: sizes!.heightRatio * 27.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 22.0,
+                right: sizes!.heightRatio * 22.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getSubHeadingTextWith15(
+                    "Vehicle Information", Assets.poppinsMedium,
+                    color: AppColors.openTheTruckerAppTextColor,
+                    lines: 1,
+                    fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        if (onEditPress != null) {
+                          onEditPress.call();
+                        }
+                      },
+                      child: Image.asset(
+                        "assets/png/edit_icon@2x.png",
+                        height: sizes!.heightRatio * 25.0,
+                        width: sizes!.widthRatio * 25.0,
+                      ),
+                    ),
+                    SizedBox(
+                      width: sizes!.widthRatio * 8.0,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Toasts.getErrorToast(text: "Try it Later");
+                      },
+                      child: Image.asset(
+                        "assets/png/delete_icon@2x.png",
+                        height: sizes!.heightRatio * 25.0,
+                        width: sizes!.widthRatio * 25.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 23.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 22.0,
+                right: sizes!.heightRatio * 22.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextView.getSmallBoldText12(
+                        "Vehicle Make", Assets.poppinsMedium,
+                        color: AppColors.pass, lines: 1),
+                    TextView.getSmallBoldText12(
+                        "Vehicle Model", Assets.poppinsMedium,
+                        color: AppColors.pass, lines: 1)
+                  ],
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 2.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextView.getSmallText12("Honda", Assets.poppinsLight,
+                        color: AppColors.pass, lines: 1),
+                    TextView.getSmallText12("Civic-X", Assets.poppinsLight,
+                        color: AppColors.pass, lines: 1)
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 12.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 22.0,
+                right: sizes!.widthRatio * 22.0),
+            child: const Divider(),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 15.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 22.0,
+                right: sizes!.heightRatio * 22.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextView.getSmallBoldText12(
+                        "Vehicle Number", Assets.poppinsMedium,
+                        color: AppColors.pass, lines: 1),
+                    TextView.getSmallBoldText12(
+                        "Vehicle Category", Assets.poppinsMedium,
+                        color: AppColors.pass, lines: 1)
+                  ],
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 2.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextView.getSmallText12("LEU-7652", Assets.poppinsLight,
+                        color: AppColors.pass, lines: 1),
+                    TextView.getSmallText12("FWD Only", Assets.poppinsLight,
+                        color: AppColors.pass, lines: 1)
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 32.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 22.0,
+                right: sizes!.heightRatio * 22.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getMediumText14("Vehicle Status", Assets.poppinsMedium,
+                    color: AppColors.activeVehicleStatusColor,
+                    lines: 1,
+                    fontWeight: FontWeight.bold),
+                TextView.getMediumText14("Active", Assets.poppinsMedium,
+                    color: AppColors.activeVehicleColor,
+                    lines: 1,
+                    fontWeight: FontWeight.bold)
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   static Widget customTextFieldWithMultipleLinesCustomContainerIcon(
       {@required String? placeHolder,
@@ -823,6 +994,8 @@ class CommonWidgets {
                 color: Colors.white,
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
                     height: sizes!.heightRatio * 45,
@@ -839,10 +1012,10 @@ class CommonWidgets {
                     width: sizes!.widthRatio * 10.0,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: sizes!.heightRatio * 50),
+                    padding: EdgeInsets.only(top: sizes!.heightRatio * 10.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextView.getSubHeadingTextWith15(
                             "Alan", Assets.poppinsMedium,
@@ -963,12 +1136,13 @@ class CommonWidgets {
               width: sizes!.widthRatio * 32,
             ),
             onTap: () {
-              if (isCurrentScreen == 4) {
+              if (isCurrentScreen == 5) {
                 Navigator.pop(context);
               } else {
-                // Navigator.pop(context);
+                Navigator.pop(context);
                 Navigator.pushReplacement(
-                    context, SlideRightRoute(page: const HistoryScreen()));
+                    context, SlideRightRoute(page: const SettingScreen()));
+
                 //  TODO: Kindly double-check Push Replacement
               }
             },
@@ -1545,7 +1719,7 @@ class CommonWidgets {
     Color? buttonColor,
   }) {
     return Container(
-      width: sizes!.widthRatio * 127,
+      width: sizes!.widthRatio * 117,
       height: sizes!.heightRatio * 35,
       decoration: BoxDecoration(
         border: Border.all(
@@ -1586,7 +1760,7 @@ class CommonWidgets {
     Color? buttonColor,
   }) {
     return Container(
-      width: sizes!.widthRatio * 127,
+      width: sizes!.widthRatio * 117,
       height: sizes!.heightRatio * 35,
       decoration: BoxDecoration(
         border: Border.all(

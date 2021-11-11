@@ -7,6 +7,7 @@ import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/account_details_screens/account_detail_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -306,7 +307,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppColors.blackTextColor, lines: 1),
                     GestureDetector(
                       onTap: () {
-                        Toasts.getSuccessToast(text: "Try it Later :)");
+                        Navigator.push(context,
+                            SlideRightRoute(page: const AccountDetailScreen()));
                       },
                       child: Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",

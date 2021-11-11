@@ -27,15 +27,18 @@ class AppColors {
 
   static const checkBoxBorderColor = Color.fromRGBO(16, 85, 16, 1);
 
+  static const homeScreenContainerColor = Color.fromRGBO(248, 251, 248, 1);
+  static const homeScreenContainerColorShadow = Color.fromRGBO(0, 0, 0, 0.16);
+
+  static const activeVehicleColor = Color.fromRGBO(47, 92, 181, 1);
+  static const activeVehicleStatusColor = Color.fromRGBO(18, 99, 18, 1);
+
 
   static const routeTextColor = Color.fromRGBO(119, 118, 118, 1);
   static const popUpTextColor = Color.fromRGBO(19, 72, 19, 1);
   static const chatBorderColor = Color.fromRGBO(225, 225, 225, 1);
   static const addServiceBtnColor = Color.fromRGBO(13, 78, 63, 1);
   static const pass = Color.fromRGBO(75, 75, 75, 1);
-
-
-
 
 
   static const appTheme = Color.fromRGBO(117, 176, 46, 1);

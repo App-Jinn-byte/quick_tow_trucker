@@ -3,11 +3,14 @@ import 'package:quick_tow_trucker/screens/main_home_screens/add_service_screens/
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/booking_history_screens/booking_history_detail_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/history_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/notification_screens/notification_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/account_details_screens/account_detail_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/message_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/edit_profile_screens/edit_profile_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/insurance_info_screens/insurance_info_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/profile_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/update_vehicle_detail_screens/update_vehicle_detail_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/vehicle_detail_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/setting_screens/setting_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/en_route_screens/en_route_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/end_ride_screens/end_ride_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
@@ -36,6 +39,9 @@ class Routes {
   static const String paymentTotalScreen = '/paymentTotalScreen';
   static const String addServiceScreen = '/addServiceScreen';
   static const String ratingReviewScreen = '/ratingReviewScreen';
+  static const String settingScreen = '/settingScreen';
+  static const String updateVehicleDetailScreen = '/updateVehicleDetailScreen';
+  static const String accountDetailScreen = '/accountDetailScreen';
 
   static final routes = {
     splash: (context) => const SplashScreen(),
@@ -54,5 +60,8 @@ class Routes {
     paymentTotalScreen: (context) => const PaymentTotalScreen(),
     addServiceScreen: (context) => const AddServiceScreen(),
     ratingReviewScreen: (context) => const RatingReviewScreen(),
+    settingScreen: (context) => const SettingScreen(),
+    updateVehicleDetailScreen: (context) => const UpdateVehicleDetailScreen(),
+    accountDetailScreen: (context) => const AccountDetailScreen(),
   };
 }
