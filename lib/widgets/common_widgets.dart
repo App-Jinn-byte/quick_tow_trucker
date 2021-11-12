@@ -994,7 +994,7 @@ class CommonWidgets {
                 color: Colors.white,
               ),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
@@ -1002,7 +1002,7 @@ class CommonWidgets {
                     width: sizes!.widthRatio * 45,
                     child: const CircleAvatar(
                       backgroundImage: AssetImage(
-                        "assets/png/image_profile_placeholder.png",
+                        "assets/png/avatar_user_icon@2x.png",
                       ),
                       radius: 50.0,
                       backgroundColor: AppColors.transparentColor,
@@ -1373,7 +1373,7 @@ class CommonWidgets {
                   },
                 ),
                 SizedBox(
-                  width: sizes!.widthRatio * 120.0,
+                  width: sizes!.widthRatio * 115.0,
                 ),
                 TextView.getSmallText12("12:30 AM", Assets.poppinsRegular,
                     color: AppColors.subHeadingTextColor, lines: 1),

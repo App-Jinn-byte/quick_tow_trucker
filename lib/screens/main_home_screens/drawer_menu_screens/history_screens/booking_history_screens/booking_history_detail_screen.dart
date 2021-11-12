@@ -91,31 +91,29 @@ class _BookingHistoryDetailScreenState
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.only(
-                            left: sizes!.widthRatio * 20.0,
+                            left: sizes!.widthRatio * 16.0,
                             right: sizes!.widthRatio * 20.0,
                             top: sizes!.heightRatio * 10.0),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: TextView.getRegularWith13(
-                                  "227 Sector FF DHA Phase 4 Qatar",
-                                  Assets.poppinsRegular,
-                                  color: AppColors.routeTextColor,
-                                  lines: 3),
-                            ),
                             SizedBox(
-                              height: sizes!.heightRatio * 8.0,
+                              height: sizes!.heightRatio * 10.0,
                             ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: TextView.getRegularWith13(
-                                  "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Qatar",
-                                  Assets.poppinsRegular,
-                                  color: AppColors.routeTextColor,
-                                  lines: 3),
+                            TextView.getRegularWith13(
+                                "227 Sector FF DHA Phase 4 Qatar",
+                                Assets.poppinsRegular,
+                                color: AppColors.routeTextColor,
+                                lines: 3),
+                            SizedBox(
+                              height: sizes!.heightRatio * 16.0,
                             ),
+                            TextView.getRegularWith13(
+                                "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Qatar",
+                                Assets.poppinsRegular,
+                                color: AppColors.routeTextColor,
+                                lines: 3),
                           ],
                         ),
                       ),
@@ -244,9 +242,7 @@ class _BookingHistoryDetailScreenState
               SizedBox(
                 height: sizes!.heightRatio * 10.0,
               ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
+            
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
                 child: Row(
@@ -259,8 +255,9 @@ class _BookingHistoryDetailScreenState
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.only(
-                            left: sizes!.widthRatio * 10.0,
-                            right: sizes!.widthRatio * 10.0),
+                          left: sizes!.widthRatio * 10.0,
+                          right: sizes!.widthRatio * 10.0,
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
