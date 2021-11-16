@@ -34,15 +34,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   late bool _isValidPassword;
   late bool _hiddenPassword;
 
-  String firstName =
+  final String _userId = PreferenceUtils.getString(Strings.loginUserId) ?? "";
+
+  final String _firstName =
       PreferenceUtils.getString(Strings.loginFirstName) ?? "Randy Joe";
-  String lastName =
+  final String _lastName =
       PreferenceUtils.getString(Strings.loginLastName) ?? "Hudson William";
-  String email =
+  final String _email =
       PreferenceUtils.getString(Strings.loginEmail) ?? "RandyJoe@gmail.com";
-  String phoneNumber =
+  final String _phoneNumber =
       PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(303) 148-6555";
-  String password =
+  final String _password =
       PreferenceUtils.getString(Strings.loginPassword) ?? "******";
 
   @override
@@ -57,6 +59,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     editProfileProvider =
         Provider.of<EditProfileProvider>(context, listen: false);
     editProfileProvider.init(context: context);
+
+    print("Current User ID: $_userId");
 
     _isFirstNameValid = true;
     _isLastNameValid = true;
@@ -348,24 +352,23 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   Future<void> updateProfile() async {
-    var firstName = _firstNameController.text.toString().trim();
-    var lastName = _lastNameController.text.toString().trim();
-    var email = _emailController.text.toString().trim();
-    var phoneNumber = _phoneNumberController.text.toString().trim();
-    var password = _passwordController.text.toString().trim();
+    var _firstName = _firstNameController.text.toString().trim();
+    var _lastName = _lastNameController.text.toString().trim();
+    var _email = _emailController.text.toString().trim();
+    var _phoneNumber = _phoneNumberController.text.toString().trim();
+    var _password = _passwordController.text.toString().trim();
 
-    await editProfileProvider.callEditProfileApi(
-        id: "id",
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber,
-        email: email,
-        password: password,
+    await editProfileProvider.callUpdateApi(
+        id: _userId,
+        firstName: _firstName,
+        lastName: _lastName,
+        phoneNumber: _phoneNumber,
+        email: _email,
+        password: _password,
         profilePhoto: "profilePhoto");
 
     if (editProfileProvider.isEditProfileSuccessful == true) {
       Toasts.getSuccessToast(text: "Profile Updated");
-      Navigator.pop(context);
     }
   }
 }

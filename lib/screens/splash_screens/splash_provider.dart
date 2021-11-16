@@ -11,7 +11,7 @@ class SplashProvider extends ChangeNotifier {
   Future<void> init({@required BuildContext? context}) async {
     PreferenceUtils.init();
     this.context = context;
-    // await navigateToNextScreen();
+    await navigateToNextScreen();
   }
 
   Future<void> navigateToNextScreen() async {
@@ -20,10 +20,10 @@ class SplashProvider extends ChangeNotifier {
     ));
     if (PreferenceUtils.getString(Strings.loginFirstName)!.isNotEmpty &&
         PreferenceUtils.getString(Strings.loginPassword)!.isNotEmpty) {
-      Navigator.pushReplacement(
+      await Navigator.pushReplacement(
           context!, SlideRightRoute(page: const FindBookingScreen()));
     } else {
-      Navigator.pushReplacement(
+      await Navigator.pushReplacement(
           context!, SlideRightRoute(page: const LoginScreen()));
     }
   }
