@@ -81,12 +81,10 @@ class _BookingHistoryDetailScreenState
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
                 child: Row(
                   children: [
-                    Container(
-                      child: Image.asset(
-                        "assets/png/map_route_icon@2x.png",
-                        height: sizes!.heightRatio * 50.0,
-                        width: sizes!.widthRatio * 9.0,
-                      ),
+                    Image.asset(
+                      "assets/png/map_route_icon@2x.png",
+                      height: sizes!.heightRatio * 50.0,
+                      width: sizes!.widthRatio * 9.0,
                     ),
                     Expanded(
                       child: Padding(
@@ -122,7 +120,7 @@ class _BookingHistoryDetailScreenState
                 ),
               ),
               SizedBox(
-                height: sizes!.heightRatio * 20.0,
+                height: sizes!.heightRatio * 10.0,
               ),
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,

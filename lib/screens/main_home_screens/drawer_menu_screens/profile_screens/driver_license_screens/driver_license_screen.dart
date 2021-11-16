@@ -48,11 +48,11 @@ class _DriverLicenseScreenState extends State<DriverLicenseScreen> {
               ),
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: CommonWidgets.getStartButton("Update License", onPress: (){
-
-                }),
+                child: CommonWidgets.getStartButton("Update License",
+                    onPress: () {
+                  Navigator.pop(context);
+                    }),
               )
-              
             ],
           ),
         ),

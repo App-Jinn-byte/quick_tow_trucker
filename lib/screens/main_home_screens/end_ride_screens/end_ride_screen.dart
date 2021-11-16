@@ -100,20 +100,26 @@ class _EndRideScreenState extends State<EndRideScreen> {
                         //     SlideRightRoute(page: const PaymentScreen()));
                       },
                       child: Image.asset(
-                          "assets/png/en_route_location_maker@2x.png"))),
+                        "assets/png/en_route_location_maker@2x.png",
+                        height: sizes!.heightRatio * 250.0,
+                        width: sizes!.widthRatio * 250.0,
+                      ))),
+              // Positioned(
+              //   top: sizes!.heightRatio * 230.0,
+              //   left: sizes!.widthRatio * 20.0,
+              //   // right: sizes!.widthRatio * 45,
+              //   child:
+              //       CommonWidgets.getArrivedContainer(arrivingTime: "30 Mins"),
+              // ),
               Positioned(
-                top: sizes!.heightRatio * 120.0,
-                left: sizes!.widthRatio * 45.0,
-                // right: sizes!.widthRatio * 45,
-                child:
-                    CommonWidgets.getArrivedContainer(arrivingTime: "30 Mins"),
-              ),
-              Positioned(
-                  bottom: sizes!.heightRatio * 140.0,
+                  top: sizes!.heightRatio * 340.0,
                   left: sizes!.widthRatio * 45.0,
                   right: sizes!.widthRatio * 45,
                   child: Image.asset(
-                      "assets/png/en_route_location_maker_pin@2x.png")),
+                    "assets/png/en_route_location_maker_pin@2x.png",
+                    height: sizes!.heightRatio * 32.0,
+                    width: sizes!.widthRatio * 32.0,
+                  )),
               Positioned(
                   bottom: sizes!.heightRatio * 0.0,
                   // left: sizes!.widthRatio * 45.0,

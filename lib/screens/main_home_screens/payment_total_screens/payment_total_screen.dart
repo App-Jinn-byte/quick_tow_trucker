@@ -22,6 +22,7 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
@@ -94,9 +95,10 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
                 child: Container(
-                    padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 8,
-                        right: sizes!.widthRatio * 8),
+                    // margin: EdgeInsets.only(top: sizes!.heightRatio * 10.0),
+                    //   padding: EdgeInsets.only(
+                    //       top: sizes!.widthRatio * 8,
+                    //       bottom: sizes!.widthRatio * 8),
                     width: sizes!.widthRatio * 325,
                     height: sizes!.heightRatio * 45,
                     decoration: BoxDecoration(
@@ -115,22 +117,30 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: sizes!.widthRatio * 10.0,
-                          right: sizes!.widthRatio * 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextView.getRegular13TextHeavy(
-                              "Vehicle Tow", Assets.poppinsMedium,
-                              color: AppColors.pass, lines: 1),
-                          TextView.getRegular13TextHeavy(
-                              "\$ 40.0", Assets.poppinsMedium,
-                              color: AppColors.getStartedButtonColor, lines: 1),
-                        ],
+                    child: Stack(children: [
+                      Positioned(
+                        top: sizes!.heightRatio * 15.0,
+                        left: sizes!.widthRatio * 15.0,
+                        right: sizes!.widthRatio * 15.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextView.getRegular13TextHeavy(
+                                "Vehicle Tow", Assets.poppinsMedium,
+                                color: AppColors.pass, lines: 1),
+                            TextView.getRegular13TextHeavy(
+                                "\$ 40.0", Assets.poppinsMedium,
+                                color: AppColors.getStartedButtonColor,
+                                lines: 1),
+                          ],
+                        ),
                       ),
-                    )),
+                      Positioned(
+                          top: sizes!.heightRatio * -0.0,
+                          right: sizes!.widthRatio * -0.0,
+                          child:
+                              Image.asset("assets/png/cancel_new_icon@3x.png")),
+                    ])),
               ),
               SizedBox(
                 height: sizes!.heightRatio * 10.0,
@@ -138,9 +148,6 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
                 child: Container(
-                    padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 8,
-                        right: sizes!.widthRatio * 8),
                     width: sizes!.widthRatio * 325,
                     height: sizes!.heightRatio * 90,
                     decoration: BoxDecoration(
@@ -159,41 +166,53 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: sizes!.widthRatio * 10.0,
-                          right: sizes!.widthRatio * 10.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextView.getRegular13TextHeavy(
-                                  "Flat tire replacement", Assets.poppinsMedium,
-                                  color: AppColors.pass, lines: 1),
-                              TextView.getRegular13TextHeavy(
-                                  "\$ 40.0", Assets.poppinsMedium,
-                                  color: AppColors.getStartedButtonColor,
-                                  lines: 1),
-                            ],
-                          ),
-                          SizedBox(
-                            height: sizes!.heightRatio * 5.0,
-                          ),
-                          TextView.getSmallText12(
-                              "Keys available", Assets.poppinsLight,
-                              color: AppColors.subHeadingTextColor, lines: 1),
-                          SizedBox(
-                            height: sizes!.heightRatio * 5.0,
-                          ),
-                          TextView.getSmallText12(
-                              "Spare Tyre Available", Assets.poppinsLight,
-                              color: AppColors.subHeadingTextColor, lines: 1)
-                        ],
+                    child: Stack(children: [
+                      Positioned(
+                        top: sizes!.heightRatio * 15.0,
+                        left: sizes!.widthRatio * 15.0,
+                        right: sizes!.widthRatio * 15.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextView.getRegular13TextHeavy(
+                                "Tire Change", Assets.poppinsMedium,
+                                color: AppColors.pass, lines: 1),
+                            TextView.getRegular13TextHeavy(
+                                "\$ 40.0", Assets.poppinsMedium,
+                                color: AppColors.getStartedButtonColor,
+                                lines: 1),
+                          ],
+                        ),
                       ),
-                    )),
+                      Positioned(
+                          top: sizes!.heightRatio * -0.0,
+                          right: sizes!.widthRatio * -0.0,
+                          child:
+                              Image.asset("assets/png/cancel_new_icon@3x.png")),
+                      Positioned(
+                        top: sizes!.heightRatio * 30.0,
+                        left: sizes!.widthRatio * 15.0,
+                        right: sizes!.widthRatio * 15.0,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: sizes!.heightRatio * 5.0,
+                            ),
+                            TextView.getSmallText12(
+                                "Spare Tire Available", Assets.poppinsLight,
+                                color: AppColors.subHeadingTextColor, lines: 1),
+                            SizedBox(
+                              height: sizes!.heightRatio * 5.0,
+                            ),
+                            TextView.getSmallText12(
+                                "Keys available", Assets.poppinsLight,
+                                color: AppColors.subHeadingTextColor, lines: 1)
+                          ],
+                        ),
+                      )
+                    ])),
               ),
               SizedBox(
                 height: sizes!.heightRatio * 10.0,
@@ -201,9 +220,6 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
                 child: Container(
-                    padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 8,
-                        right: sizes!.widthRatio * 8),
                     width: sizes!.widthRatio * 325,
                     height: sizes!.heightRatio * 70,
                     decoration: BoxDecoration(
@@ -222,35 +238,47 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: sizes!.widthRatio * 10.0,
-                          right: sizes!.widthRatio * 10.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextView.getRegular13TextHeavy(
-                                  "Fuel deliveries", Assets.poppinsMedium,
-                                  color: AppColors.pass, lines: 1),
-                              TextView.getRegular13TextHeavy(
-                                  "\$ 122.0", Assets.poppinsMedium,
-                                  color: AppColors.getStartedButtonColor,
-                                  lines: 1),
-                            ],
-                          ),
-                          SizedBox(
-                            height: sizes!.heightRatio * 5.0,
-                          ),
-                          TextView.getSmallText12(
-                              "2 Liters", Assets.poppinsLight,
-                              color: AppColors.subHeadingTextColor, lines: 1),
-                        ],
+                    child: Stack(children: [
+                      Positioned(
+                        top: sizes!.heightRatio * 15.0,
+                        left: sizes!.widthRatio * 15.0,
+                        right: sizes!.widthRatio * 15.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextView.getRegular13TextHeavy(
+                                "Fuel Delivery", Assets.poppinsMedium,
+                                color: AppColors.pass, lines: 1),
+                            TextView.getRegular13TextHeavy(
+                                "\$ 122.0", Assets.poppinsMedium,
+                                color: AppColors.getStartedButtonColor,
+                                lines: 1),
+                          ],
+                        ),
                       ),
-                    )),
+                      Positioned(
+                          top: sizes!.heightRatio * -0.0,
+                          right: sizes!.widthRatio * -0.0,
+                          child:
+                              Image.asset("assets/png/cancel_new_icon@3x.png")),
+                      Positioned(
+                        top: sizes!.heightRatio * 30.0,
+                        left: sizes!.widthRatio * 15.0,
+                        right: sizes!.widthRatio * 15.0,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: sizes!.heightRatio * 5.0,
+                            ),
+                            TextView.getSmallText12(
+                                "2 Liters", Assets.poppinsLight,
+                                color: AppColors.subHeadingTextColor, lines: 1),
+                          ],
+                        ),
+                      )
+                    ])),
               ),
               SizedBox(
                 height: sizes!.heightRatio * 24.0,

@@ -124,7 +124,7 @@ class _RatingReviewScreenState extends State<RatingReviewScreen> {
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets
                     .customTextFieldWithMultipleLinesCustomContainerIcon(
-                  placeHolder: "Entry your remarks...",
+                  placeHolder: "Enter your remarks",
                   icon: "assets/png/feedback_icon@2x.png",
                   //TODO: Change this to Multiple Line
                   controller: _feedbackController,

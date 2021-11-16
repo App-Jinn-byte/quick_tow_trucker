@@ -16,6 +16,14 @@ class AddServiceScreen extends StatefulWidget {
 }
 
 class _AddServiceScreenState extends State<AddServiceScreen> {
+  bool isTireChange = false;
+  bool isLockOutService = false;
+  bool isFuelDelivery = false;
+
+  bool isTireChangeDropDownOpened = false;
+  bool isLockoutServiceDropDownOpened = false;
+  bool isFuelDeliveryDropDownOpened = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,212 +45,601 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                     Navigator.pop(context);
                   }),
               SizedBox(
-                height: sizes!.heightRatio * 30.0,
+                height: sizes!.heightRatio * 50.0,
               ),
+
               Padding(
-                  padding: EdgeInsets.only(
-                      left: sizes!.widthRatio * 30,
-                      right: sizes!.widthRatio * 30),
-                  child: Container(
-                    width: sizes!.widthRatio * 325,
-                    height: sizes!.heightRatio * 56,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppColors.transparentColor,
-                        width: 1,
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(6)),
-                      color: AppColors.whiteTextColor,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: AppColors.textFieldBorderColor,
-                          blurRadius: 1, //18
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: sizes!.widthRatio * 12.0,
-                          ),
-                          child: Transform.scale(
-                            scale: 1.3,
-                            child: Theme(
-                              data: ThemeData(
-                                  unselectedWidgetColor:
-                                      AppColors.checkBoxBorderColor),
-                              child: Checkbox(
-                                value: false,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(2)),
-                                onChanged: (isCheck) {},
-                                activeColor: AppColors.checkBoxBorderColor,
-                              ),
-                            ),
-                          ),
-                        ),
-                        TextView.getMediumText14(
-                          "Tow Request",
-                          Assets.poppinsRegular,
-                          color: AppColors.blackTextColor,
-                          lines: 1,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ],
-                    ),
-                  )),
-              SizedBox(
-                height: sizes!.heightRatio * 45.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+                padding: EdgeInsets.only(
+                    left: sizes!.widthRatio * 29.0,
+                    right: sizes!.heightRatio * 29.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: TextView.getMediumText16(
-                      "Road - side services", Assets.poppinsMedium,
-                      color: AppColors.getStartedButtonColor,
-                      fontWeight: FontWeight.bold,
-                      lines: 1),
+                      "Pick Your Required services", Assets.poppinsLight,
+                      color: AppColors.openTheTruckerAppTextColor,
+                      lines: 1,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(
-                height: sizes!.heightRatio * 23.0,
+                height: sizes!.heightRatio * 35.0,
               ),
+
+              // Container 1
+              Padding(
+                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+                child: Container(
+                  height: isTireChangeDropDownOpened
+                      ? sizes!.heightRatio * 125.0
+                      : sizes!.heightRatio * 58.0,
+                  width: sizes!.widthRatio * 335.0,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    color: AppColors.homeScreenContainerColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.homeScreenContainerColorShadow,
+                        blurRadius: 18,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: sizes!.heightRatio * 10.0,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/png/tire_change_icon@2x.png",
+                                  height: sizes!.heightRatio * 35.0,
+                                  width: sizes!.widthRatio * 35.0,
+                                ),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 10.0,
+                                ),
+                                TextView.getRegularBoldWith13(
+                                    "Tire Change", Assets.poppinsMedium,
+                                    color: AppColors.pass, lines: 1),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextView.getMediumText16(
+                                    "\$ 32", Assets.poppinsMedium,
+                                    color: AppColors.requestTowTextColor,
+                                    lines: 1,
+                                    fontWeight: FontWeight.bold),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 17.3,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isTireChangeDropDownOpened =
+                                          !isTireChangeDropDownOpened;
+                                      print(
+                                          "isDropdownOpened: $isTireChangeDropDownOpened");
+                                    });
+                                  },
+                                  child: isTireChangeDropDownOpened
+                                      ? Image.asset(
+                                          "assets/png/drop_down_icon@3x.png",
+                                          height: sizes!.heightRatio * 10.62,
+                                          width: sizes!.widthRatio * 14.77,
+                                        )
+                                      : Image.asset(
+                                          "assets/png/frop_down_icon@3x.png",
+                                          height: sizes!.heightRatio * 12.62,
+                                          width: sizes!.widthRatio * 16.77,
+                                        ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: isTireChangeDropDownOpened
+                            ? sizes!.heightRatio * 10
+                            : sizes!.heightRatio * 0.0,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: isTireChangeDropDownOpened
+                            ? const Divider()
+                            : Container(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: isTireChangeDropDownOpened
+                            ? Row(
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Transform.scale(
+                                    scale: 1.3,
+                                    child: Theme(
+                                      data: ThemeData(
+                                          unselectedWidgetColor:
+                                              AppColors.subHeadingTextColor),
+                                      child: Checkbox(
+                                        value: isTireChange,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            isTireChange = value!;
+                                            print(
+                                                "isTireChange: $isTireChange");
+                                          });
+                                        },
+                                        activeColor:
+                                            AppColors.checkBoxBorderColor,
+                                      ),
+                                    ),
+                                  ),
+                                  TextView.getSmallText12(
+                                    "Do you have a spare tire with you?",
+                                    Assets.poppinsRegular,
+                                    color: AppColors.requestTowTextColor,
+                                    lines: 1,
+                                  ),
+                                ],
+                              )
+                            : Container(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(
+                height: sizes!.heightRatio * 10.0,
+              ),
+
+              // Container 2
+              Padding(
+                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+                child: Container(
+                  height: isLockoutServiceDropDownOpened
+                      ? sizes!.heightRatio * 125.0
+                      : sizes!.heightRatio * 58.0,
+                  width: sizes!.widthRatio * 335.0,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    color: AppColors.homeScreenContainerColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.homeScreenContainerColorShadow,
+                        blurRadius: 18,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: sizes!.heightRatio * 10.0,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/png/lockout_service_icon@2x.png",
+                                  height: sizes!.heightRatio * 35.0,
+                                  width: sizes!.widthRatio * 35.0,
+                                ),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 10.0,
+                                ),
+                                TextView.getRegularBoldWith13(
+                                    "Lockout Service", Assets.poppinsMedium,
+                                    color: AppColors.pass, lines: 1),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextView.getMediumText16(
+                                    "\$ 32", Assets.poppinsMedium,
+                                    color: AppColors.requestTowTextColor,
+                                    lines: 1,
+                                    fontWeight: FontWeight.bold),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 17.3,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isLockoutServiceDropDownOpened =
+                                          !isLockoutServiceDropDownOpened;
+                                      print(
+                                          "isLockoutServiceDropDownOpened: $isLockoutServiceDropDownOpened");
+                                    });
+                                  },
+                                  child: isLockoutServiceDropDownOpened
+                                      ? Image.asset(
+                                          "assets/png/drop_down_icon@3x.png",
+                                          height: sizes!.heightRatio * 10.62,
+                                          width: sizes!.widthRatio * 14.77,
+                                        )
+                                      : Image.asset(
+                                          "assets/png/frop_down_icon@3x.png",
+                                          height: sizes!.heightRatio * 12.62,
+                                          width: sizes!.widthRatio * 16.77,
+                                        ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: isLockoutServiceDropDownOpened
+                            ? sizes!.heightRatio * 10
+                            : sizes!.heightRatio * 0.0,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: isLockoutServiceDropDownOpened
+                            ? const Divider()
+                            : Container(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: isLockoutServiceDropDownOpened
+                            ? Row(
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Transform.scale(
+                                    scale: 1.3,
+                                    child: Theme(
+                                      data: ThemeData(
+                                          unselectedWidgetColor:
+                                              AppColors.subHeadingTextColor),
+                                      child: Checkbox(
+                                        value: isLockOutService,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            isLockOutService = value!;
+                                            print(
+                                                "isLockOutService: $isLockOutService");
+                                          });
+                                        },
+                                        activeColor:
+                                            AppColors.checkBoxBorderColor,
+                                      ),
+                                    ),
+                                  ),
+                                  TextView.getSmallText12(
+                                    "Do you have a spare tire with you?",
+                                    Assets.poppinsRegular,
+                                    color: AppColors.requestTowTextColor,
+                                    lines: 1,
+                                  ),
+                                ],
+                              )
+                            : Container(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(
+                height: sizes!.heightRatio * 10.0,
+              ),
+
+              // Container 3
+              Padding(
+                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+                child: Container(
+                  height: isFuelDeliveryDropDownOpened
+                      ? sizes!.heightRatio * 125.0
+                      : sizes!.heightRatio * 58.0,
+                  width: sizes!.widthRatio * 335.0,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    color: AppColors.homeScreenContainerColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.homeScreenContainerColorShadow,
+                        blurRadius: 18,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: sizes!.heightRatio * 10.0,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/png/fuel_delivery_icon@2x.png",
+                                  height: sizes!.heightRatio * 35.0,
+                                  width: sizes!.widthRatio * 35.0,
+                                ),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 10.0,
+                                ),
+                                TextView.getRegularBoldWith13(
+                                    "Fuel Delivery", Assets.poppinsMedium,
+                                    color: AppColors.pass, lines: 1),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextView.getMediumText16(
+                                    "\$ 32", Assets.poppinsMedium,
+                                    color: AppColors.requestTowTextColor,
+                                    lines: 1,
+                                    fontWeight: FontWeight.bold),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 17.3,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isFuelDeliveryDropDownOpened =
+                                          !isFuelDeliveryDropDownOpened;
+                                      print(
+                                          "isFuelDeliveryDropDownOpened: $isFuelDeliveryDropDownOpened");
+                                    });
+                                  },
+                                  child: isFuelDeliveryDropDownOpened
+                                      ? Image.asset(
+                                          "assets/png/drop_down_icon@3x.png",
+                                          height: sizes!.heightRatio * 10.62,
+                                          width: sizes!.widthRatio * 14.77,
+                                        )
+                                      : Image.asset(
+                                          "assets/png/frop_down_icon@3x.png",
+                                          height: sizes!.heightRatio * 12.62,
+                                          width: sizes!.widthRatio * 16.77,
+                                        ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: isFuelDeliveryDropDownOpened
+                            ? sizes!.heightRatio * 10
+                            : sizes!.heightRatio * 0.0,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: isFuelDeliveryDropDownOpened
+                            ? const Divider()
+                            : Container(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: isFuelDeliveryDropDownOpened
+                            ? Row(
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Transform.scale(
+                                    scale: 1.3,
+                                    child: Theme(
+                                      data: ThemeData(
+                                          unselectedWidgetColor:
+                                              AppColors.subHeadingTextColor),
+                                      child: Checkbox(
+                                        value: isFuelDelivery,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            isFuelDelivery = value!;
+                                            print(
+                                                "isFuelDelivery: $isFuelDelivery");
+                                          });
+                                        },
+                                        activeColor:
+                                            AppColors.checkBoxBorderColor,
+                                      ),
+                                    ),
+                                  ),
+                                  TextView.getSmallText12(
+                                    "Do you have a Fuel?",
+                                    Assets.poppinsRegular,
+                                    color: AppColors.requestTowTextColor,
+                                    lines: 1,
+                                  ),
+                                ],
+                              )
+                            : Container(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: sizes!.heightRatio * 10.0,
+              ),
+
+              // Container 4
+              Padding(
+                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+                child: Container(
+                  height: sizes!.heightRatio * 58.0,
+                  width: sizes!.widthRatio * 335.0,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    color: AppColors.homeScreenContainerColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.homeScreenContainerColorShadow,
+                        blurRadius: 18,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: sizes!.heightRatio * 10.0,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset(
+                                  "assets/png/winch_out_icon@2x.png",
+                                  height: sizes!.heightRatio * 35.0,
+                                  width: sizes!.widthRatio * 35.0,
+                                ),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 10.0,
+                                ),
+                                TextView.getRegularBoldWith13(
+                                    "Winch Out", Assets.poppinsMedium,
+                                    color: AppColors.pass, lines: 1),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  right: sizes!.widthRatio * 32.0),
+                              child: TextView.getMediumText16(
+                                  "\$ 74", Assets.poppinsMedium,
+                                  color: AppColors.requestTowTextColor,
+                                  lines: 1,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(
+                height: sizes!.heightRatio * 10.0,
+              ),
+              // Container 5
+              Padding(
+                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
+                child: Container(
+                  height: sizes!.heightRatio * 58.0,
+                  width: sizes!.widthRatio * 335.0,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    color: AppColors.homeScreenContainerColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.homeScreenContainerColorShadow,
+                        blurRadius: 18,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: sizes!.heightRatio * 10.0,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: sizes!.widthRatio * 16.0,
+                            right: sizes!.widthRatio * 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset(
+                                  "assets/png/jumpstart_icon@2x.png",
+                                  height: sizes!.heightRatio * 35.0,
+                                  width: sizes!.widthRatio * 35.0,
+                                ),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 10.0,
+                                ),
+                                TextView.getRegularBoldWith13(
+                                    "Jumpstart", Assets.poppinsMedium,
+                                    color: AppColors.pass, lines: 1),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  right: sizes!.widthRatio * 32.0),
+                              child: TextView.getMediumText16(
+                                  "\$ 74", Assets.poppinsMedium,
+                                  color: AppColors.requestTowTextColor,
+                                  lines: 1,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(height: sizes!.heightRatio * 88.0,),
+
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextView.getRegularWith13(
-                        "Flat tire replacement", Assets.poppinsMedium,
-                        color: AppColors.pass, lines: 1),
-                    TextView.getMediumText16("\$ 32", Assets.poppinsMedium,
-                        color: AppColors.popUpTextColor,
-                        fontWeight: FontWeight.bold,
-                        lines: 1),
+                    CommonWidgets.getCustomOutlineBtn("Request Tow",
+                        onPress: () {}),
+                    CommonWidgets.getCustomBtn("Add To Service", onPress: () {
+                      Navigator.pop(context);
+                    }),
                   ],
                 ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: const Divider(),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegularWith13(
-                        "Lockout Service", Assets.poppinsMedium,
-                        color: AppColors.pass, lines: 1),
-                    TextView.getMediumText16("\$ 16", Assets.poppinsMedium,
-                        color: AppColors.popUpTextColor,
-                        fontWeight: FontWeight.bold,
-                        lines: 1),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: const Divider(),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegularWith13(
-                        "Battery Jumpstart", Assets.poppinsMedium,
-                        color: AppColors.pass, lines: 1),
-                    TextView.getMediumText16("\$ 72", Assets.poppinsMedium,
-                        color: AppColors.popUpTextColor,
-                        fontWeight: FontWeight.bold,
-                        lines: 1),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: const Divider(),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegularWith13(
-                        "Fuel deliveries", Assets.poppinsMedium,
-                        color: AppColors.pass, lines: 1),
-                    TextView.getMediumText16("\$ 42", Assets.poppinsMedium,
-                        color: AppColors.popUpTextColor,
-                        fontWeight: FontWeight.bold,
-                        lines: 1),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: const Divider(),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegularWith13(
-                        "Winching Service", Assets.poppinsMedium,
-                        color: AppColors.pass, lines: 1),
-                    TextView.getMediumText16("\$ 74", Assets.poppinsMedium,
-                        color: AppColors.popUpTextColor,
-                        fontWeight: FontWeight.bold,
-                        lines: 1),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child: const Divider(),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 140.0,
-              ),
-              Padding(
-                padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
-                child:
-                    CommonWidgets.getStartButton("Add To Service", onPress: () {
-                  // Navigator.push(context,
-                  //     SlideRightRoute(page: const PaymentTotalScreen()));
-                  Navigator.pop(context);
-                }),
               )
             ],
           ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:date_time_format/date_time_format.dart';
+import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/network_manager/api_url.dart';
@@ -16,11 +17,279 @@ import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/notification_screens/notification_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/profile_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/setting_screens/setting_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/en_route_screens/en_route_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
 class CommonWidgets {
   //Project Widgets
+
+  static Widget getBookingContainer({required BuildContext context}) {
+    return Container(
+      height: sizes!.heightRatio * 435,
+      width: sizes!.widthRatio * 326,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.homeScreenContainerColorShadow,
+            blurRadius: 3,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: sizes!.heightRatio * 25.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/png/avatar_user_icon@2x.png",
+                      height: sizes!.heightRatio * 42.0,
+                      width: sizes!.widthRatio * 42.0,
+                    ),
+                    SizedBox(
+                      width: sizes!.widthRatio * 5.0,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        TextView.getSubHeadingTextWith15(
+                            "John Doe", Assets.poppinsMedium,
+                            color: AppColors.blackTextColor,
+                            lines: 1,
+                            fontWeight: FontWeight.normal),
+                        Row(
+                          children: [
+                            Image.asset(
+                              "assets/png/star_icon@2x.png",
+                              height: sizes!.heightRatio * 15.0,
+                              width: sizes!.widthRatio * 14.0,
+                            ),
+                            SizedBox(
+                              width: sizes!.widthRatio * 5.0,
+                            ),
+                            TextView.getRegularText("5.00", Assets.poppinsLight,
+                                color: AppColors.blackTextColor, lines: 1)
+                          ],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: sizes!.widthRatio * 65.0,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextView.getRegularText(
+                        "Total Price", Assets.poppinsRegular,
+                        color: AppColors.subHeadingTextColor, lines: 1),
+                    TextView.getMediumText16("\$ 234.45", Assets.poppinsMedium,
+                        color: AppColors.blackTextColor,
+                        lines: 1,
+                        fontWeight: FontWeight.bold),
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 10.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: TextView.getSmallText11("7 Min", Assets.poppinsLight,
+                  color: AppColors.subHeadingTextColor, lines: 1),
+            ),
+          ),
+          Image.asset("assets/png/Line.png"),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getSmallText12("You", Assets.poppinsMedium,
+                    color: AppColors.getStartedButtonColor, lines: 1),
+                TextView.getSmallText12("Pick-up", Assets.poppinsMedium,
+                    color: AppColors.subHeadingTextColor, lines: 1)
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 5.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: const Divider(),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 5.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: TextView.getSubHeadingTextWith15(
+                  "Vehicle Information", Assets.poppinsMedium,
+                  color: AppColors.openTheTruckerAppTextColor,
+                  lines: 1,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 14.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getSmallBoldText12(
+                    "Vehicle Name", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+                TextView.getSmallBoldText12(
+                    "Vehicle Name", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 5.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getSmallText12("Honda", Assets.poppinsLight,
+                    color: AppColors.subHeadingTextColor, lines: 1),
+                TextView.getSmallText12("Civic - X", Assets.poppinsLight,
+                    color: AppColors.subHeadingTextColor, lines: 1),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 5.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: const Divider(),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 5.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getSmallBoldText12(
+                    "Vehicle Number", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+                TextView.getSmallBoldText12(
+                    "Vehicle Category", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 5.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextView.getSmallText12("LEU-7652", Assets.poppinsLight,
+                    color: AppColors.subHeadingTextColor, lines: 1),
+                TextView.getSmallText12("4 Wheel", Assets.poppinsLight,
+                    color: AppColors.subHeadingTextColor, lines: 1),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 15.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Container(
+              width: sizes!.widthRatio * 285,
+              height: sizes!.heightRatio * 65,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: AppColors.getStartedButtonColor,
+                  width: 0.5,
+                ),
+                borderRadius: const BorderRadius.all(Radius.circular(6)),
+                color: AppColors.whiteTextColor,
+                boxShadow: const [
+                  BoxShadow(
+                    color: AppColors.getStartedButtonColorShadow,
+                    blurRadius: 1, // 12
+                    offset: Offset(0, 0), // 3
+                  ),
+                ],
+              ),
+              child: Center(
+                  child: Padding(
+                padding: EdgeInsets.only(
+                    top: sizes!.heightRatio * 10.0,
+                    bottom: sizes!.heightRatio * 10.0,
+                    left: sizes!.widthRatio * 10.0,
+                    right: sizes!.widthRatio * 10.0),
+                child: SingleChildScrollView(
+                  child: TextView.getSmallText12(
+                      "Hello, I have problem with the front right wheel. "
+                      "Hello, I have problem with the front right wheel. "
+                      "Hello, I have problem with the front right wheel. "
+                      "Hello, I have problem with the front right wheel. "
+                      "Hello, I have problem with the front right wheel. "
+                      "Hello, I have problem with the front right wheel.",
+                      Assets.poppinsLight,
+                      color: AppColors.subHeadingTextColor,
+                      lines: 5),
+                ),
+              )),
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 14.0,
+          ),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                PopUpComponents.getCustomOutlineBtn("Decline", onPress: () {
+                  // Navigator.pop(context);
+                }),
+                PopUpComponents.getPopUpButton("Accept", onPress: () {
+                  // Navigator.pop(context);
+
+                  Navigator.push(
+                      context, SlideRightRoute(page: const EnRouteScreen()));
+                })
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
 
   static Widget getVehicleDetailContainer({@required Function? onEditPress}) {
     return Container(
@@ -351,11 +620,11 @@ class CommonWidgets {
     @required String? btn4Text,
   }) {
     return Container(
-      height: sizes!.heightRatio * 260,
+      height: sizes!.heightRatio * 296,
       width: sizes!.width,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+            topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0)),
         color: AppColors.whiteTextColor,
         boxShadow: [
           BoxShadow(
@@ -368,47 +637,53 @@ class CommonWidgets {
       child: Column(
         children: [
           SizedBox(
-            height: sizes!.heightRatio * 20.0,
+            height: sizes!.heightRatio * 5.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 140, right: sizes!.widthRatio * 140),
+            child: Divider(
+              thickness: sizes!.heightRatio * 3.0,
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 15.0,
           ),
           Padding(
             padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
             child: Row(
               children: [
-                Container(
-                  child: Image.asset(
-                    "assets/png/map_route_icon@2x.png",
-                    height: sizes!.heightRatio * 50.0,
-                    width: sizes!.widthRatio * 9.0,
-                  ),
+                Image.asset(
+                  "assets/png/map_route_icon@2x.png",
+                  height: sizes!.heightRatio * 50.0,
+                  width: sizes!.widthRatio * 9.0,
                 ),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 20.0,
+                        left: sizes!.widthRatio * 16.0,
                         right: sizes!.widthRatio * 20.0,
-                        top: sizes!.heightRatio * 10.0),
+                        top: sizes!.heightRatio * 9.0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: TextView.getRegularWith13(
-                              "227 Sector FF DHA Phase 4 Qatar",
-                              Assets.poppinsRegular,
-                              color: AppColors.routeTextColor,
-                              lines: 3),
-                        ),
                         SizedBox(
-                          height: sizes!.heightRatio * 8.0,
+                          height: sizes!.heightRatio * 10.0,
                         ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: TextView.getRegularWith13(
-                              "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Qatar",
-                              Assets.poppinsRegular,
-                              color: AppColors.routeTextColor,
-                              lines: 3),
+                        TextView.getRegularWith13(
+                            "227 Sector FF DHA Phase 4 Qatar",
+                            Assets.poppinsRegular,
+                            color: AppColors.routeTextColor,
+                            lines: 3),
+                        SizedBox(
+                          height: sizes!.heightRatio * 16.0,
                         ),
+                        TextView.getRegularWith13(
+                            "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Qatar",
+                            Assets.poppinsRegular,
+                            color: AppColors.routeTextColor,
+                            lines: 3),
                       ],
                     ),
                   ),
@@ -419,9 +694,12 @@ class CommonWidgets {
           SizedBox(
             height: sizes!.heightRatio * 10.0,
           ),
-          const Divider(),
+          Padding(
+            padding: CommonPadding.getCommonPaddingLeftAndRightWidth20,
+            child: const Divider(),
+          ),
           SizedBox(
-            height: sizes!.heightRatio * 20.0,
+            height: sizes!.heightRatio * 10.0,
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -486,11 +764,11 @@ class CommonWidgets {
     @required Function? onEndRidePress,
   }) {
     return Container(
-      height: sizes!.heightRatio * 260,
+      height: sizes!.heightRatio * 296,
       width: sizes!.width,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+            topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0)),
         color: AppColors.whiteTextColor,
         boxShadow: [
           BoxShadow(
@@ -503,7 +781,17 @@ class CommonWidgets {
       child: Column(
         children: [
           SizedBox(
-            height: sizes!.heightRatio * 20.0,
+            height: sizes!.heightRatio * 5.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: sizes!.widthRatio * 140, right: sizes!.widthRatio * 140),
+            child: Divider(
+              thickness: sizes!.heightRatio * 3.0,
+            ),
+          ),
+          SizedBox(
+            height: sizes!.heightRatio * 15.0,
           ),
           Padding(
             padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
@@ -519,31 +807,29 @@ class CommonWidgets {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 20.0,
+                        left: sizes!.widthRatio * 16.0,
                         right: sizes!.widthRatio * 20.0,
-                        top: sizes!.heightRatio * 10.0),
+                        top: sizes!.heightRatio * 9.0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: TextView.getRegularWith13(
-                              "227 Sector FF DHA Phase 4 Qatar",
-                              Assets.poppinsRegular,
-                              color: AppColors.routeTextColor,
-                              lines: 3),
-                        ),
                         SizedBox(
-                          height: sizes!.heightRatio * 8.0,
+                          height: sizes!.heightRatio * 10.0,
                         ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: TextView.getRegularWith13(
-                              "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Qatar",
-                              Assets.poppinsRegular,
-                              color: AppColors.routeTextColor,
-                              lines: 3),
+                        TextView.getRegularWith13(
+                            "227 Sector FF DHA Phase 4 Qatar",
+                            Assets.poppinsRegular,
+                            color: AppColors.routeTextColor,
+                            lines: 3),
+                        SizedBox(
+                          height: sizes!.heightRatio * 16.0,
                         ),
+                        TextView.getRegularWith13(
+                            "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Qatar",
+                            Assets.poppinsRegular,
+                            color: AppColors.routeTextColor,
+                            lines: 3),
                       ],
                     ),
                   ),
@@ -556,7 +842,7 @@ class CommonWidgets {
           ),
           const Divider(),
           SizedBox(
-            height: sizes!.heightRatio * 20.0,
+            height: sizes!.heightRatio * 10.0,
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -617,7 +903,7 @@ class CommonWidgets {
       {@required dynamic truckerPhoto, @required dynamic arrivingTime}) {
     return Container(
       height: sizes!.heightRatio * 43.0,
-      width: sizes!.widthRatio * 110.0,
+      width: sizes!.widthRatio * 100.0,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(28)),
         color: AppColors.whiteTextColor,
@@ -632,7 +918,7 @@ class CommonWidgets {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: sizes!.widthRatio * 10.0),
+            padding: EdgeInsets.only(left: sizes!.widthRatio * 8.0),
             child: Image.asset(
               truckerPhoto ?? "assets/png/avatar_user_icon@2x.png",
               height: sizes!.heightRatio * 33.0,
@@ -674,7 +960,7 @@ class CommonWidgets {
         }
       },
       child: Container(
-          width: sizes!.widthRatio * 152,
+          width: sizes!.widthRatio * 142,
           height: sizes!.heightRatio * 45,
           decoration: BoxDecoration(
             border: Border.all(
@@ -704,7 +990,7 @@ class CommonWidgets {
     Color? buttonColor,
   }) {
     return Container(
-      width: sizes!.widthRatio * 152,
+      width: sizes!.widthRatio * 142,
       height: sizes!.heightRatio * 45,
       decoration: BoxDecoration(
         border: Border.all(
@@ -2241,8 +2527,8 @@ class CommonWidgets {
                       fontFamily: Assets.poppinsLight,
                       fontSize: 14),
                   contentPadding: EdgeInsets.only(
-                      bottom: sizes!.heightRatio * 15,
-                      top: sizes!.heightRatio * 15),
+                      bottom: sizes!.heightRatio * 15.0,
+                      top: sizes!.heightRatio * 12.0),
                   border: InputBorder.none,
                 ),
               ),

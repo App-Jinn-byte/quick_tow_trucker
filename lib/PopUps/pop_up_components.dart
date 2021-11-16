@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
+import 'package:quick_tow_trucker/res/enums.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/en_route_screens/en_route_screen.dart';
@@ -432,145 +433,167 @@ class PopUpComponents {
   }
 
   static Widget welcomeBackScreenCustomPopUp(BuildContext context) {
-    bool _value = true;
     int val = -1;
+
+    selectYourStatus? _character = selectYourStatus.active;
 
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
       child: Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        child: Stack(
-          alignment: Alignment.center,
-          overflow: Overflow.visible,
-          children: [
-            Container(
-              height: sizes!.heightRatio * 488,
-              width: sizes!.widthRatio * 326,
-              padding: EdgeInsets.only(
-                  left: sizes!.pagePadding,
-                  right: sizes!.pagePadding,
-                  top: sizes!.pagePadding * 2.0),
-              child: Column(
-                //crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: sizes!.heightRatio * 10,
-                  ),
-                  TextView.getWelcomeTextWith28(
-                      'Welcome Back!', Assets.poppinsMedium,
-                      color: AppColors.blackTextColor, lines: 1),
-                  SizedBox(
-                    height: sizes!.heightRatio * 5,
-                  ),
-                  TextView.getSmallText("The Welcome That Likes To Say Yes.",
-                      Assets.poppinsRegular,
-                      color: AppColors.blackTextColor,
-                      lines: 1,
-                      textAlign: TextAlign.center),
-                  SizedBox(
-                    height: sizes!.heightRatio * 30,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: sizes!.widthRatio * 12),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextView.getMediumText16(
-                          "Select Your Truck", Assets.poppinsMedium,
-                          color: AppColors.openTheTruckerAppTextColor,
-                          lines: 1,
-                          fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: StatefulBuilder(
+          builder: (context, setState) {
+            return Stack(
+              alignment: Alignment.center,
+              overflow: Overflow.visible,
+              children: [
+                Container(
+                  height: sizes!.heightRatio * 450, //488
+                  width: sizes!.widthRatio * 326,
+                  padding: EdgeInsets.only(
+                      left: sizes!.pagePadding,
+                      right: sizes!.pagePadding,
+                      top: sizes!.pagePadding * 2.0),
+                  child: Column(
+                    //crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CommonWidgets.getPopUpButton("FWD Only", onPress: () {}),
-                      CommonWidgets.getPopUpButtonWithBlackTextColor(
-                        "All Vehicles",
-                        buttonColor: AppColors.whiteTextColor,
-                        onPress: () {},
+                      SizedBox(
+                        height: sizes!.heightRatio * 10,
                       ),
+                      TextView.getWelcomeTextWith28(
+                          'Welcome Back!', Assets.poppinsMedium,
+                          color: AppColors.blackTextColor, lines: 1),
+                      SizedBox(
+                        height: sizes!.heightRatio * 5,
+                      ),
+                      TextView.getSmallText(
+                          "The Welcome That Likes To Say Yes.",
+                          Assets.poppinsRegular,
+                          color: AppColors.blackTextColor,
+                          lines: 1,
+                          textAlign: TextAlign.center),
+                      SizedBox(
+                        height: sizes!.heightRatio * 30,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: sizes!.widthRatio * 12),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextView.getMediumText16(
+                              "Select Your Truck", Assets.poppinsMedium,
+                              color: AppColors.openTheTruckerAppTextColor,
+                              lines: 1,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                      SizedBox(
+                        height: sizes!.heightRatio * 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          CommonWidgets.getPopUpButton("FWD Only",
+                              onPress: () {}),
+                          CommonWidgets.getPopUpButtonWithBlackTextColor(
+                            "All Vehicles",
+                            buttonColor: AppColors.whiteTextColor,
+                            onPress: () {},
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: sizes!.heightRatio * 10,
+                      ),
+                      Row(
+                        children: [
+                          Radio<selectYourStatus>(
+                            value: selectYourStatus.active,
+                            groupValue: _character,
+                            activeColor: AppColors.getStartedButtonColor,
+                            onChanged: (selectYourStatus? value) {
+                              setState(() {
+                                _character = value;
+                                print("isActiveStatus: $_character");
+                              });
+                            },
+                          ),
+                          TextView.getSubHeadingTextWith15(
+                              "Active", Assets.poppinsRegular,
+                              color: AppColors.radioButtonTextColor,
+                              lines: 1,
+                              fontWeight: FontWeight.normal)
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio<selectYourStatus>(
+                            value: selectYourStatus.onbreak,
+                            activeColor: AppColors.getStartedButtonColor,
+                            groupValue: _character,
+                            onChanged: (value) {
+                              setState(() {
+                                _character = value;
+                                print("On-Break: $_character");
+                              });
+                            },
+                          ),
+                          TextView.getSubHeadingTextWith15(
+                              "On-Break", Assets.poppinsRegular,
+                              color: AppColors.radioButtonTextColor,
+                              lines: 1,
+                              fontWeight: FontWeight.normal)
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio<selectYourStatus>(
+                            value: selectYourStatus.offduty,
+                            activeColor: AppColors.getStartedButtonColor,
+                            groupValue: _character,
+                            onChanged: (value) {
+                              setState(() {
+                                _character = value;
+                                print("Off-Duty: $_character");
+                              });
+                            },
+                          ),
+                          TextView.getSubHeadingTextWith15(
+                              "Off Duty", Assets.poppinsRegular,
+                              color: AppColors.radioButtonTextColor,
+                              lines: 1,
+                              fontWeight: FontWeight.normal)
+                        ],
+                      ),
+                      SizedBox(
+                        height: sizes!.heightRatio * 40,
+                      ),
+                      CommonWidgets.getStartButton(
+                        'Continue',
+                        onPress: () {
+                          Navigator.pop(context);
+                          // Navigator.pushReplacement(context,
+                          //     SlideRightRoute(page: const FindBookingScreen()));
+                        },
+                      ),
+                      SizedBox(
+                        height: sizes!.heightRatio * 16,
+                      )
                     ],
                   ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 10,
-                  ),
-                  Row(
-                    children: [
-                      Radio(
-                        value: 2,
-                        groupValue: val,
-                        activeColor: AppColors.getStartedButtonColor,
-                        onChanged: (value) {},
-                      ),
-                      TextView.getSubHeadingTextWith15(
-                          "Active", Assets.poppinsRegular,
-                          color: AppColors.radioButtonTextColor,
-                          lines: 1,
-                          fontWeight: FontWeight.normal)
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Radio(
-                        value: 2,
-                        activeColor: AppColors.getStartedButtonColor,
-                        groupValue: val,
-                        onChanged: (value) {},
-                      ),
-                      TextView.getSubHeadingTextWith15(
-                          "On-Break", Assets.poppinsRegular,
-                          color: AppColors.radioButtonTextColor,
-                          lines: 1,
-                          fontWeight: FontWeight.normal)
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Radio(
-                        value: 2,
-                        activeColor: AppColors.getStartedButtonColor,
-                        groupValue: val,
-                        onChanged: (value) {},
-                      ),
-                      TextView.getSubHeadingTextWith15(
-                          "Off Duty", Assets.poppinsRegular,
-                          color: AppColors.radioButtonTextColor,
-                          lines: 1,
-                          fontWeight: FontWeight.normal)
-                    ],
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 40,
-                  ),
-                  CommonWidgets.getStartButton(
-                    'Continue',
-                    onPress: () {
-                      Navigator.pop(context);
-                      // Navigator.pushReplacement(context,
-                      //     SlideRightRoute(page: const FindBookingScreen()));
-                    },
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 16,
-                  )
-                ],
-              ),
-            ),
+                ),
 
-            // Positioned(
-            //     child: Container(
-            //       height: sizes!.heightRatio * 80,
-            //       child: const Image(
-            //         image: AssetImage(Assets.tickPopUpIcon),
-            //       ),
-            //     ),
-            //     top: sizes!.heightRatio * -35,
-            //     right: sizes!.width * 0.27)
-          ],
+                // Positioned(
+                //     child: Container(
+                //       height: sizes!.heightRatio * 80,
+                //       child: const Image(
+                //         image: AssetImage(Assets.tickPopUpIcon),
+                //       ),
+                //     ),
+                //     top: sizes!.heightRatio * -35,
+                //     right: sizes!.width * 0.27)
+              ],
+            );
+          },
         ),
       ),
     );
@@ -953,7 +976,7 @@ class PopUpComponents {
           overflow: Overflow.visible,
           children: [
             Container(
-              height: sizes!.heightRatio * 540,
+              height: sizes!.heightRatio * 369, //369
               width: sizes!.widthRatio * 326,
               padding: EdgeInsets.only(
                   left: sizes!.pagePadding,
@@ -1033,102 +1056,6 @@ class PopUpComponents {
                     height: sizes!.heightRatio * 5.0,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: sizes!.widthRatio * 5),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextView.getSubHeadingTextWith15(
-                          "Vehicle Information", Assets.poppinsMedium,
-                          color: AppColors.openTheTruckerAppTextColor,
-                          lines: 1,
-                          fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 14.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 5.0,
-                        right: sizes!.widthRatio * 5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextView.getSmallText12(
-                            "Vehicle Name", Assets.poppinsMedium,
-                            color: AppColors.blackTextColor, lines: 1),
-                        TextView.getSmallText12(
-                            "Vehicle Name", Assets.poppinsMedium,
-                            color: AppColors.blackTextColor, lines: 1),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 5.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 5.0,
-                        right: sizes!.widthRatio * 5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextView.getSmallText12("Honda", Assets.poppinsLight,
-                            color: AppColors.subHeadingTextColor, lines: 1),
-                        TextView.getSmallText12(
-                            "Civic - X", Assets.poppinsLight,
-                            color: AppColors.subHeadingTextColor, lines: 1),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 5.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 5.0,
-                        right: sizes!.widthRatio * 5.0),
-                    child: const Divider(),
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 5.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 5.0,
-                        right: sizes!.widthRatio * 5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextView.getSmallText12(
-                            "Vehicle Number", Assets.poppinsMedium,
-                            color: AppColors.blackTextColor, lines: 1),
-                        TextView.getSmallText12(
-                            "Vehicle Category", Assets.poppinsMedium,
-                            color: AppColors.blackTextColor, lines: 1),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 5.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: sizes!.widthRatio * 5.0,
-                        right: sizes!.widthRatio * 5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextView.getSmallText12("LEU-7652", Assets.poppinsLight,
-                            color: AppColors.subHeadingTextColor, lines: 1),
-                        TextView.getSmallText12("4 wheel", Assets.poppinsLight,
-                            color: AppColors.subHeadingTextColor, lines: 1),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 15.0,
-                  ),
-                  Padding(
                     padding: EdgeInsets.only(left: sizes!.widthRatio * 5.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
@@ -1150,7 +1077,7 @@ class PopUpComponents {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextView.getSmallText12(
-                            "Flat tyre replacement", Assets.poppinsMedium,
+                            "Tire Change", Assets.poppinsMedium,
                             color: AppColors.blackTextColor, lines: 1),
                         TextView.getMediumText16("\$ 32", Assets.poppinsMedium,
                             color: AppColors.popUpTextColor,
@@ -1167,7 +1094,7 @@ class PopUpComponents {
                         left: sizes!.widthRatio * 5.0,
                         right: sizes!.widthRatio * 5.0),
                     child: TextView.getSmallText12(
-                        "Keys available", Assets.poppinsLight,
+                        "Spare Tyre Available", Assets.poppinsLight,
                         color: AppColors.subHeadingTextColor, lines: 1),
                   ),
                   SizedBox(
@@ -1178,7 +1105,7 @@ class PopUpComponents {
                         left: sizes!.widthRatio * 5.0,
                         right: sizes!.widthRatio * 5.0),
                     child: TextView.getSmallText12(
-                        "Spare Tyre Available", Assets.poppinsLight,
+                        "Keys available", Assets.poppinsLight,
                         color: AppColors.subHeadingTextColor, lines: 1),
                   ),
                   SizedBox(
@@ -1222,49 +1149,14 @@ class PopUpComponents {
                         color: AppColors.subHeadingTextColor, lines: 1),
                   ),
                   SizedBox(
-                    height: sizes!.heightRatio * 14.0,
-                  ),
-                  Container(
-                    width: sizes!.widthRatio * 285,
-                    height: sizes!.heightRatio * 65,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppColors.getStartedButtonColor,
-                        width: 0.5,
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(6)),
-                      color: AppColors.whiteTextColor,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: AppColors.getStartedButtonColorShadow,
-                          blurRadius: 1, // 12
-                          offset: Offset(0, 0), // 3
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                        child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: SingleChildScrollView(
-                        child: TextView.getSmallText12(
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel.",
-                            Assets.poppinsLight,
-                            color: AppColors.subHeadingTextColor,
-                            lines: 5),
-                      ),
-                    )),
-                  ),
-                  SizedBox(
-                    height: sizes!.heightRatio * 14.0,
+                    height: sizes!.heightRatio * 35.0,
                   ),
                   CommonWidgets.getStartButton("Continue", onPress: () {
                     Navigator.pop(context);
-                  })
+                  }),
+                  SizedBox(
+                    height: sizes!.heightRatio * 35.0,
+                  ),
                 ],
               ),
             ),

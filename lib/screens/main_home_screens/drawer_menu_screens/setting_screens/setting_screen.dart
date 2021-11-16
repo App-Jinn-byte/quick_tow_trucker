@@ -29,6 +29,7 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   void initState() {
+    super.initState();
     BitmapDescriptor.fromAssetImage(
             const ImageConfiguration(devicePixelRatio: 2.5),
             'assets/destination_map_marker.png')
@@ -46,8 +47,6 @@ class _SettingScreenState extends State<SettingScreen> {
       ),
       icon: BitmapDescriptor.defaultMarker,
     ));
-
-    super.initState();
   }
 
   @override
@@ -56,7 +55,7 @@ class _SettingScreenState extends State<SettingScreen> {
       child: Scaffold(
         key: scaffoldKey,
         drawer:
-            CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 1),
+            CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 5),
         body: SizedBox(
             height: sizes!.height,
             width: sizes!.width,
@@ -65,15 +64,15 @@ class _SettingScreenState extends State<SettingScreen> {
                 Positioned(
                     child: GoogleMap(
                   initialCameraPosition: _initialLocation,
-                  myLocationEnabled: true,
-                  myLocationButtonEnabled: true,
+                  myLocationEnabled: false,
+                  myLocationButtonEnabled: false,
                   mapType: MapType.normal,
                   zoomGesturesEnabled: true,
-                  markers: _markers,
+                  // markers: _markers,
                   zoomControlsEnabled: false,
                   onMapCreated: (GoogleMapController controller) {
                     mapController = controller;
-                    // welcomeBackPopUp(context);
+                    // settingPopUp(context);
                   },
                 )),
                 Positioned(

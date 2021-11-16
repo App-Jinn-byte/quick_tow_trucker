@@ -19,13 +19,14 @@ class AppColors {
   static const getStartedButtonColorShadow = Color.fromRGBO(0, 0, 0, 0.08);
   static const readyToEarnTextColor = Color.fromRGBO(152, 152, 152, 1);
   static const openTheTruckerAppTextColor = Color.fromRGBO(18, 99, 18, 1);
-  static const subHeadingTextColor = Color.fromRGBO(132, 132, 132, 1);
   static const textFieldBorderColor = Color.fromRGBO(209, 242, 209, 1);
   static const backButtonColor = Color.fromRGBO(219, 235, 219, 1);
   static const radioButtonTextColor = Color.fromRGBO(97, 97, 97, 1);
   static const cardShadowColor = Color.fromRGBO(0, 0, 0, 0.12);
 
   static const checkBoxBorderColor = Color.fromRGBO(16, 85, 16, 1);
+  static const requestTowTextColor = Color.fromRGBO(19, 72, 19, 1);
+
 
   static const homeScreenContainerColor = Color.fromRGBO(248, 251, 248, 1);
   static const homeScreenContainerColorShadow = Color.fromRGBO(0, 0, 0, 0.16);
@@ -38,7 +39,10 @@ class AppColors {
   static const popUpTextColor = Color.fromRGBO(19, 72, 19, 1);
   static const chatBorderColor = Color.fromRGBO(225, 225, 225, 1);
   static const addServiceBtnColor = Color.fromRGBO(13, 78, 63, 1);
+
   static const pass = Color.fromRGBO(75, 75, 75, 1);
+  static const subHeadingTextColor = Color.fromRGBO(132, 132, 132, 1);
+
 
 
   static const appTheme = Color.fromRGBO(117, 176, 46, 1);

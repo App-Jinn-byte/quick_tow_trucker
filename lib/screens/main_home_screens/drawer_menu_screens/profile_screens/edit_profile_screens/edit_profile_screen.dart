@@ -142,6 +142,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     return SafeArea(
         child: Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
@@ -256,7 +257,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "alan@gmail.com",
+                  placeHolder: "Alan@gmail.com",
                   icon: "assets/png/email_icon@2x.png",
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,

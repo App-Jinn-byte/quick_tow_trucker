@@ -87,29 +87,35 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
                         }),
               ),
               Positioned(
-                  top: sizes!.heightRatio * 110.0,
+                  top: sizes!.heightRatio * 90.0,
                   left: sizes!.widthRatio * 45.0,
-                  right: sizes!.widthRatio * 45,
+                  right: sizes!.widthRatio * 45.0,
                   child: GestureDetector(
                       onTap: () {
-                        // Navigator.push(context,
-                        //     SlideRightRoute(page: const PaymentScreen()));
+                        Navigator.push(context,
+                            SlideRightRoute(page: const EndRideScreen()));
                       },
                       child: Image.asset(
-                          "assets/png/en_route_location_maker@2x.png"))),
+                        "assets/png/en_route_location_maker@2x.png",
+                        height: sizes!.heightRatio * 220.0,
+                        width: sizes!.widthRatio * 220.0,
+                      ))),
               Positioned(
-                top: sizes!.heightRatio * 120.0,
-                left: sizes!.widthRatio * 45.0,
+                top: sizes!.heightRatio * 200.0,
+                left: sizes!.widthRatio * 20.0,
                 // right: sizes!.widthRatio * 45,
                 child:
                     CommonWidgets.getArrivedContainer(arrivingTime: "30 Mins"),
               ),
               Positioned(
-                  bottom: sizes!.heightRatio * 140.0,
+                  bottom: sizes!.heightRatio * 280.0,
                   left: sizes!.widthRatio * 45.0,
                   right: sizes!.widthRatio * 45,
                   child: Image.asset(
-                      "assets/png/en_route_location_maker_pin@2x.png")),
+                    "assets/png/en_route_location_maker_pin@2x.png",
+                    height: sizes!.heightRatio * 32.0,
+                    width: sizes!.widthRatio * 32.0,
+                  )),
 
               // Bottom Container
               Positioned(

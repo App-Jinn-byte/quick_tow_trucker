@@ -79,7 +79,9 @@ class _InsuranceInfoScreenState extends State<InsuranceInfoScreen> {
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
                 child: CommonWidgets.getStartButton(
-                    "Update Insurance Information"),
+                    "Update Insurance Information", onPress: () {
+                  Navigator.pop(context);
+                }),
               ),
             ],
           ),

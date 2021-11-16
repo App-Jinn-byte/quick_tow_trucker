@@ -8,7 +8,23 @@ class TextView {
 
   // Project Text
 
-
+  static Text getRegularBoldWith13(final text, final fontFamily,
+      {@required final color,
+        final TextAlign textAlign = TextAlign.start,
+        @required final lines}) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      softWrap: true,
+      maxLines: lines,
+      style: TextStyle(
+        fontSize: sizes!.regularFontSize,
+        fontWeight: FontWeight.bold,
+        fontFamily: fontFamily,
+        color: color,
+      ),
+    );
+  }
 
   static Text getTextWith22(final text, final fontFamily,
       {@required final color,

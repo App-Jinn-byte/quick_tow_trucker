@@ -5,7 +5,6 @@ import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
-import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
@@ -86,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return SafeArea(
         child: Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
@@ -154,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     left: sizes!.widthRatio * 30,
                     right: sizes!.widthRatio * 30),
                 child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "Example@Gmail.Com",
+                  placeHolder: "Example@gmail.com",
                   icon: "assets/png/email_icon@2x.png",
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
