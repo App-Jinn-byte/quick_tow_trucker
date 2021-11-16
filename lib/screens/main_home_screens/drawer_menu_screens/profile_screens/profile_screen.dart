@@ -8,6 +8,7 @@ import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/account_details_screens/account_detail_screen.dart';
+import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -28,19 +29,21 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String firstName =
-      PreferenceUtils.getString(Strings.loginFirstName) ?? "Loading...";
-  String lastName = PreferenceUtils.getString(Strings.loginLastName) ?? "";
-  String email = PreferenceUtils.getString(Strings.loginEmail) ?? "Loading...";
-  String phone =
-      PreferenceUtils.getString(Strings.loginPhoneNo) ?? "Loading...";
+  final String _firstName =
+      PreferenceUtils.getString(Strings.loginFirstName) ?? "Alan";
+  final String _lastName =
+      PreferenceUtils.getString(Strings.loginLastName) ?? "Thor";
+  final String _email =
+      PreferenceUtils.getString(Strings.loginEmail) ?? "Alan@gmail.com";
+  final String _phone =
+      PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(900) 900987";
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,
-      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 2),
+      drawer: CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 2),
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
@@ -91,16 +94,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextView.getMediumText18(
-                            "Alan Driver",
+                            _firstName + " " + _lastName,
                             Assets.poppinsMedium,
                             color: AppColors.blackTextColor,
                             lines: 1,
                           ),
                           TextView.getRegular13Text(
-                              "Alan@gmail.com", Assets.poppinsRegular,
+                              _email, Assets.poppinsRegular,
                               color: AppColors.blackTextColor, lines: 1),
                           TextView.getRegular13Text(
-                              "(900) 900987", Assets.poppinsRegular,
+                              _phone, Assets.poppinsRegular,
                               color: AppColors.blackTextColor, lines: 1)
                         ],
                       ),

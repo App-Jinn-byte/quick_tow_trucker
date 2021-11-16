@@ -228,8 +228,8 @@ class _LoginScreenState extends State<LoginScreen> {
       Toasts.getSuccessToast(text: "Login Response Successfully");
     }
 
-    Navigator.pushReplacement(
-        context, SlideRightRoute(page: const FindBookingScreen()));
+    // Navigator.pushReplacement(
+    //     context, SlideRightRoute(page: const FindBookingScreen()));
   }
 }
 

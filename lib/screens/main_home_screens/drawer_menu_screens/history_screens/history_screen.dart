@@ -3,6 +3,7 @@ import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/common_padding.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 
 import 'booking_history_screens/booking_history_detail_screen.dart';
@@ -22,7 +23,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,
-      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 4),
+      drawer: CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 4),
       body: Container(
         height: sizes!.height,
         width: sizes!.width,

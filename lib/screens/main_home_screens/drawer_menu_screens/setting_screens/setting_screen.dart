@@ -5,6 +5,7 @@ import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -55,7 +56,7 @@ class _SettingScreenState extends State<SettingScreen> {
       child: Scaffold(
         key: scaffoldKey,
         drawer:
-            CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 5),
+            CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 5),
         body: SizedBox(
             height: sizes!.height,
             width: sizes!.width,

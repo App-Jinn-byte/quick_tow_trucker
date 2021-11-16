@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as maps;
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 
 class FindBookingScreen extends StatefulWidget {
@@ -26,7 +26,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
       child: Scaffold(
         key: scaffoldKey,
         drawer:
-            CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 1),
+            CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 1),
         body: Container(
             height: sizes!.height,
             width: sizes!.width,
