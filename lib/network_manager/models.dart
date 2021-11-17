@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/models/auth/edit_profile_response.dart';
 import 'package:quick_tow_trucker/models/auth/login_response.dart';
+import 'package:quick_tow_trucker/models/auth/photo_upload_response.dart';
 import 'package:quick_tow_trucker/models/error_model/error_model.dart';
 
 class Models {
   static const String loginModel = "LOGIN_MODEL";
   static const String errorModel = "ERROR_MODEL";
   static const String editProfileModel = "EDIT_PROFILE_MODEL";
+  static const String editProfileUploadPhotoModel =
+      "EDIT_PROFILE_UPLOAD_PHOTO_MODEL";
 
   static Future<dynamic> getModelObject(
       String modelName, Map<String, dynamic> json) async {
@@ -21,6 +24,8 @@ class Models {
       //   return ForgotPasswordResponse.fromJson(json);
       case editProfileModel:
         return EditProfileResponse.fromJson(json);
+      case editProfileUploadPhotoModel:
+        return PhotoUploadResponse.fromJson(json);
       case errorModel:
         return ErrorResponse.fromJson(json);
     }

@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
+import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
@@ -46,6 +50,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(303) 148-6555";
   final String _password =
       PreferenceUtils.getString(Strings.loginPassword) ?? "******";
+
+  //File? _image;
+  String? imgString;
+  ImagePicker? imagePicker = ImagePicker();
+
+  Future getImage() async {
+    final dynamic image =
+        await imagePicker?.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (image != null) {
+        editProfileProvider.myImage = File(image.path);
+        editProfileProvider.pickedImage = true;
+        imgString = baseUrl + editProfileProvider.myImage!.path;
+        print("Image: $imgString");
+
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -183,8 +205,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     // selectedImage: selectedImageByUser,
                     // isImageUploaded: isImageUploaded,
                     onEditImage: () {
-                  Toasts.getErrorToast(text: "Try it later :) ");
-                  // getImage();
+                  // Toasts.getErrorToast(text: "Try it later :) ");
+                  getImage();
                 }),
               ),
               SizedBox(

@@ -1,6 +1,9 @@
+import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/models/auth/edit_profile_response.dart';
+import 'package:quick_tow_trucker/models/auth/photo_upload_response.dart';
 import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/network_manager/models.dart';
 import 'package:quick_tow_trucker/network_manager/my_api.dart';
@@ -12,12 +15,51 @@ class EditProfileProvider extends ChangeNotifier {
   BuildContext? context;
 
   EditProfileResponse editProfileResponse = EditProfileResponse();
+  PhotoUploadResponse photoUploadResponse = PhotoUploadResponse();
+
   bool isEditProfileSuccessful = false;
   final Loader _loader = Loader();
+  bool pickedImage = false;
+  File? myImage;
 
   Future<void> init({@required BuildContext? context}) async {
     this.context = context;
     isEditProfileSuccessful = false;
+  }
+
+  Future<void> uploadImageApi(
+      {@required dynamic image, required String? userId}) async {
+    try {
+      Map<String, dynamic> header = {"accept": "*/*"};
+      String filename = image.path.split('/').last;
+      FormData formData = FormData.fromMap({
+        "file": await MultipartFile.fromFile(
+          image.path,
+          filename: filename,
+        ),
+      });
+
+      print("URL: $editProfilePhotoUploadApiUrl");
+      photoUploadResponse = await MyApi.callPostApi(
+          url: editProfilePhotoUploadApiUrl + userId.toString(),
+          body: formData,
+          myHeaders: header,
+          modelName: Models.editProfileUploadPhotoModel);
+
+      if (photoUploadResponse != null) {
+        print("photoUploadResponse: ${photoUploadResponse.data.toString()}");
+        await PreferenceUtils.setUserImage(photoUploadResponse.data!).then((_) {
+          Toasts.getSuccessToast(text: "Image Uploaded");
+          print("Image Uploaded");
+          var uploaded = PreferenceUtils.getUserImage();
+          print("Stored Image: $uploaded");
+        }).catchError((onError) {
+          print("Photo Saving Error: ${onError.toString()} ");
+        });
+      }
+    } catch (e) {
+      print("Photo Uploading Error: ${e.toString()}");
+    }
   }
 
   Future<void> callEditProfileApi(
@@ -43,16 +85,19 @@ class EditProfileProvider extends ChangeNotifier {
       };
 
       print("URL: $editProfileApiUrl");
-      print("Before: Edit Profile Body: $body");
-
       editProfileResponse = await MyApi.callPutApi(
           url: editProfileApiUrl,
           body: body,
           myHeaders: header,
           modelName: Models.editProfileModel);
-      print("After: Edit Profile Body: $body");
+      print("Edit Profile Body: $body");
 
       if (editProfileResponse != null) {
+        if (pickedImage) {
+          await uploadImageApi(image: myImage, userId: id);
+          print("myImage: $myImage");
+          pickedImage = false;
+        }
         await PreferenceUtils.setEditProfileResponse(editProfileResponse)
             .then((_) {
           String name = PreferenceUtils.getString(Strings.loginFirstName) ?? "";

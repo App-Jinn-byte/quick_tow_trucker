@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
+import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
@@ -38,12 +39,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final String _phone =
       PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(900) 900987";
 
+  final dynamic _userPhoto = PreferenceUtils.getUserImage();
+
+  @override
+  void initState() {
+    print("_userPhoto: $_userPhoto");
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,
-      drawer: CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 2),
+      drawer:
+          CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 2),
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
@@ -81,7 +92,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: sizes!.heightRatio * 88,
                       width: sizes!.widthRatio * 88,
                       child: const CircleAvatar(
-                        backgroundImage: AssetImage(
+                        backgroundImage: //NetworkImage("$_userPhoto"),
+                            AssetImage(
                           "assets/png/photo@2x.png",
                         ),
                         radius: 50.0,

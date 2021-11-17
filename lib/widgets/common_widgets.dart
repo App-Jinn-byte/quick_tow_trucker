@@ -26,7 +26,7 @@ class CommonWidgets {
 
   static Widget getBookingContainer({required BuildContext context}) {
     return Container(
-      height: sizes!.heightRatio * 435,
+      height: sizes!.heightRatio * 450,
       width: sizes!.widthRatio * 326,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(12)),

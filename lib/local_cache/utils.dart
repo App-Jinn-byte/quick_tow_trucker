@@ -51,8 +51,8 @@ class PreferenceUtils {
         Strings.filePath, uploadProfilePictureResponse.data!.message!);
   }
 
-  static setUserImage(String? image) {
-    PreferenceUtils.setString(Strings.userImageKey, image!);
+  static Future setUserImage(image) async {
+    await PreferenceUtils.setString(Strings.userImageKey, image ?? "");
   }
 
   static String? getUserImage() {
