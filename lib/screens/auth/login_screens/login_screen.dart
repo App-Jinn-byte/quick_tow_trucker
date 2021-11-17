@@ -86,124 +86,131 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
         child: Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        height: sizes!.height,
-        width: sizes!.width,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(Assets.mainBgImageWithLogoOnBottom),
-                fit: BoxFit.fill)),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Center(
-                child: Container(
-                  margin: EdgeInsets.only(top: sizes!.heightRatio * 22.02),
-                  width: sizes!.widthRatio * 206.38,
-                  height: sizes!.heightRatio * 92.98,
-                  child: Image.asset(Assets.loginLogo),
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Container(
+          height: sizes!.height,
+          width: sizes!.width,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(Assets.mainBgImageWithLogoOnBottom),
+                  fit: BoxFit.fill)),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(top: sizes!.heightRatio * 22.02),
+                    width: sizes!.widthRatio * 206.38,
+                    height: sizes!.heightRatio * 92.98,
+                    child: Image.asset(Assets.loginLogo),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 55, //75
-              ),
-              Padding(
+                SizedBox(
+                  height: sizes!.heightRatio * 55, //75
+                ),
+                Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 36.0,
+                        right: sizes!.heightRatio * 36.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextView.getWelcomeTextWith28(
+                        "Welcome!",
+                        Assets.poppinsMedium,
+                        color: AppColors.blackTextColor,
+                        lines: 1,
+                      ),
+                    )),
+                SizedBox(
+                  height: sizes!.heightRatio * 6,
+                ),
+                Padding(
                   padding: EdgeInsets.only(
                       left: sizes!.widthRatio * 36.0,
                       right: sizes!.heightRatio * 36.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextView.getWelcomeTextWith28(
-                      "Welcome!",
-                      Assets.poppinsMedium,
-                      color: AppColors.blackTextColor,
-                      lines: 1,
-                    ),
-                  )),
-              SizedBox(
-                height: sizes!.heightRatio * 6,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 36.0,
-                    right: sizes!.heightRatio * 36.0),
-                child: TextView.getSubHeadingTextWith15(
-                    "It is a long established fact that a reader will be distracted.",
-                    Assets.poppinsLight,
-                    color: AppColors.subHeadingTextColor,
-                    lines: 2),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 35, //45
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: CommonWidgets.loginText(
-                        text: "Email",
-                        fontSize: sizes!.fontRatio * 15.0,
-                        color: AppColors.blackTextColor)),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 6,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30,
-                    right: sizes!.widthRatio * 30),
-                child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "Example@gmail.com",
-                  icon: "assets/png/email_icon@2x.png",
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  isValid: isValidEmail,
+                  child: TextView.getSubHeadingTextWith15(
+                      "It is a long established fact that a reader will be distracted.",
+                      Assets.poppinsLight,
+                      color: AppColors.subHeadingTextColor,
+                      lines: 2),
                 ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 12,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: CommonWidgets.loginText(
-                        text: "Password",
-                        fontSize: sizes!.fontRatio * 15.0,
-                        color: AppColors.blackTextColor)),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 6,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30,
-                    right: sizes!.widthRatio * 30),
-                child: CommonWidgets
-                    .customTextFieldWithPasswordCustomContainerIcon(
-                        placeHolder: "******",
-                        icon: "assets/png/password_icon@2x.png",
-                        hidePassword: hiddenPassword,
-                        clickIcon: clickIcon,
-                        isValid: isValidPassword,
-                        controller: passwordController,
-                        keyboardType: TextInputType.text),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 35, //40
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30,
-                    right: sizes!.widthRatio * 30),
-                child: CommonWidgets.getStartButton("Login", onPress: () {
-                  moveToHomeScreen();
-                }),
-              ),
-              SizedBox(
-                width: sizes!.widthRatio * 20,
-              ),
-            ],
+                SizedBox(
+                  height: sizes!.heightRatio * 35, //45
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: CommonWidgets.loginText(
+                          text: "Email",
+                          fontSize: sizes!.fontRatio * 15.0,
+                          color: AppColors.blackTextColor)),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 6,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: sizes!.widthRatio * 30,
+                      right: sizes!.widthRatio * 30),
+                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                    placeHolder: "Example@gmail.com",
+                    icon: "assets/png/email_icon@2x.png",
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    isValid: isValidEmail,
+                  ),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 12,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: CommonWidgets.loginText(
+                          text: "Password",
+                          fontSize: sizes!.fontRatio * 15.0,
+                          color: AppColors.blackTextColor)),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 6,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: sizes!.widthRatio * 30,
+                      right: sizes!.widthRatio * 30),
+                  child: CommonWidgets
+                      .customTextFieldWithPasswordCustomContainerIcon(
+                          placeHolder: "******",
+                          icon: "assets/png/password_icon@2x.png",
+                          hidePassword: hiddenPassword,
+                          clickIcon: clickIcon,
+                          isValid: isValidPassword,
+                          controller: passwordController,
+                          keyboardType: TextInputType.text),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 35, //40
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: sizes!.widthRatio * 30,
+                      right: sizes!.widthRatio * 30),
+                  child: CommonWidgets.getStartButton("Login", onPress: () {
+                    moveToHomeScreen();
+                  }),
+                ),
+                SizedBox(
+                  width: sizes!.widthRatio * 20,
+                ),
+                Padding(
+                    // this is new
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom)),
+              ],
+            ),
           ),
         ),
       ),

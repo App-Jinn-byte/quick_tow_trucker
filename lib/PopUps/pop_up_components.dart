@@ -448,7 +448,7 @@ class PopUpComponents {
               overflow: Overflow.visible,
               children: [
                 Container(
-                  height: sizes!.heightRatio * 450, //488
+                  height: sizes!.heightRatio * 488, //488
                   width: sizes!.widthRatio * 326,
                   padding: EdgeInsets.only(
                       left: sizes!.pagePadding,
@@ -458,13 +458,13 @@ class PopUpComponents {
                     //crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: sizes!.heightRatio * 10,
+                        height: sizes!.heightRatio * 15.0,
                       ),
                       TextView.getWelcomeTextWith28(
                           'Welcome Back!', Assets.poppinsMedium,
                           color: AppColors.blackTextColor, lines: 1),
                       SizedBox(
-                        height: sizes!.heightRatio * 5,
+                        height: sizes!.heightRatio * 5.0,
                       ),
                       TextView.getSmallText(
                           "The Welcome That Likes To Say Yes.",
@@ -473,10 +473,11 @@ class PopUpComponents {
                           lines: 1,
                           textAlign: TextAlign.center),
                       SizedBox(
-                        height: sizes!.heightRatio * 30,
+                        height: sizes!.heightRatio * 30.0,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: sizes!.widthRatio * 12),
+                        padding:
+                            EdgeInsets.only(left: sizes!.widthRatio * 12.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: TextView.getMediumText16(
@@ -487,7 +488,7 @@ class PopUpComponents {
                         ),
                       ),
                       SizedBox(
-                        height: sizes!.heightRatio * 15,
+                        height: sizes!.heightRatio * 15.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -502,7 +503,22 @@ class PopUpComponents {
                         ],
                       ),
                       SizedBox(
-                        height: sizes!.heightRatio * 10,
+                        height: sizes!.heightRatio * 30,
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.only(left: sizes!.widthRatio * 15.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextView.getMediumText14(
+                              "Select Your Status", Assets.poppinsMedium,
+                              color: AppColors.getStartedButtonColor,
+                              fontWeight: FontWeight.bold,
+                              lines: 1),
+                        ),
+                      ),
+                      SizedBox(
+                        height: sizes!.heightRatio * 16.0,
                       ),
                       Row(
                         children: [
@@ -533,12 +549,12 @@ class PopUpComponents {
                             onChanged: (value) {
                               setState(() {
                                 _character = value;
-                                print("On-Break: $_character");
+                                print("In-Progress: $_character");
                               });
                             },
                           ),
                           TextView.getSubHeadingTextWith15(
-                              "On-Break", Assets.poppinsRegular,
+                              "In-Progress", Assets.poppinsRegular,
                               color: AppColors.radioButtonTextColor,
                               lines: 1,
                               fontWeight: FontWeight.normal)
@@ -1095,7 +1111,7 @@ class PopUpComponents {
                             "Vehicle Name", Assets.poppinsMedium,
                             color: AppColors.blackTextColor, lines: 1),
                         TextView.getSmallText12(
-                            "Vehicle Name", Assets.poppinsMedium,
+                            "Vehicle Model", Assets.poppinsMedium,
                             color: AppColors.blackTextColor, lines: 1),
                       ],
                     ),
@@ -1393,7 +1409,7 @@ class PopUpComponents {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextView.getSmallText12(
-                            "Fuel deliveries", Assets.poppinsMedium,
+                            "Fuel Deliveries", Assets.poppinsMedium,
                             color: AppColors.blackTextColor, lines: 1),
                         TextView.getMediumText16("\$ 42", Assets.poppinsMedium,
                             color: AppColors.popUpTextColor,

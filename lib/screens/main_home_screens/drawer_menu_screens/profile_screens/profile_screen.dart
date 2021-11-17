@@ -144,24 +144,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(
                     left: sizes!.widthRatio * 30.0,
                     right: sizes!.heightRatio * 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegular13Text(
-                        "Vehicle Details", Assets.poppinsMedium,
-                        color: AppColors.blackTextColor, lines: 1),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            SlideRightRoute(page: const VehicleDetailScreen()));
-                      },
-                      child: Image.asset(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        SlideRightRoute(page: const VehicleDetailScreen()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextView.getRegular13Text(
+                          "Vehicle Details", Assets.poppinsMedium,
+                          color: AppColors.blackTextColor, lines: 1),
+                      Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
                         height: sizes!.heightRatio * 23.0,
                         width: sizes!.widthRatio * 23.0,
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
 
@@ -183,24 +183,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(
                     left: sizes!.widthRatio * 30.0,
                     right: sizes!.heightRatio * 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegular13Text(
-                        "Driver license", Assets.poppinsMedium,
-                        color: AppColors.blackTextColor, lines: 1),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            SlideRightRoute(page: const DriverLicenseScreen()));
-                      },
-                      child: Image.asset(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        SlideRightRoute(page: const DriverLicenseScreen()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextView.getRegular13Text(
+                          "Driver license", Assets.poppinsMedium,
+                          color: AppColors.blackTextColor, lines: 1),
+                      Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
                         height: sizes!.heightRatio * 23.0,
                         width: sizes!.widthRatio * 23.0,
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
 
@@ -222,24 +222,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(
                     left: sizes!.widthRatio * 30.0,
                     right: sizes!.heightRatio * 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegular13Text(
-                        "Insurance Information", Assets.poppinsMedium,
-                        color: AppColors.blackTextColor, lines: 1),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            SlideRightRoute(page: const InsuranceInfoScreen()));
-                      },
-                      child: Image.asset(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        SlideRightRoute(page: const InsuranceInfoScreen()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextView.getRegular13Text(
+                          "Insurance Information", Assets.poppinsMedium,
+                          color: AppColors.blackTextColor, lines: 1),
+                      Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
                         height: sizes!.heightRatio * 23.0,
                         width: sizes!.widthRatio * 23.0,
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
 
@@ -261,24 +261,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(
                     left: sizes!.widthRatio * 30.0,
                     right: sizes!.heightRatio * 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegular13Text(
-                        "Company Support", Assets.poppinsMedium,
-                        color: AppColors.blackTextColor, lines: 1),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            SlideRightRoute(page: const MessageScreen()));
-                      },
-                      child: Image.asset(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context, SlideRightRoute(page: const MessageScreen()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextView.getRegular13Text(
+                          "Company Support", Assets.poppinsMedium,
+                          color: AppColors.blackTextColor, lines: 1),
+                      Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
                         height: sizes!.heightRatio * 23.0,
                         width: sizes!.widthRatio * 23.0,
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -299,24 +299,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(
                     left: sizes!.widthRatio * 30.0,
                     right: sizes!.heightRatio * 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.getRegular13Text(
-                        "Account Details", Assets.poppinsMedium,
-                        color: AppColors.blackTextColor, lines: 1),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            SlideRightRoute(page: const AccountDetailScreen()));
-                      },
-                      child: Image.asset(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        SlideRightRoute(page: const AccountDetailScreen()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextView.getRegular13Text(
+                          "Account Details", Assets.poppinsMedium,
+                          color: AppColors.blackTextColor, lines: 1),
+                      Image.asset(
                         "assets/png/profile_back_btn_icon@2x.png",
                         height: sizes!.heightRatio * 23.0,
                         width: sizes!.widthRatio * 23.0,
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
 
