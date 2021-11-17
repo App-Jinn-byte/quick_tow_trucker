@@ -91,8 +91,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(
                       height: sizes!.heightRatio * 88,
                       width: sizes!.widthRatio * 88,
-                      child: const CircleAvatar(
-                        backgroundImage: //NetworkImage("$_userPhoto"),
+                      child: CircleAvatar(
+                        backgroundImage: //NetworkImage("http://$_userPhoto"),
                             AssetImage(
                           "assets/png/photo@2x.png",
                         ),
