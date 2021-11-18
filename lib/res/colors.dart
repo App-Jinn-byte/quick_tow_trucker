@@ -27,13 +27,11 @@ class AppColors {
   static const checkBoxBorderColor = Color.fromRGBO(16, 85, 16, 1);
   static const requestTowTextColor = Color.fromRGBO(19, 72, 19, 1);
 
-
   static const homeScreenContainerColor = Color.fromRGBO(248, 251, 248, 1);
   static const homeScreenContainerColorShadow = Color.fromRGBO(0, 0, 0, 0.16);
 
   static const activeVehicleColor = Color.fromRGBO(47, 92, 181, 1);
   static const activeVehicleStatusColor = Color.fromRGBO(18, 99, 18, 1);
-
 
   static const routeTextColor = Color.fromRGBO(119, 118, 118, 1);
   static const popUpTextColor = Color.fromRGBO(19, 72, 19, 1);
@@ -42,8 +40,8 @@ class AppColors {
 
   static const pass = Color.fromRGBO(75, 75, 75, 1);
   static const subHeadingTextColor = Color.fromRGBO(132, 132, 132, 1);
-
-
+  static const officeDetailText = Color.fromRGBO(49, 49, 49, 1);
+  static const bookingContainerColor = Color.fromRGBO(18, 99, 18, 0.4);
 
   static const appTheme = Color.fromRGBO(117, 176, 46, 1);
   static const appBackground = Color.fromRGBO(223, 237, 239, 1);
@@ -58,7 +56,6 @@ class AppColors {
   static final smallButtonBorder = Color.fromRGBO(80, 80, 80, 0.2);
   static final smallButtonText = Color.fromRGBO(16, 17, 20, 1);
   static final smallOfficeSizeText = Color.fromRGBO(122, 122, 122, 1);
-  static final officeDetailText = Color.fromRGBO(49, 49, 49, 1);
   static final seminarGradient2 = Color.fromRGBO(35, 35, 35, 0.58);
   static final seminarGradient3 = Color.fromRGBO(84, 84, 84, 0);
   static final senderRowBlueColor = Color.fromRGBO(60, 76, 146, 0.91);
@@ -97,9 +94,6 @@ class AppColors {
   static const lightGreyBlueTextColor = Color.fromRGBO(124, 132, 148, 1);
   static const greyButtonTextColor = Color.fromRGBO(179, 179, 179, 1);
   static const activeTextColor = Color.fromRGBO(47, 92, 181, 1);
-
-
-
 
   static const clr_light_black = Color.fromRGBO(29, 29, 29, 1);
   static const clr_bg_button = Color.fromRGBO(18, 65, 191, 1);

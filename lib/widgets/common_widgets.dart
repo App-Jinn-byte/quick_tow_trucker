@@ -368,7 +368,7 @@ class CommonWidgets {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextView.getSmallBoldText12(
-                        "Vehicle Make", Assets.poppinsMedium,
+                        "Vehicle Name", Assets.poppinsMedium,
                         color: AppColors.pass, lines: 1),
                     TextView.getSmallBoldText12(
                         "Vehicle Model", Assets.poppinsMedium,
@@ -933,6 +933,55 @@ class CommonWidgets {
             child: Column(
               children: [
                 TextView.getSmallBoldText12("Arriving", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+                SizedBox(
+                  height: sizes!.heightRatio * 2.0,
+                ),
+                TextView.getSmallText12(
+                    arrivingTime ?? "15 mins", Assets.poppinsMedium,
+                    color: AppColors.blackTextColor, lines: 1),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  static Widget getAwayContainer(
+      {@required dynamic truckerPhoto, @required dynamic arrivingTime}) {
+    return Container(
+      height: sizes!.heightRatio * 43.0,
+      width: sizes!.widthRatio * 100.0,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(28)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.cardShadowColor,
+            blurRadius: 2,
+            offset: Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: sizes!.widthRatio * 8.0),
+            child: Image.asset(
+              truckerPhoto ?? "assets/png/avatar_user_icon@2x.png",
+              height: sizes!.heightRatio * 33.0,
+              width: sizes!.widthRatio * 33.0,
+            ),
+          ),
+          SizedBox(
+            width: sizes!.widthRatio * 5.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: sizes!.heightRatio * 8.0),
+            child: Column(
+              children: [
+                TextView.getSmallBoldText12("Away", Assets.poppinsMedium,
                     color: AppColors.blackTextColor, lines: 1),
                 SizedBox(
                   height: sizes!.heightRatio * 2.0,

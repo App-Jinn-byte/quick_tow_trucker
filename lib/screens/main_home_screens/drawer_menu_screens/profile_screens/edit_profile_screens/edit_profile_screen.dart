@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
-import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
@@ -38,36 +34,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   late bool _isValidPassword;
   late bool _hiddenPassword;
 
-  final String _userId = PreferenceUtils.getString(Strings.loginUserId) ?? "";
-
-  final String _firstName =
+  String firstName =
       PreferenceUtils.getString(Strings.loginFirstName) ?? "Randy Joe";
-  final String _lastName =
+  String lastName =
       PreferenceUtils.getString(Strings.loginLastName) ?? "Hudson William";
-  final String _email =
+  String email =
       PreferenceUtils.getString(Strings.loginEmail) ?? "RandyJoe@gmail.com";
-  final String _phoneNumber =
+  String phoneNumber =
       PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(303) 148-6555";
-  final String _password =
+  String password =
       PreferenceUtils.getString(Strings.loginPassword) ?? "******";
-
-  //File? _image;
-  String? imgString;
-  ImagePicker? imagePicker = ImagePicker();
-
-  Future getImage() async {
-    final dynamic image =
-        await imagePicker?.pickImage(source: ImageSource.gallery);
-    setState(() {
-      if (image != null) {
-        editProfileProvider.myImage = File(image.path);
-        editProfileProvider.pickedImage = true;
-        imgString = baseUrl + editProfileProvider.myImage!.path;
-        print("Image: $imgString");
-
-      }
-    });
-  }
 
   @override
   void initState() {
@@ -81,8 +57,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     editProfileProvider =
         Provider.of<EditProfileProvider>(context, listen: false);
     editProfileProvider.init(context: context);
-
-    print("Current User ID: $_userId");
 
     _isFirstNameValid = true;
     _isLastNameValid = true;
@@ -205,8 +179,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     // selectedImage: selectedImageByUser,
                     // isImageUploaded: isImageUploaded,
                     onEditImage: () {
-                  // Toasts.getErrorToast(text: "Try it later :) ");
-                  getImage();
+                  Toasts.getErrorToast(text: "Try it later :) ");
+                  // getImage();
                 }),
               ),
               SizedBox(
@@ -374,23 +348,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   Future<void> updateProfile() async {
-    var _firstName = _firstNameController.text.toString().trim();
-    var _lastName = _lastNameController.text.toString().trim();
-    var _email = _emailController.text.toString().trim();
-    var _phoneNumber = _phoneNumberController.text.toString().trim();
-    var _password = _passwordController.text.toString().trim();
+    var firstName = _firstNameController.text.toString().trim();
+    var lastName = _lastNameController.text.toString().trim();
+    var email = _emailController.text.toString().trim();
+    var phoneNumber = _phoneNumberController.text.toString().trim();
+    var password = _passwordController.text.toString().trim();
 
-    await editProfileProvider.callUpdateApi(
-        id: _userId,
-        firstName: _firstName,
-        lastName: _lastName,
-        phoneNumber: _phoneNumber,
-        email: _email,
-        password: _password,
+    await editProfileProvider.callEditProfileApi(
+        id: "id",
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        email: email,
+        password: password,
         profilePhoto: "profilePhoto");
 
     if (editProfileProvider.isEditProfileSuccessful == true) {
       Toasts.getSuccessToast(text: "Profile Updated");
+      Navigator.pop(context);
     }
   }
 }
