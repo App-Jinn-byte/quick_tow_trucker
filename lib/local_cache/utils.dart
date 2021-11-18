@@ -1,4 +1,5 @@
 import 'dart:async' show Future;
+import 'package:quick_tow_trucker/models/auth/edit_profile_response.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -50,15 +51,14 @@ class PreferenceUtils {
         Strings.filePath, uploadProfilePictureResponse.data!.message!);
   }
 
-  static setUserImage(String? image) {
-    PreferenceUtils.setString(Strings.userImageKey, image!);
+  static Future setUserImage(image) async {
+    await PreferenceUtils.setString(Strings.userImageKey, image ?? "");
   }
 
   static String? getUserImage() {
     userImage = PreferenceUtils.getString(Strings.userImageKey)!;
     return userImage;
   }
-
 
   static Future setLoginResponse(loginResponse) async {
     await PreferenceUtils.setString(
@@ -79,9 +79,23 @@ class PreferenceUtils {
         Strings.loginPhoneNo, loginResponse.data?.user?.phoneNumber ?? "");
   }
 
+  static Future setEditProfileResponse(editProfileResponse) async {
+    // await PreferenceUtils.setString(
+    //     Strings.loginUserToken, loginResponse.data?.token ?? "");
 
-
-
+    await PreferenceUtils.setString(
+        Strings.loginUserId, editProfileResponse.data?.id ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginFirstName, editProfileResponse.data?.firstName ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginLastName, editProfileResponse.data?.lastName ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginEmail, editProfileResponse.data?.email ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginPassword, editProfileResponse.data?.password ?? "");
+    await PreferenceUtils.setString(
+        Strings.loginPhoneNo, editProfileResponse.data?.phoneNumber ?? "");
+  }
 
   // static Future setLoginResponse(loginResponse) async {
   //   if (loginResponse.data.subscription.isEmpty) {

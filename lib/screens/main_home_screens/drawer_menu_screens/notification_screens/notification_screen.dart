@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/common_padding.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,
-      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 3),
+      drawer: CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 3),
       body: Container(
         height: sizes!.height,
         width: sizes!.width,

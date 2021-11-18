@@ -7,6 +7,7 @@ import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/add_service_screens/add_service_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/message_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/payment_total_screens/payment_total_screen.dart';
+import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 
 class EndRideScreen extends StatefulWidget {
@@ -60,7 +61,8 @@ class _EndRideScreenState extends State<EndRideScreen> {
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,
-      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 7),
+      drawer:
+          CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 7),
       body: SizedBox(
           height: sizes!.height,
           width: sizes!.width,
