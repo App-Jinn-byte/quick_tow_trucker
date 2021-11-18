@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +10,6 @@ import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
-import 'package:quick_tow_trucker/widgets/text_views.dart';
-
 import 'edit_profile_provider.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -64,7 +61,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         editProfileProvider.pickedImage = true;
         imgString = baseUrl + editProfileProvider.myImage!.path;
         print("Image: $imgString");
-
       }
     });
   }
@@ -191,15 +187,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   child: CommonWidgets.getAppBarCustomBackButton(context),
                 ),
 
-                // CommonWidgets.getAppBarWithTitleAndBackButton(
-                //     context: context,
-                //     title: "Edit Profile",
-                //     icon: "assets/png/back_btn_icon@2x.png",
-                //     onPress: () {
-                //       Navigator.pop(context);
-                //     }),
-
-<<<<<<<<< Temporary merge branch 1
                 SizedBox(
                   height: sizes!.heightRatio * 35.0,
                 ),
@@ -225,51 +212,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           text: "First Name",
                           fontSize: sizes!.fontRatio * 15.0,
                           color: AppColors.blackTextColor)),
-=========
-              SizedBox(
-                height: sizes!.heightRatio * 35.0,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: CommonWidgets.getProfileImage(
-                    // profileImg: image,
-                    // selectedImage: selectedImageByUser,
-                    // isImageUploaded: isImageUploaded,
-                    onEditImage: () {
-                  // Toasts.getErrorToast(text: "Try it later :) ");
-                  getImage();
-                }),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 35.0,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: CommonWidgets.loginText(
-                        text: "First Name",
-                        fontSize: sizes!.fontRatio * 15.0,
-                        color: AppColors.blackTextColor)),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 6,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30,
-                    right: sizes!.widthRatio * 30),
-                child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "Alan",
-                  icon: "assets/png/profile_icon@2x.png",
-                  controller: _firstNameController,
-                  keyboardType: TextInputType.text,
-                  isValid: _isFirstNameValid,
->>>>>>>>> Temporary merge branch 2
                 ),
+
                 SizedBox(
                   height: sizes!.heightRatio * 6,
                 ),
+
                 Padding(
                   padding: EdgeInsets.only(
                       left: sizes!.widthRatio * 30,
@@ -375,9 +323,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           fontSize: sizes!.fontRatio * 15.0,
                           color: AppColors.blackTextColor)),
                 ),
-                SizedBox(
-                  height: sizes!.heightRatio * 6,
-                ),
+                // SizedBox(
+                //   height: sizes!.heightRatio * 6,
+                // ),
                 Padding(
                   padding: EdgeInsets.only(
                       left: sizes!.widthRatio * 30,
