@@ -38,13 +38,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       PreferenceUtils.getString(Strings.loginEmail) ?? "Alan@gmail.com";
   final String _phone =
       PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(900) 900987";
-
   final dynamic _userPhoto = PreferenceUtils.getUserImage();
 
   @override
   void initState() {
     print("_userPhoto: $_userPhoto");
-
     super.initState();
   }
 
