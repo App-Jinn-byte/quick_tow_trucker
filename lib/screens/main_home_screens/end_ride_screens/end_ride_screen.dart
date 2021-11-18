@@ -17,6 +17,8 @@ class EndRideScreen extends StatefulWidget {
 }
 
 class _EndRideScreenState extends State<EndRideScreen> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   final CameraPosition _initialLocation = const CameraPosition(
       target: LatLng(31.464796339004113, 74.38949657281934), zoom: 12.0);
 
@@ -57,6 +59,8 @@ class _EndRideScreenState extends State<EndRideScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      key: scaffoldKey,
+      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 7),
       body: SizedBox(
           height: sizes!.height,
           width: sizes!.width,
@@ -84,10 +88,11 @@ class _EndRideScreenState extends State<EndRideScreen> {
                 child:
                     CommonWidgets.getAppBarWithoutContainerTitleAndBackButton(
                         context: context,
-                        title: "End Ride",
-                        icon: "assets/png/back_btn_icon@2x.png",
+                        title: "",
+                        icon: "assets/png/menu_icon@2x.png",
                         onPress: () {
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
+                          scaffoldKey.currentState?.openDrawer();
                         }),
               ),
               Positioned(

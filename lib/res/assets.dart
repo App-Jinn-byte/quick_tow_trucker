@@ -1,9 +1,10 @@
 class Assets {
   // images
 
-
-
   static const String mainBgImage = "assets/png/main_bg.png";
+  static const String mainBookingBGImage =
+      "assets/png/booking_screen_bg@2x.png";
+
   static const String mainBgImageWithLogoOnTop =
       "assets/png/main_bg_with_logo_02.png";
   static const String mainBgImageWithLogoOnBottom =
@@ -11,14 +12,11 @@ class Assets {
   static const String splashBgImage = "assets/png/splash_screen_bg_01.png";
   static const String icon_send = "assets/png/message_sender_icon@2x.png";
 
-
-
   static const String appBgImage = "assets/png/app_bg.png";
-  static const String splashLogo = "assets/png/splash_trucker_screen_logo@2x.png";
+  static const String splashLogo =
+      "assets/png/splash_trucker_screen_logo@2x.png";
   static const String loginLogo = "assets/png/login_screen_logo@2x.png";
   static const String backIcon = "assets/png/icon_back2x.png";
-
-
 
   static const String introImage = "assets/png/intro_screen_image.png";
   static const String introLogo = "assets/png/intro_screen_logo.png";
