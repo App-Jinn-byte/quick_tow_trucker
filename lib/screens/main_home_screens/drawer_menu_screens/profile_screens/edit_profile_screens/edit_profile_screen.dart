@@ -197,8 +197,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       // selectedImage: selectedImageByUser,
                       // isImageUploaded: isImageUploaded,
                       onEditImage: () {
-                    Toasts.getErrorToast(text: "Try it later :) ");
-                    // getImage();
+                    getImage();
                   }),
                 ),
                 SizedBox(
