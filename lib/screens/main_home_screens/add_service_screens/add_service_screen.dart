@@ -337,7 +337,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                     ),
                                   ),
                                   TextView.getSmallText12(
-                                    "Do you have a spare tire with you?",
+                                    "Do you want lock out service?",
                                     Assets.poppinsRegular,
                                     color: AppColors.requestTowTextColor,
                                     lines: 1,
@@ -626,7 +626,9 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                 ),
               ),
 
-              SizedBox(height: sizes!.heightRatio * 88.0,),
+              SizedBox(
+                height: sizes!.heightRatio * 88.0,
+              ),
 
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
