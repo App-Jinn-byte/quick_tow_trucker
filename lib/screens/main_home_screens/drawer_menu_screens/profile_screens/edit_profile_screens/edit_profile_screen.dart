@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
+import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
@@ -34,16 +38,36 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   late bool _isValidPassword;
   late bool _hiddenPassword;
 
-  String firstName =
+  final String _userId = PreferenceUtils.getString(Strings.loginUserId) ?? "";
+
+  final String _firstName =
       PreferenceUtils.getString(Strings.loginFirstName) ?? "Randy Joe";
-  String lastName =
+  final String _lastName =
       PreferenceUtils.getString(Strings.loginLastName) ?? "Hudson William";
-  String email =
+  final String _email =
       PreferenceUtils.getString(Strings.loginEmail) ?? "RandyJoe@gmail.com";
-  String phoneNumber =
+  final String _phoneNumber =
       PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(303) 148-6555";
-  String password =
+  final String _password =
       PreferenceUtils.getString(Strings.loginPassword) ?? "******";
+
+  //File? _image;
+  String? imgString;
+  ImagePicker? imagePicker = ImagePicker();
+
+  Future getImage() async {
+    final dynamic image =
+        await imagePicker?.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (image != null) {
+        editProfileProvider.myImage = File(image.path);
+        editProfileProvider.pickedImage = true;
+        imgString = baseUrl + editProfileProvider.myImage!.path;
+        print("Image: $imgString");
+
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -57,6 +81,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     editProfileProvider =
         Provider.of<EditProfileProvider>(context, listen: false);
     editProfileProvider.init(context: context);
+
+    print("Current User ID: $_userId");
 
     _isFirstNameValid = true;
     _isLastNameValid = true;
@@ -143,32 +169,63 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     return SafeArea(
         child: Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        height: sizes!.height,
-        width: sizes!.width,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(Assets.mainBgImageWithLogoOnTop),
-                fit: BoxFit.fill)),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30.0,
-                    top: sizes!.heightRatio * 30.0),
-                child: CommonWidgets.getAppBarCustomBackButton(context),
-              ),
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Container(
+          height: sizes!.height,
+          width: sizes!.width,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(Assets.mainBgImageWithLogoOnTop),
+                  fit: BoxFit.fill)),
+          child: SingleChildScrollView(
+            // physics: const BouncingScrollPhysics(),
+            // reverse: true,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: sizes!.widthRatio * 30.0,
+                      top: sizes!.heightRatio * 30.0),
+                  child: CommonWidgets.getAppBarCustomBackButton(context),
+                ),
 
-              // CommonWidgets.getAppBarWithTitleAndBackButton(
-              //     context: context,
-              //     title: "Edit Profile",
-              //     icon: "assets/png/back_btn_icon@2x.png",
-              //     onPress: () {
-              //       Navigator.pop(context);
-              //     }),
+                // CommonWidgets.getAppBarWithTitleAndBackButton(
+                //     context: context,
+                //     title: "Edit Profile",
+                //     icon: "assets/png/back_btn_icon@2x.png",
+                //     onPress: () {
+                //       Navigator.pop(context);
+                //     }),
 
+<<<<<<<<< Temporary merge branch 1
+                SizedBox(
+                  height: sizes!.heightRatio * 35.0,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: CommonWidgets.getProfileImage(
+                      // profileImg: image,
+                      // selectedImage: selectedImageByUser,
+                      // isImageUploaded: isImageUploaded,
+                      onEditImage: () {
+                    Toasts.getErrorToast(text: "Try it later :) ");
+                    // getImage();
+                  }),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 35.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: CommonWidgets.loginText(
+                          text: "First Name",
+                          fontSize: sizes!.fontRatio * 15.0,
+                          color: AppColors.blackTextColor)),
+=========
               SizedBox(
                 height: sizes!.heightRatio * 35.0,
               ),
@@ -179,8 +236,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     // selectedImage: selectedImageByUser,
                     // isImageUploaded: isImageUploaded,
                     onEditImage: () {
-                  Toasts.getErrorToast(text: "Try it later :) ");
-                  // getImage();
+                  // Toasts.getErrorToast(text: "Try it later :) ");
+                  getImage();
                 }),
               ),
               SizedBox(
@@ -208,133 +265,153 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   controller: _firstNameController,
                   keyboardType: TextInputType.text,
                   isValid: _isFirstNameValid,
+>>>>>>>>> Temporary merge branch 2
                 ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: CommonWidgets.loginText(
-                        text: "Last Name",
-                        fontSize: sizes!.fontRatio * 15.0,
-                        color: AppColors.blackTextColor)),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 6,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30,
-                    right: sizes!.widthRatio * 30),
-                child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "Thor",
-                  icon: "assets/png/profile_icon@2x.png",
-                  controller: _lastNameController,
-                  keyboardType: TextInputType.text,
-                  isValid: _isLastNameValid,
+                SizedBox(
+                  height: sizes!.heightRatio * 6,
                 ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: CommonWidgets.loginText(
-                        text: "Email",
-                        fontSize: sizes!.fontRatio * 15.0,
-                        color: AppColors.blackTextColor)),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 6,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30,
-                    right: sizes!.widthRatio * 30),
-                child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "Alan@gmail.com",
-                  icon: "assets/png/email_icon@2x.png",
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  isValid: _isEmailValid,
-                ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: CommonWidgets.loginText(
-                        text: "Phone Number",
-                        fontSize: sizes!.fontRatio * 15.0,
-                        color: AppColors.blackTextColor)),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 6,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30,
-                    right: sizes!.widthRatio * 30),
-                child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                  placeHolder: "(099) 098765",
-                  icon: "assets/png/phone_number_icon@2x.png",
-                  controller: _phoneNumberController,
-                  keyboardType: TextInputType.phone,
-                  isValid: _isPhoneNumberValid,
-                ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: CommonWidgets.loginText(
-                        text: "Password",
-                        fontSize: sizes!.fontRatio * 15.0,
-                        color: AppColors.blackTextColor)),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 6,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30,
-                    right: sizes!.widthRatio * 30),
-                child: CommonWidgets
-                    .customTextFieldWithPasswordCustomContainerIcon(
-                  placeHolder: "******",
-                  icon: "assets/png/password_icon@2x.png",
-                  keyboardType: TextInputType.text,
-                  hidePassword: _hiddenPassword,
-                  clickIcon: clickIcon,
-                  isValid: _isValidPassword,
-                  controller: _passwordController,
-                ),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 70.0,
-              ),
-              Padding(
+                Padding(
                   padding: EdgeInsets.only(
                       left: sizes!.widthRatio * 30,
                       right: sizes!.widthRatio * 30),
-                  child: CommonWidgets.getStartButton("Update", onPress: () {
-                    updateProfile();
-                  })),
-              SizedBox(
-                height: sizes!.heightRatio * 30.0,
-              ),
-            ],
+                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                    placeHolder: "Alan",
+                    icon: "assets/png/profile_icon@2x.png",
+                    controller: _firstNameController,
+                    keyboardType: TextInputType.text,
+                    isValid: _isFirstNameValid,
+                  ),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 10.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: CommonWidgets.loginText(
+                          text: "Last Name",
+                          fontSize: sizes!.fontRatio * 15.0,
+                          color: AppColors.blackTextColor)),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 6,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: sizes!.widthRatio * 30,
+                      right: sizes!.widthRatio * 30),
+                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                    placeHolder: "Thor",
+                    icon: "assets/png/profile_icon@2x.png",
+                    controller: _lastNameController,
+                    keyboardType: TextInputType.text,
+                    isValid: _isLastNameValid,
+                  ),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 10.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: CommonWidgets.loginText(
+                          text: "Email",
+                          fontSize: sizes!.fontRatio * 15.0,
+                          color: AppColors.blackTextColor)),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 6,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: sizes!.widthRatio * 30,
+                      right: sizes!.widthRatio * 30),
+                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                    placeHolder: "Alan@gmail.com",
+                    icon: "assets/png/email_icon@2x.png",
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    isValid: _isEmailValid,
+                  ),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 10.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: CommonWidgets.loginText(
+                          text: "Phone Number",
+                          fontSize: sizes!.fontRatio * 15.0,
+                          color: AppColors.blackTextColor)),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 6,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: sizes!.widthRatio * 30,
+                      right: sizes!.widthRatio * 30),
+                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                    placeHolder: "(099) 098765",
+                    icon: "assets/png/phone_number_icon@2x.png",
+                    controller: _phoneNumberController,
+                    keyboardType: TextInputType.phone,
+                    isValid: _isPhoneNumberValid,
+                  ),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 10.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: CommonWidgets.loginText(
+                          text: "Password",
+                          fontSize: sizes!.fontRatio * 15.0,
+                          color: AppColors.blackTextColor)),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 6,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: sizes!.widthRatio * 30,
+                      right: sizes!.widthRatio * 30),
+                  child: CommonWidgets
+                      .customTextFieldWithPasswordCustomContainerIcon(
+                    placeHolder: "******",
+                    icon: "assets/png/password_icon@2x.png",
+                    keyboardType: TextInputType.text,
+                    hidePassword: _hiddenPassword,
+                    clickIcon: clickIcon,
+                    isValid: _isValidPassword,
+                    controller: _passwordController,
+                  ),
+                ),
+                SizedBox(
+                  height: sizes!.heightRatio * 70.0,
+                ),
+                Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 30,
+                        right: sizes!.widthRatio * 30),
+                    child: CommonWidgets.getStartButton("Update", onPress: () {
+                      updateProfile();
+                    })),
+                SizedBox(
+                  height: sizes!.heightRatio * 30.0,
+                ),
+                Padding(
+                    // this is new
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom)),
+              ],
+            ),
           ),
         ),
       ),
@@ -348,24 +425,23 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   Future<void> updateProfile() async {
-    var firstName = _firstNameController.text.toString().trim();
-    var lastName = _lastNameController.text.toString().trim();
-    var email = _emailController.text.toString().trim();
-    var phoneNumber = _phoneNumberController.text.toString().trim();
-    var password = _passwordController.text.toString().trim();
+    var _firstName = _firstNameController.text.toString().trim();
+    var _lastName = _lastNameController.text.toString().trim();
+    var _email = _emailController.text.toString().trim();
+    var _phoneNumber = _phoneNumberController.text.toString().trim();
+    var _password = _passwordController.text.toString().trim();
 
-    await editProfileProvider.callEditProfileApi(
-        id: "id",
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber,
-        email: email,
-        password: password,
+    await editProfileProvider.callUpdateApi(
+        id: _userId,
+        firstName: _firstName,
+        lastName: _lastName,
+        phoneNumber: _phoneNumber,
+        email: _email,
+        password: _password,
         profilePhoto: "profilePhoto");
 
     if (editProfileProvider.isEditProfileSuccessful == true) {
       Toasts.getSuccessToast(text: "Profile Updated");
-      Navigator.pop(context);
     }
   }
 }
