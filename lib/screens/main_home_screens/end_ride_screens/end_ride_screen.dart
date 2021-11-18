@@ -103,6 +103,7 @@ class _EndRideScreenState extends State<EndRideScreen> {
                       onTap: () {
                         // Navigator.push(context,
                         //     SlideRightRoute(page: const PaymentScreen()));
+                        getTooltipBox();
                       },
                       child: Image.asset(
                         "assets/png/en_route_location_maker@2x.png",
@@ -149,6 +150,28 @@ class _EndRideScreenState extends State<EndRideScreen> {
             ],
           )),
     ));
+  }
+
+  void getTooltipBox() {
+    Tooltip(
+      message:
+          "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Sector FF Qatar",
+      waitDuration: Duration(seconds: 1),
+      showDuration: Duration(seconds: 2),
+      padding: EdgeInsets.all(5),
+      height: 35,
+      textStyle: TextStyle(
+          fontSize: 15, color: Colors.white, fontWeight: FontWeight.normal),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: Colors.green),
+      child: GestureDetector(
+        child: Image.asset(
+          "assets/png/en_route_location_maker@2x.png",
+          height: sizes!.heightRatio * 250.0,
+          width: sizes!.widthRatio * 250.0,
+        ),
+      ),
+    );
   }
 
   void viewDetailsPopUp(context) {
