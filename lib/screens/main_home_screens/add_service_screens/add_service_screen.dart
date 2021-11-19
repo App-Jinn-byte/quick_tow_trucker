@@ -642,7 +642,10 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                     }),
                   ],
                 ),
-              )
+              ),
+              SizedBox(
+                height: sizes!.heightRatio * 20.0,
+              ),
             ],
           ),
         ),
