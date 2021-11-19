@@ -99,17 +99,13 @@ class _EndRideScreenState extends State<EndRideScreen> {
                   top: sizes!.heightRatio * 110.0,
                   left: sizes!.widthRatio * 45.0,
                   right: sizes!.widthRatio * 45,
-                  child: GestureDetector(
-                      onTap: () {
-                        // Navigator.push(context,
-                        //     SlideRightRoute(page: const PaymentScreen()));
-                        getTooltipBox();
-                      },
-                      child: Image.asset(
-                        "assets/png/en_route_location_maker@2x.png",
-                        height: sizes!.heightRatio * 250.0,
-                        width: sizes!.widthRatio * 250.0,
-                      ))),
+                  child: Image.asset(
+                    "assets/png/en_route_location_maker@2x.png",
+                    height: sizes!.heightRatio * 250.0,
+                    width: sizes!.widthRatio * 250.0,
+                  )
+
+              ),
               // Positioned(
               //   top: sizes!.heightRatio * 230.0,
               //   left: sizes!.widthRatio * 20.0,
