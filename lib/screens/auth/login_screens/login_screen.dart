@@ -84,17 +84,17 @@ class _LoginScreenState extends State<LoginScreen> {
     loginProvider = Provider.of<LoginProvider>(context, listen: true);
     return SafeArea(
         child: Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Container(
-          height: sizes!.height,
-          width: sizes!.width,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(Assets.mainBgImageWithLogoOnBottom),
-                  fit: BoxFit.fill)),
-          child: SingleChildScrollView(
+      // resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: Container(
+            height: sizes!.height,
+            width: sizes!.width,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(Assets.mainBgImageWithLogoOnBottom),
+                    fit: BoxFit.fill)),
             child: Column(
               children: [
                 Center(
@@ -204,10 +204,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: sizes!.widthRatio * 20,
                 ),
-                Padding(
-                    // this is new
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom)),
+                // Padding(
+                //     // this is new
+                //     padding: EdgeInsets.only(
+                //         bottom: MediaQuery.of(context).viewInsets.bottom)),
               ],
             ),
           ),

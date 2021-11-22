@@ -96,16 +96,16 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Container(
-          height: sizes!.height,
-          width: sizes!.width,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(Assets.mainBgImageWithLogoOnTop),
-                  fit: BoxFit.fill)),
-          child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: Container(
+            height: sizes!.height,
+            width: sizes!.width,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(Assets.mainBgImageWithLogoOnTop),
+                    fit: BoxFit.fill)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -250,9 +250,9 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
                       // updateProfile();
                       Navigator.pop(context);
                     })),
-                SizedBox(
-                  height: sizes!.heightRatio * 90.0,
-                ),
+                // SizedBox(
+                //   height: sizes!.heightRatio * 90.0,
+                // ),
               ],
             ),
           ),

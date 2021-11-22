@@ -142,207 +142,210 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     return SafeArea(
         child: Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Container(
-          height: sizes!.height,
-          width: sizes!.width,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(Assets.mainBgImageWithLogoOnTop),
-                  fit: BoxFit.fill)),
-          child: SingleChildScrollView(
-            // physics: const BouncingScrollPhysics(),
-            // reverse: true,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: sizes!.widthRatio * 30.0,
-                      top: sizes!.heightRatio * 30.0),
-                  child: CommonWidgets.getAppBarCustomBackButton(context),
-                ),
+      // resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: Container(
+            height: sizes!.height,
+            width: sizes!.width,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(Assets.mainBgImageWithLogoOnTop),
+                    fit: BoxFit.fill)),
+            child: SingleChildScrollView(
+              // physics: const BouncingScrollPhysics(),
+              // reverse: true,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 30.0,
+                        top: sizes!.heightRatio * 30.0),
+                    child: CommonWidgets.getAppBarCustomBackButton(context),
+                  ),
 
-                // CommonWidgets.getAppBarWithTitleAndBackButton(
-                //     context: context,
-                //     title: "Edit Profile",
-                //     icon: "assets/png/back_btn_icon@2x.png",
-                //     onPress: () {
-                //       Navigator.pop(context);
-                //     }),
+                  // CommonWidgets.getAppBarWithTitleAndBackButton(
+                  //     context: context,
+                  //     title: "Edit Profile",
+                  //     icon: "assets/png/back_btn_icon@2x.png",
+                  //     onPress: () {
+                  //       Navigator.pop(context);
+                  //     }),
 
-                SizedBox(
-                  height: sizes!.heightRatio * 35.0,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: CommonWidgets.getProfileImage(
-                      // profileImg: image,
-                      // selectedImage: selectedImageByUser,
-                      // isImageUploaded: isImageUploaded,
-                      onEditImage: () {
-                    Toasts.getErrorToast(text: "Try it later :) ");
-                    // getImage();
-                  }),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 35.0,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: CommonWidgets.loginText(
-                          text: "First Name",
-                          fontSize: sizes!.fontRatio * 15.0,
-                          color: AppColors.blackTextColor)),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 6,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: sizes!.widthRatio * 30,
-                      right: sizes!.widthRatio * 30),
-                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                    placeHolder: "Alan",
-                    icon: "assets/png/profile_icon@2x.png",
-                    controller: _firstNameController,
-                    keyboardType: TextInputType.text,
-                    isValid: _isFirstNameValid,
+                  SizedBox(
+                    height: sizes!.heightRatio * 35.0,
                   ),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 10.0,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: CommonWidgets.loginText(
-                          text: "Last Name",
-                          fontSize: sizes!.fontRatio * 15.0,
-                          color: AppColors.blackTextColor)),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 6,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: sizes!.widthRatio * 30,
-                      right: sizes!.widthRatio * 30),
-                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                    placeHolder: "Thor",
-                    icon: "assets/png/profile_icon@2x.png",
-                    controller: _lastNameController,
-                    keyboardType: TextInputType.text,
-                    isValid: _isLastNameValid,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: CommonWidgets.getProfileImage(
+                        // profileImg: image,
+                        // selectedImage: selectedImageByUser,
+                        // isImageUploaded: isImageUploaded,
+                        onEditImage: () {
+                      Toasts.getErrorToast(text: "Try it later :) ");
+                      // getImage();
+                    }),
                   ),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 10.0,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: CommonWidgets.loginText(
-                          text: "Email",
-                          fontSize: sizes!.fontRatio * 15.0,
-                          color: AppColors.blackTextColor)),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 6,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: sizes!.widthRatio * 30,
-                      right: sizes!.widthRatio * 30),
-                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                    placeHolder: "Alan@gmail.com",
-                    icon: "assets/png/email_icon@2x.png",
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    isValid: _isEmailValid,
+                  SizedBox(
+                    height: sizes!.heightRatio * 35.0,
                   ),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 10.0,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: CommonWidgets.loginText(
-                          text: "Phone Number",
-                          fontSize: sizes!.fontRatio * 15.0,
-                          color: AppColors.blackTextColor)),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 6,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: sizes!.widthRatio * 30,
-                      right: sizes!.widthRatio * 30),
-                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
-                    placeHolder: "(099) 098765",
-                    icon: "assets/png/phone_number_icon@2x.png",
-                    controller: _phoneNumberController,
-                    keyboardType: TextInputType.phone,
-                    isValid: _isPhoneNumberValid,
+                  Padding(
+                    padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: CommonWidgets.loginText(
+                            text: "First Name",
+                            fontSize: sizes!.fontRatio * 15.0,
+                            color: AppColors.blackTextColor)),
                   ),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 10.0,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: CommonWidgets.loginText(
-                          text: "Password",
-                          fontSize: sizes!.fontRatio * 15.0,
-                          color: AppColors.blackTextColor)),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 6,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: sizes!.widthRatio * 30,
-                      right: sizes!.widthRatio * 30),
-                  child: CommonWidgets
-                      .customTextFieldWithPasswordCustomContainerIcon(
-                    placeHolder: "******",
-                    icon: "assets/png/password_icon@2x.png",
-                    keyboardType: TextInputType.text,
-                    hidePassword: _hiddenPassword,
-                    clickIcon: clickIcon,
-                    isValid: _isValidPassword,
-                    controller: _passwordController,
+                  SizedBox(
+                    height: sizes!.heightRatio * 6,
                   ),
-                ),
-                SizedBox(
-                  height: sizes!.heightRatio * 70.0,
-                ),
-                Padding(
+                  Padding(
                     padding: EdgeInsets.only(
                         left: sizes!.widthRatio * 30,
                         right: sizes!.widthRatio * 30),
-                    child: CommonWidgets.getStartButton("Update", onPress: () {
-                      updateProfile();
-                    })),
-                SizedBox(
-                  height: sizes!.heightRatio * 30.0,
-                ),
-                Padding(
-                    // this is new
+                    child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                      placeHolder: "Alan",
+                      icon: "assets/png/profile_icon@2x.png",
+                      controller: _firstNameController,
+                      keyboardType: TextInputType.text,
+                      isValid: _isFirstNameValid,
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 10.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: CommonWidgets.loginText(
+                            text: "Last Name",
+                            fontSize: sizes!.fontRatio * 15.0,
+                            color: AppColors.blackTextColor)),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 6,
+                  ),
+                  Padding(
                     padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom)),
-              ],
+                        left: sizes!.widthRatio * 30,
+                        right: sizes!.widthRatio * 30),
+                    child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                      placeHolder: "Thor",
+                      icon: "assets/png/profile_icon@2x.png",
+                      controller: _lastNameController,
+                      keyboardType: TextInputType.text,
+                      isValid: _isLastNameValid,
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 10.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: CommonWidgets.loginText(
+                            text: "Email",
+                            fontSize: sizes!.fontRatio * 15.0,
+                            color: AppColors.blackTextColor)),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 6,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 30,
+                        right: sizes!.widthRatio * 30),
+                    child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                      placeHolder: "Alan@gmail.com",
+                      icon: "assets/png/email_icon@2x.png",
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      isValid: _isEmailValid,
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 10.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: CommonWidgets.loginText(
+                            text: "Phone Number",
+                            fontSize: sizes!.fontRatio * 15.0,
+                            color: AppColors.blackTextColor)),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 6,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 30,
+                        right: sizes!.widthRatio * 30),
+                    child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                      placeHolder: "(099) 098765",
+                      icon: "assets/png/phone_number_icon@2x.png",
+                      controller: _phoneNumberController,
+                      keyboardType: TextInputType.phone,
+                      isValid: _isPhoneNumberValid,
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 10.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: sizes!.widthRatio * 30),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: CommonWidgets.loginText(
+                            text: "Password",
+                            fontSize: sizes!.fontRatio * 15.0,
+                            color: AppColors.blackTextColor)),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 6,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: sizes!.widthRatio * 30,
+                        right: sizes!.widthRatio * 30),
+                    child: CommonWidgets
+                        .customTextFieldWithPasswordCustomContainerIcon(
+                      placeHolder: "******",
+                      icon: "assets/png/password_icon@2x.png",
+                      keyboardType: TextInputType.text,
+                      hidePassword: _hiddenPassword,
+                      clickIcon: clickIcon,
+                      isValid: _isValidPassword,
+                      controller: _passwordController,
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 70.0,
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(
+                          left: sizes!.widthRatio * 30,
+                          right: sizes!.widthRatio * 30),
+                      child:
+                          CommonWidgets.getStartButton("Update", onPress: () {
+                        updateProfile();
+                      })),
+                  SizedBox(
+                    height: sizes!.heightRatio * 30.0,
+                  ),
+                  // Padding(
+                  //     // this is new
+                  //     padding: EdgeInsets.only(
+                  //         bottom: MediaQuery.of(context).viewInsets.bottom)),
+                ],
+              ),
             ),
           ),
         ),
