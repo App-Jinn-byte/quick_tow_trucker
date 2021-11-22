@@ -164,7 +164,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     return SafeArea(
         child: Scaffold(
-      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),

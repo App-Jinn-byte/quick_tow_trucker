@@ -19,6 +19,7 @@ class EditProfileProvider extends ChangeNotifier {
 
   bool isEditProfileSuccessful = false;
   final Loader _loader = Loader();
+
   bool pickedImage = false;
   File? myImage;
 
@@ -98,6 +99,7 @@ class EditProfileProvider extends ChangeNotifier {
           print("myImage: $myImage");
           pickedImage = false;
         }
+
         await PreferenceUtils.setEditProfileResponse(editProfileResponse)
             .then((_) {
           String name = PreferenceUtils.getString(Strings.loginFirstName) ?? "";
@@ -112,6 +114,9 @@ class EditProfileProvider extends ChangeNotifier {
           print("Save Error: ${error.toString()}");
           _loader.hideLoader(context!);
         });
+
+
+
       } else {
         print("signUpResponse: Something wrong");
         _loader.hideLoader(context!);

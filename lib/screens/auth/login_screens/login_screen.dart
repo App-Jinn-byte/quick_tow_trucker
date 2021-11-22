@@ -85,7 +85,6 @@ class _LoginScreenState extends State<LoginScreen> {
     loginProvider = Provider.of<LoginProvider>(context, listen: true);
     return SafeArea(
         child: Scaffold(
-      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
