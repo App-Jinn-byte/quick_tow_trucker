@@ -138,8 +138,11 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
                       Positioned(
                           top: sizes!.heightRatio * -0.0,
                           right: sizes!.widthRatio * -0.0,
-                          child:
-                              Image.asset("assets/png/cancel_new_icon@3x.png")),
+                          child: Image.asset(
+                            "assets/png/new_cancel_icon.png",
+                            height: sizes!.heightRatio * 15.0,
+                            width: sizes!.widthRatio * 15.0,
+                          )),
                     ])),
               ),
               SizedBox(
@@ -187,8 +190,11 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
                       Positioned(
                           top: sizes!.heightRatio * -0.0,
                           right: sizes!.widthRatio * -0.0,
-                          child:
-                              Image.asset("assets/png/cancel_new_icon@3x.png")),
+                          child: Image.asset(
+                            "assets/png/new_cancel_icon.png",
+                            height: sizes!.heightRatio * 15.0,
+                            width: sizes!.widthRatio * 15.0,
+                          )),
                       Positioned(
                         top: sizes!.heightRatio * 30.0,
                         left: sizes!.widthRatio * 15.0,
@@ -259,8 +265,11 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
                       Positioned(
                           top: sizes!.heightRatio * -0.0,
                           right: sizes!.widthRatio * -0.0,
-                          child:
-                              Image.asset("assets/png/cancel_new_icon@3x.png")),
+                          child: Image.asset(
+                            "assets/png/new_cancel_icon.png",
+                            height: sizes!.heightRatio * 15.0,
+                            width: sizes!.widthRatio * 15.0,
+                          )),
                       Positioned(
                         top: sizes!.heightRatio * 30.0,
                         left: sizes!.widthRatio * 15.0,

@@ -161,7 +161,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     editProfileProvider =
         Provider.of<EditProfileProvider>(context, listen: true);
-
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
