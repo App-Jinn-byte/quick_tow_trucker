@@ -291,7 +291,13 @@ class CommonWidgets {
     );
   }
 
-  static Widget getVehicleDetailContainer({@required Function? onEditPress}) {
+  static Widget getVehicleDetailContainer({
+    @required Function? onEditPress,
+    @required String? make,
+    @required String? model,
+    @required String? plateNumber,
+    @required String? category,
+  }) {
     return Container(
       height: sizes!.heightRatio * 253.0,
       width: sizes!.widthRatio * 315.0,
@@ -381,9 +387,11 @@ class CommonWidgets {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextView.getSmallText12("Honda", Assets.poppinsLight,
+                    TextView.getSmallText12(
+                        make ?? "Honda", Assets.poppinsLight,
                         color: AppColors.pass, lines: 1),
-                    TextView.getSmallText12("Civic-X", Assets.poppinsLight,
+                    TextView.getSmallText12(
+                        model ?? "Civic-X", Assets.poppinsLight,
                         color: AppColors.pass, lines: 1)
                   ],
                 ),
@@ -425,9 +433,11 @@ class CommonWidgets {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextView.getSmallText12("LEU-7652", Assets.poppinsLight,
+                    TextView.getSmallText12(
+                        plateNumber ?? "LEU-7652", Assets.poppinsLight,
                         color: AppColors.pass, lines: 1),
-                    TextView.getSmallText12("FWD Only", Assets.poppinsLight,
+                    TextView.getSmallText12(
+                        category ?? "FWD Only", Assets.poppinsLight,
                         color: AppColors.pass, lines: 1)
                   ],
                 ),
@@ -1311,8 +1321,6 @@ class CommonWidgets {
       ),
     );
   }
-
-
 
   static Widget getAppBarWithoutContainerTitleAndBackButton(
       {@required BuildContext? context,

@@ -6,7 +6,14 @@ import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
 class UpdateVehicleDetailScreen extends StatefulWidget {
-  const UpdateVehicleDetailScreen({Key? key}) : super(key: key);
+  final String? make;
+  final String? model;
+  final String? plateNumber;
+  final String? category;
+
+  const UpdateVehicleDetailScreen(
+      {Key? key, this.make, this.model, this.plateNumber, this.category})
+      : super(key: key);
 
   @override
   _UpdateVehicleDetailScreenState createState() =>
@@ -26,10 +33,18 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
 
   @override
   void initState() {
-    _vehicleMakeController = TextEditingController();
-    _vehicleModelController = TextEditingController();
-    _licensePhoneNumberModelController = TextEditingController();
-    _transmissionTypeController = TextEditingController();
+    _vehicleMakeController = TextEditingController(
+      text: widget.make.toString(),
+    );
+    _vehicleModelController = TextEditingController(
+      text: widget.model.toString(),
+    );
+    _licensePhoneNumberModelController = TextEditingController(
+      text: widget.plateNumber.toString(),
+    );
+    _transmissionTypeController = TextEditingController(
+      text: widget.category.toString(),
+    );
 
     _isValidVehicleMake = true;
     _isValidVehicleModel = true;
