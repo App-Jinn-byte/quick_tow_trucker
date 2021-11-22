@@ -7,8 +7,6 @@ import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
-import 'package:quick_tow_trucker/widgets/text_views.dart';
-
 import 'edit_profile_provider.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -139,10 +137,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     editProfileProvider =
         Provider.of<EditProfileProvider>(context, listen: true);
-
     return SafeArea(
         child: Scaffold(
-      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
