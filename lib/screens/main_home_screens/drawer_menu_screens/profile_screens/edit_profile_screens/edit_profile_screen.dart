@@ -337,7 +337,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: sizes!.heightRatio * 70.0,
+                  height: sizes!.heightRatio * 40.0,
                 ),
                 Padding(
                     padding: EdgeInsets.only(
@@ -346,9 +346,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     child: CommonWidgets.getStartButton("Update", onPress: () {
                       updateProfile();
                     })),
-                SizedBox(
-                  height: sizes!.heightRatio * 30.0,
-                ),
+
+                // SizedBox(
+                //   height: sizes!.heightRatio * 30.0,
+                // ),
                 // Padding(
                 //     // this is new
                 //     padding: EdgeInsets.only(
