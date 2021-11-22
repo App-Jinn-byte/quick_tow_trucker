@@ -449,7 +449,7 @@ class PopUpComponents {
               overflow: Overflow.visible,
               children: [
                 Container(
-                  height: sizes!.heightRatio * 488, //488
+                  height: sizes!.heightRatio * 500, //488
                   width: sizes!.widthRatio * 326,
                   padding: EdgeInsets.only(
                       left: sizes!.pagePadding,
@@ -970,7 +970,10 @@ class PopUpComponents {
                             SlideRightRoute(page: const EnRouteScreen()));
                       })
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 14.0,
+                  ),
                 ],
               ),
             ),
@@ -1064,7 +1067,8 @@ class PopUpComponents {
                     padding: EdgeInsets.only(right: sizes!.widthRatio * 10.0),
                     child: Align(
                       alignment: Alignment.centerRight,
-                      child: TextView.getSmallText11("7 Min", Assets.poppinsLight,
+                      child: TextView.getSmallText11(
+                          "7 Min", Assets.poppinsLight,
                           color: AppColors.subHeadingTextColor, lines: 1),
                     ),
                   ),
