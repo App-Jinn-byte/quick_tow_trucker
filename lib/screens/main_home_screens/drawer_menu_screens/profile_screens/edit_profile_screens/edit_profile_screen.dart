@@ -164,19 +164,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     return SafeArea(
         child: Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Container(
-          height: sizes!.height,
-          width: sizes!.width,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(Assets.mainBgImageWithLogoOnTop),
-                  fit: BoxFit.fill)),
-          child: SingleChildScrollView(
-            // physics: const BouncingScrollPhysics(),
-            // reverse: true,
+      // resizeToAvoidBottomInset: true, //false
+      body: SingleChildScrollView(
+        child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: Container(
+            height: sizes!.height,
+            width: sizes!.width,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(Assets.mainBgImageWithLogoOnTop),
+                    fit: BoxFit.fill)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
