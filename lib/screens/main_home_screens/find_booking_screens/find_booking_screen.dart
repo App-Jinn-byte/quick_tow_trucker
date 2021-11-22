@@ -64,24 +64,24 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                 const Spacer(),
                 Padding(
                   padding: EdgeInsets.only(bottom: sizes!.heightRatio * 90.0),
-                  child: Container(
-                    height: 43.0,
-                    width: 216.0,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(18)),
-                      color: AppColors.whiteTextColor,
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.bookingContainerColor,
-                          blurRadius: 0.5,
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        getAvailableBookingPopUp(context);
-                      },
+                  child: GestureDetector(
+                    onTap: () {
+                      getAvailableBookingPopUp(context);
+                    },
+                    child: Container(
+                      height: 43.0,
+                      width: 216.0,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(18)),
+                        color: AppColors.whiteTextColor,
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.bookingContainerColor,
+                            blurRadius: 0.5,
+                            offset: Offset(0, 0),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: TextView.getRegularBoldWith13(
                             "Searching for User", Assets.poppinsMedium,

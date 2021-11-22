@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
+import 'package:quick_tow_trucker/res/common_padding.dart';
 import 'package:quick_tow_trucker/res/enums.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
@@ -447,7 +448,7 @@ class PopUpComponents {
               overflow: Overflow.visible,
               children: [
                 Container(
-                  height: sizes!.heightRatio * 488, //488
+                  height: sizes!.heightRatio * 500, //488
                   width: sizes!.widthRatio * 326,
                   padding: EdgeInsets.only(
                       left: sizes!.pagePadding,
@@ -969,7 +970,10 @@ class PopUpComponents {
                             SlideRightRoute(page: const EnRouteScreen()));
                       })
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: sizes!.heightRatio * 14.0,
+                  ),
                 ],
               ),
             ),
@@ -1058,6 +1062,15 @@ class PopUpComponents {
                   ),
                   SizedBox(
                     height: sizes!.heightRatio * 10.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: sizes!.widthRatio * 10.0),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: TextView.getSmallText11(
+                          "7 Min", Assets.poppinsLight,
+                          color: AppColors.subHeadingTextColor, lines: 1),
+                    ),
                   ),
                   Image.asset("assets/png/Line.png"),
                   Padding(
@@ -1206,11 +1219,7 @@ class PopUpComponents {
                       child: SingleChildScrollView(
                         child: TextView.getSmallText12(
                             "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel.",
+                            "Hello, I have problem with the front right wheel. ",
                             Assets.poppinsLight,
                             color: AppColors.subHeadingTextColor,
                             lines: 5),
@@ -1453,7 +1462,7 @@ class PopUpComponents {
     Color? buttonColor,
   }) {
     return Container(
-      width: sizes!.widthRatio * 125,
+      width: sizes!.widthRatio * 120,
       height: sizes!.heightRatio * 45,
       decoration: BoxDecoration(
         border: Border.all(
@@ -1500,7 +1509,7 @@ class PopUpComponents {
         }
       },
       child: Container(
-          width: sizes!.widthRatio * 125,
+          width: sizes!.widthRatio * 120,
           height: sizes!.heightRatio * 45,
           decoration: BoxDecoration(
             border: Border.all(

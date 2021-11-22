@@ -164,7 +164,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     return SafeArea(
         child: Scaffold(
-      // resizeToAvoidBottomInset: true, //false
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -351,10 +350,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 SizedBox(
                   height: sizes!.heightRatio * 30.0,
                 ),
-                Padding(
-                    // this is new
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom)),
+                // Padding(
+                //     // this is new
+                //     padding: EdgeInsets.only(
+                //         bottom: MediaQuery.of(context).viewInsets.bottom)),
               ],
             ),
           ),
