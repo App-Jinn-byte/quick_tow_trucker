@@ -92,6 +92,10 @@ class _VehicleDetailScreenState extends State<VehicleDetailScreen> {
                                       context,
                                       SlideRightRoute(
                                           page: UpdateVehicleDetailScreen(
+                                        id: vehicleDetailProvider
+                                            .getUserVehicleResponse
+                                            .data![index]
+                                            .vehicleId,
                                         make: vehicleDetailProvider
                                             .getUserVehicleResponse
                                             .data![index]
