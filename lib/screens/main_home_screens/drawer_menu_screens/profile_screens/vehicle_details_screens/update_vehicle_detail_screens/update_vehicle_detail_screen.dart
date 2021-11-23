@@ -1,12 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/res/strings.dart';
+import 'package:quick_tow_trucker/res/toasts.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/update_vehicle_detail_screens/update_vehicle_detail_provider.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/vehicle_detail_provider.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
 class UpdateVehicleDetailScreen extends StatefulWidget {
-  const UpdateVehicleDetailScreen({Key? key}) : super(key: key);
+  final dynamic id;
+  final String? make;
+  final String? model;
+  final String? plateNumber;
+  final String? category;
+
+  const UpdateVehicleDetailScreen(
+      {Key? key,
+      this.make,
+      this.model,
+      this.plateNumber,
+      this.category,
+      this.id})
+      : super(key: key);
 
   @override
   _UpdateVehicleDetailScreenState createState() =>
@@ -24,12 +43,38 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
   late bool _isValidLicensePlateNumber;
   late bool _isValidTransmissionType;
 
+  late UpdateVehicleDetailProvider updateVehicleDetailProvider;
+
+  final String _userID = PreferenceUtils.getString(Strings.loginUserId) ?? "";
+  late VehicleDetailProvider vehicleDetailProvider;
+
   @override
   void initState() {
-    _vehicleMakeController = TextEditingController();
-    _vehicleModelController = TextEditingController();
-    _licensePhoneNumberModelController = TextEditingController();
-    _transmissionTypeController = TextEditingController();
+    print("vehicle_id: ${widget.id}");
+
+    updateVehicleDetailProvider = UpdateVehicleDetailProvider();
+    updateVehicleDetailProvider =
+        Provider.of<UpdateVehicleDetailProvider>(context, listen: false);
+    updateVehicleDetailProvider.init(context: context);
+
+    vehicleDetailProvider = VehicleDetailProvider();
+    vehicleDetailProvider =
+        Provider.of<VehicleDetailProvider>(context, listen: false);
+    vehicleDetailProvider.init(context: context);
+    vehicleDetailProvider.getUserVehicleData(userID: _userID);
+
+    _vehicleMakeController = TextEditingController(
+      text: widget.make.toString(),
+    );
+    _vehicleModelController = TextEditingController(
+      text: widget.model.toString(),
+    );
+    _licensePhoneNumberModelController = TextEditingController(
+      text: widget.plateNumber.toString(),
+    );
+    _transmissionTypeController = TextEditingController(
+      text: widget.category.toString(),
+    );
 
     _isValidVehicleMake = true;
     _isValidVehicleModel = true;
@@ -94,6 +139,10 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    updateVehicleDetailProvider =
+        Provider.of<UpdateVehicleDetailProvider>(context, listen: true);
+    vehicleDetailProvider =
+        Provider.of<VehicleDetailProvider>(context, listen: true);
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
@@ -247,8 +296,7 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
                         left: sizes!.widthRatio * 30,
                         right: sizes!.widthRatio * 30),
                     child: CommonWidgets.getStartButton("Update", onPress: () {
-                      // updateProfile();
-                      Navigator.pop(context);
+                      updateVehicle();
                     })),
                 // SizedBox(
                 //   height: sizes!.heightRatio * 90.0,
@@ -259,5 +307,25 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
         ),
       ),
     ));
+  }
+
+  Future<void> updateVehicle() async {
+    var make = _vehicleMakeController.text.toString().trim();
+    var model = _vehicleModelController.text.toString().trim();
+    var plateNumber = _licensePhoneNumberModelController.text.toString().trim();
+    var transmission = _transmissionTypeController.text.toString().trim();
+
+    await updateVehicleDetailProvider.updateVehicleValidateData(
+        userID: _userID,
+        id: widget.id,
+        make: make,
+        model: model,
+        plateNumber: plateNumber,
+        transmission: transmission);
+
+    if (updateVehicleDetailProvider.isVehicleUpdatedSuccessfully == true) {
+      Toasts.getSuccessToast(text: "Vehicle Information Updated.");
+      await vehicleDetailProvider.getUserVehicleData(userID: _userID);
+    }
   }
 }

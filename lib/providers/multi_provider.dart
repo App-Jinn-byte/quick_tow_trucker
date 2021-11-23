@@ -10,6 +10,7 @@ import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/edit_profile_screens/edit_profile_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/insurance_info_screens/insurance_info_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/profile_provider.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/update_vehicle_detail_screens/update_vehicle_detail_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/vehicle_detail_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/setting_screens/setting_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/en_route_screens/en_route_provider.dart';
@@ -53,6 +54,10 @@ final multiProviders = [
   ),
   ChangeNotifierProvider<VehicleDetailProvider>(
     create: (_) => VehicleDetailProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<UpdateVehicleDetailProvider>(
+    create: (_) => UpdateVehicleDetailProvider(),
     lazy: true,
   ),
   ChangeNotifierProvider<DriverLicenseProvider>(
