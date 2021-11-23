@@ -7,6 +7,7 @@ import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/update_vehicle_detail_screens/update_vehicle_detail_provider.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/vehicle_detail_provider.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -43,7 +44,9 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
   late bool _isValidTransmissionType;
 
   late UpdateVehicleDetailProvider updateVehicleDetailProvider;
+
   final String _userID = PreferenceUtils.getString(Strings.loginUserId) ?? "";
+  late VehicleDetailProvider vehicleDetailProvider;
 
   @override
   void initState() {
@@ -53,6 +56,12 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
     updateVehicleDetailProvider =
         Provider.of<UpdateVehicleDetailProvider>(context, listen: false);
     updateVehicleDetailProvider.init(context: context);
+
+    vehicleDetailProvider = VehicleDetailProvider();
+    vehicleDetailProvider =
+        Provider.of<VehicleDetailProvider>(context, listen: false);
+    vehicleDetailProvider.init(context: context);
+    vehicleDetailProvider.getUserVehicleData(userID: _userID);
 
     _vehicleMakeController = TextEditingController(
       text: widget.make.toString(),
@@ -132,6 +141,8 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
   Widget build(BuildContext context) {
     updateVehicleDetailProvider =
         Provider.of<UpdateVehicleDetailProvider>(context, listen: true);
+    vehicleDetailProvider =
+        Provider.of<VehicleDetailProvider>(context, listen: true);
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
@@ -314,6 +325,7 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
 
     if (updateVehicleDetailProvider.isVehicleUpdatedSuccessfully == true) {
       Toasts.getSuccessToast(text: "Vehicle Information Updated.");
+      await vehicleDetailProvider.getUserVehicleData(userID: _userID);
     }
   }
 }

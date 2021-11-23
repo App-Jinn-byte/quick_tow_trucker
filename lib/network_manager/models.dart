@@ -3,6 +3,7 @@ import 'package:quick_tow_trucker/models/auth/edit_profile_response.dart';
 import 'package:quick_tow_trucker/models/auth/login_response.dart';
 import 'package:quick_tow_trucker/models/auth/photo_upload_response.dart';
 import 'package:quick_tow_trucker/models/error_model/error_model.dart';
+import 'package:quick_tow_trucker/models/vehicle/delete_vehicle_response.dart';
 import 'package:quick_tow_trucker/models/vehicle/get_user_vehicle_response.dart';
 import 'package:quick_tow_trucker/models/vehicle/update_vehicle_response.dart';
 
@@ -13,8 +14,10 @@ class Models {
   static const String editProfileUploadPhotoModel =
       "EDIT_PROFILE_UPLOAD_PHOTO_MODEL";
 
+  // Vehicle
   static const String getUserVehicleModel = "GET_USER_VEHICLE_MODEL";
   static const String updateVehicleModel = "UPDATE_VEHICLE_MODEL";
+  static const String deleteVehicleModel = "DELETE_VEHICLE_MODEL";
 
   static Future<dynamic> getModelObject(
       String modelName, Map<String, dynamic> json) async {
@@ -35,6 +38,8 @@ class Models {
         return GetUserVehicleResponse.fromJson(json);
       case updateVehicleModel:
         return UpdateVehicleResponse.fromJson(json);
+      case deleteVehicleModel:
+        return DeleteVehicleResponse.fromJson(json);
       case errorModel:
         return ErrorResponse.fromJson(json);
     }

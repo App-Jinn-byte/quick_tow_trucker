@@ -4,6 +4,7 @@ import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/network_manager/models.dart';
 import 'package:quick_tow_trucker/network_manager/my_api.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
+import 'package:quick_tow_trucker/routes/routes.dart';
 import 'package:quick_tow_trucker/widgets/loader.dart';
 
 class UpdateVehicleDetailProvider extends ChangeNotifier {
@@ -53,7 +54,9 @@ class UpdateVehicleDetailProvider extends ChangeNotifier {
         print("updateVehicleResponse: ${updateVehicleResponse.toJson()}");
         isVehicleUpdatedSuccessfully = true;
         _loader.hideLoader(context!);
-        Navigator.pop(context!);
+        // Navigator.pop(context!);
+        Navigator.of(context!).pushNamedAndRemoveUntil(
+            Routes.vehicleDetailScreen, (Route<dynamic> route) => false);
         notifyListeners();
       } else {
         print("Something is wrong");

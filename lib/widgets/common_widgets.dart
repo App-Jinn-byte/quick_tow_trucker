@@ -293,6 +293,7 @@ class CommonWidgets {
 
   static Widget getVehicleDetailContainer({
     @required Function? onEditPress,
+    @required Function? onDeletePress,
     @required String? make,
     @required String? model,
     @required String? plateNumber,
@@ -348,7 +349,9 @@ class CommonWidgets {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Toasts.getErrorToast(text: "Try it Later");
+                        if (onDeletePress != null) {
+                          onDeletePress.call();
+                        }
                       },
                       child: Image.asset(
                         "assets/png/delete_icon@2x.png",
