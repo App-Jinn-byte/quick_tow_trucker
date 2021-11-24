@@ -109,11 +109,17 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Image.asset(
-                                    "assets/png/tire_change_icon@2x.png",
-                                    height: sizes!.heightRatio * 35.0,
-                                    width: sizes!.widthRatio * 35.0,
-                                  ),
+                                  isTireChangeDropDownOpened
+                                      ? Image.asset(
+                                          "assets/png/white_tire_change_icon@3x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        )
+                                      : Image.asset(
+                                          "assets/png/tire_change_icon@2x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        ),
                                   SizedBox(
                                     width: sizes!.widthRatio * 10.0,
                                   ),
@@ -267,11 +273,17 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Image.asset(
-                                    "assets/png/lockout_service_icon@2x.png",
-                                    height: sizes!.heightRatio * 35.0,
-                                    width: sizes!.widthRatio * 35.0,
-                                  ),
+                                  isLockoutServiceDropDownOpened
+                                      ? Image.asset(
+                                          "assets/png/white_lockout_icon@3x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        )
+                                      : Image.asset(
+                                          "assets/png/lockout_service_icon@2x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        ),
                                   SizedBox(
                                     width: sizes!.widthRatio * 10.0,
                                   ),
@@ -426,11 +438,17 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Image.asset(
-                                    "assets/png/fuel_delivery_icon@2x.png",
-                                    height: sizes!.heightRatio * 35.0,
-                                    width: sizes!.widthRatio * 35.0,
-                                  ),
+                                  isFuelDeliveryDropDownOpened
+                                      ? Image.asset(
+                                          "assets/png/white_fuel_icon@3x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        )
+                                      : Image.asset(
+                                          "assets/png/fuel_delivery_icon@2x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        ),
                                   SizedBox(
                                     width: sizes!.widthRatio * 10.0,
                                   ),
@@ -583,11 +601,17 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Image.asset(
-                                    "assets/png/winch_out_icon@2x.png",
-                                    height: sizes!.heightRatio * 35.0,
-                                    width: sizes!.widthRatio * 35.0,
-                                  ),
+                                  isWinchOutSelected
+                                      ? Image.asset(
+                                          "assets/png/white_winch_out_icon@3x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        )
+                                      : Image.asset(
+                                          "assets/png/winch_out_icon@2x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        ),
                                   SizedBox(
                                     width: sizes!.widthRatio * 10.0,
                                   ),
@@ -664,11 +688,17 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Image.asset(
-                                    "assets/png/jumpstart_icon@2x.png",
-                                    height: sizes!.heightRatio * 35.0,
-                                    width: sizes!.widthRatio * 35.0,
-                                  ),
+                                  isJumpstartSelected
+                                      ? Image.asset(
+                                          "assets/png/white_jumpstart_icon@3x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        )
+                                      : Image.asset(
+                                          "assets/png/jumpstart_icon@2x.png",
+                                          height: sizes!.heightRatio * 35.0,
+                                          width: sizes!.widthRatio * 35.0,
+                                        ),
                                   SizedBox(
                                     width: sizes!.widthRatio * 10.0,
                                   ),
