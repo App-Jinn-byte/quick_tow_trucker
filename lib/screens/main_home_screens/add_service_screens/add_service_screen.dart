@@ -56,11 +56,12 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                     right: sizes!.heightRatio * 29.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: TextView.getMediumText16(
-                      "What Do You Need?", Assets.poppinsLight,
-                      color: AppColors.openTheTruckerAppTextColor,
-                      lines: 1,
-                      fontWeight: FontWeight.bold),
+                  child: TextView.getMediumText18(
+                    "What Do You Need?",
+                    Assets.poppinsLight,
+                    color: AppColors.openTheTruckerAppTextColor,
+                    lines: 1,
+                  ),
                 ),
               ),
               SizedBox(

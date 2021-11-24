@@ -514,7 +514,7 @@ class PopUpComponents {
                           alignment: Alignment.centerLeft,
                           child: TextView.getMediumText18(
                               "Select Your Status", Assets.poppinsMedium,
-                              color: AppColors.getStartedButtonColor, lines: 1),
+                              color: AppColors.openTheTruckerAppTextColor, lines: 1),
                         ),
                       ),
                       SizedBox(
@@ -1018,6 +1018,9 @@ class PopUpComponents {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(
+                              height: sizes!.heightRatio * 5.0,
+                            ),
                             Row(
                               children: [
                                 TextView.getSubHeadingTextWith15(
@@ -1042,7 +1045,7 @@ class PopUpComponents {
                               ],
                             ),
                             SizedBox(
-                              height: sizes!.heightRatio * 2.0,
+                              height: sizes!.heightRatio * 5.0,
                             ),
 
                             // Image.asset(
@@ -1084,6 +1087,9 @@ class PopUpComponents {
                             TextView.getRegularText(
                                 "Total Price", Assets.poppinsRegular,
                                 color: AppColors.subHeadingTextColor, lines: 1),
+                            SizedBox(
+                              height: sizes!.heightRatio * 5.0,
+                            ),
                             TextView.getMediumText16(
                                 "\$ 234.45", Assets.poppinsMedium,
                                 color: AppColors.blackTextColor,

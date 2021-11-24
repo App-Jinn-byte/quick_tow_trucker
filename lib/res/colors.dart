@@ -44,7 +44,6 @@ class AppColors {
   static const bookingContainerColor = Color.fromRGBO(18, 99, 18, 0.4);
   static const bookingTagContainerColor = Color.fromRGBO(18, 99, 18, 0.7);
 
-
   static const appTheme = Color.fromRGBO(117, 176, 46, 1);
   static const appBackground = Color.fromRGBO(223, 237, 239, 1);
   static final buttonBlue = Color.fromRGBO(19, 31, 84, 1);
@@ -80,8 +79,8 @@ class AppColors {
   static const colorWhite = "#ffebee";
   static const colorGreyLight = "#CFD8DC";
   static const colorGreyWhite = "#ECEFF1";
-  // static var tagColor = "#EBF2EB";
 
+  // static var tagColor = "#EBF2EB";
 
   // static final buttonBlue = "#131F54";
   // static final buttonBlueShadow = "#3C4C92D9";

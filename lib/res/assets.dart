@@ -128,6 +128,7 @@ class Assets {
   static const String latoLight = "Lato-Light";
   static const String poppinsLight = "Poppins-Light";
   static const String poppinsMedium = "Poppins-Medium";
+  static const String poppinsSemiBold = "Poppins-SemiBold";
   static const String poppinsRegular = "Poppins-Regular";
 
   // Previous App Fonts

@@ -129,11 +129,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     right: sizes!.heightRatio * 30.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: TextView.getMediumText16(
-                      "Account Details", Assets.poppinsLight,
-                      color: AppColors.openTheTruckerAppTextColor,
-                      lines: 2,
-                      fontWeight: FontWeight.bold),
+                  child: TextView.getMediumText18(
+                    "Account Details",
+                    Assets.poppinsSemiBold,
+                    color: AppColors.openTheTruckerAppTextColor,
+                    lines: 2,
+                  ),
                 ),
               ),
               SizedBox(
@@ -294,8 +295,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: sizes!.heightRatio * 30.0,
               ),
-
-
 
               Padding(
                 padding: EdgeInsets.only(
