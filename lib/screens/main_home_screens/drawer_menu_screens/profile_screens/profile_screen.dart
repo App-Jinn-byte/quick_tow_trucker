@@ -292,47 +292,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: const Divider(),
               ),
               SizedBox(
-                height: sizes!.heightRatio * 10.0,
+                height: sizes!.heightRatio * 30.0,
               ),
 
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30.0,
-                    right: sizes!.heightRatio * 30.0),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        SlideRightRoute(page: const AccountDetailScreen()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextView.getRegular13Text(
-                          "Account Details", Assets.poppinsMedium,
-                          color: AppColors.blackTextColor, lines: 1),
-                      Image.asset(
-                        "assets/png/profile_back_btn_icon@2x.png",
-                        height: sizes!.heightRatio * 23.0,
-                        width: sizes!.widthRatio * 23.0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
 
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30.0,
-                    right: sizes!.widthRatio * 30.0),
-                child: const Divider(),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
 
               Padding(
                 padding: EdgeInsets.only(

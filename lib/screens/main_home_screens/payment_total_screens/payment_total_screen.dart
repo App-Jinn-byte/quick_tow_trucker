@@ -6,6 +6,7 @@ import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/common_padding.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/add_service_screens/add_service_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/rating_review_screens/rating_review_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
@@ -361,8 +362,16 @@ class _PaymentTotalScreenState extends State<PaymentTotalScreen> {
               child: PopUpComponents.completeRidePopUp(context,
                   confirmOnPress: () {
             Navigator.pop(context);
-            Navigator.pushReplacement(
-                context, SlideRightRoute(page: const RatingReviewScreen()));
+            // Navigator.pushReplacement(
+            //     context, SlideRightRoute(page: const RatingReviewScreen()));
+
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => const FindBookingScreen(),
+              ),
+              (route) => false,
+            );
             //  TODO: Please double-check pushReplacement
           }));
         });

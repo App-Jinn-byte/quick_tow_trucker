@@ -60,7 +60,7 @@ class PopUpComponents {
                     padding: EdgeInsets.only(
                         left: sizes!.widthRatio * 20.0,
                         right: sizes!.widthRatio * 20.0),
-                    child: CommonWidgets.getStartButton("Rate And Review",
+                    child: CommonWidgets.getStartButton("OK",
                         onPress: () {
                       if (confirmOnPress != null) {
                         confirmOnPress.call();
@@ -462,7 +462,7 @@ class PopUpComponents {
                         height: sizes!.heightRatio * 15.0,
                       ),
                       TextView.getWelcomeTextWith28(
-                          'Welcome Back!', Assets.poppinsMedium,
+                          'SET YOUR STATUS!', Assets.poppinsMedium,
                           color: AppColors.blackTextColor, lines: 1),
                       SizedBox(
                         height: sizes!.heightRatio * 5.0,
@@ -481,11 +481,12 @@ class PopUpComponents {
                             EdgeInsets.only(left: sizes!.widthRatio * 12.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: TextView.getMediumText16(
-                              "Select Your Truck", Assets.poppinsMedium,
-                              color: AppColors.openTheTruckerAppTextColor,
-                              lines: 1,
-                              fontWeight: FontWeight.normal),
+                          child: TextView.getMediumText18(
+                            "Select Your Truck",
+                            Assets.poppinsMedium,
+                            color: AppColors.openTheTruckerAppTextColor,
+                            lines: 1,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -511,11 +512,9 @@ class PopUpComponents {
                             EdgeInsets.only(left: sizes!.widthRatio * 15.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: TextView.getMediumText14(
+                          child: TextView.getMediumText18(
                               "Select Your Status", Assets.poppinsMedium,
-                              color: AppColors.getStartedButtonColor,
-                              fontWeight: FontWeight.bold,
-                              lines: 1),
+                              color: AppColors.getStartedButtonColor, lines: 1),
                         ),
                       ),
                       SizedBox(
@@ -1019,30 +1018,65 @@ class PopUpComponents {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TextView.getSubHeadingTextWith15(
-                                "John Doe", Assets.poppinsMedium,
-                                color: AppColors.blackTextColor,
-                                lines: 1,
-                                fontWeight: FontWeight.normal),
                             Row(
                               children: [
+                                TextView.getSubHeadingTextWith15(
+                                    "John Doe", Assets.poppinsMedium,
+                                    color: AppColors.blackTextColor,
+                                    lines: 1,
+                                    fontWeight: FontWeight.normal),
+                                SizedBox(
+                                  width: sizes!.widthRatio * 5.0,
+                                ),
                                 Image.asset(
                                   "assets/png/star_icon@2x.png",
                                   height: sizes!.heightRatio * 15.0,
                                   width: sizes!.widthRatio * 14.0,
                                 ),
                                 SizedBox(
-                                  width: sizes!.widthRatio * 5.0,
+                                  width: sizes!.widthRatio * 2.0,
                                 ),
                                 TextView.getRegularText(
                                     "5.00", Assets.poppinsLight,
                                     color: AppColors.blackTextColor, lines: 1)
                               ],
+                            ),
+                            SizedBox(
+                              height: sizes!.heightRatio * 2.0,
+                            ),
+
+                            // Image.asset(
+                            //   "assets/png/tow_request_container_icon@2x.png",
+                            //   height: sizes!.heightRatio * 29.0,
+                            //   width: sizes!.widthRatio * 99.0,
+                            // )
+
+                            Container(
+                              height: 29.0,
+                              width: 99.0,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(2)),
+                                color: AppColors.bookingTagContainerColor,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColors.getStartedButtonColorShadow,
+                                    blurRadius: 0.5,
+                                    offset: Offset(0, 0),
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: TextView.getSmallBoldText12(
+                                    "Tow Request", Assets.poppinsMedium,
+                                    color: AppColors.whiteTextColor,
+                                    lines: 1),
+                              ),
                             )
                           ],
                         ),
                         SizedBox(
-                          width: sizes!.widthRatio * 65.0,
+                          width: sizes!.widthRatio * 20.0,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

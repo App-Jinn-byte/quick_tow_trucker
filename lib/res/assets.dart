@@ -13,8 +13,10 @@ class Assets {
   static const String icon_send = "assets/png/message_sender_icon@2x.png";
 
   static const String appBgImage = "assets/png/app_bg.png";
+
   static const String splashLogo =
-      "assets/png/splash_trucker_screen_logo@2x.png";
+      "assets/png/updated_splash_logo2x.png";
+
   static const String loginLogo = "assets/png/login_screen_logo@2x.png";
   static const String backIcon = "assets/png/icon_back2x.png";
 
