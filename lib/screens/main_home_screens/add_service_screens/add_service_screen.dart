@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/common_padding.dart';
 import 'package:quick_tow_trucker/res/res.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/payment_total_screens/payment_total_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
@@ -25,6 +23,10 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
   bool isFuelDeliveryDropDownOpened = false;
   bool isWinchOutSelected = false;
   bool isJumpstartSelected = false;
+
+  bool changeTireStateValue = false;
+  bool changeLockOutStateValue = false;
+  bool changeFuelStateValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +87,10 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                     width: sizes!.widthRatio * 335.0,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(12)),
-                      color: isTireChangeDropDownOpened
-                          ? AppColors.getStartedButtonColor
-                          : AppColors.homeScreenContainerColor,
+                      color:
+                          (isTireChangeDropDownOpened || changeTireStateValue)
+                              ? AppColors.getStartedButtonColor
+                              : AppColors.homeScreenContainerColor,
                       boxShadow: const [
                         BoxShadow(
                           color: AppColors.homeScreenContainerColorShadow,
@@ -110,7 +113,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                             children: [
                               Row(
                                 children: [
-                                  isTireChangeDropDownOpened
+                                  (isTireChangeDropDownOpened ||
+                                          changeTireStateValue)
                                       ? Image.asset(
                                           "assets/png/white_tire_change_icon@3x.png",
                                           height: sizes!.heightRatio * 35.0,
@@ -126,7 +130,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                   ),
                                   TextView.getRegularBoldWith13(
                                       "Tire Change", Assets.poppinsMedium,
-                                      color: isTireChangeDropDownOpened
+                                      color: (isTireChangeDropDownOpened ||
+                                              changeTireStateValue)
                                           ? AppColors.whiteTextColor
                                           : AppColors.pass,
                                       lines: 1),
@@ -136,7 +141,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 children: [
                                   TextView.getMediumText16(
                                       "\$ 32", Assets.poppinsMedium,
-                                      color: isTireChangeDropDownOpened
+                                      color: (isTireChangeDropDownOpened ||
+                                              changeTireStateValue)
                                           ? AppColors.whiteTextColor
                                           : AppColors.requestTowTextColor,
                                       lines: 1,
@@ -144,7 +150,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                   SizedBox(
                                     width: sizes!.widthRatio * 17.3,
                                   ),
-                                  isTireChangeDropDownOpened
+                                  (isTireChangeDropDownOpened ||
+                                          changeTireStateValue)
                                       ? Image.asset(
                                           "assets/png/white_frop_down_icon@3x.png",
                                           height: sizes!.heightRatio * 12.62,
@@ -202,6 +209,15 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                               isTireChange = value!;
                                               print(
                                                   "isTireChange: $isTireChange");
+                                              isTireChangeDropDownOpened =
+                                                  !isTireChangeDropDownOpened;
+                                              print(
+                                                  "isTireChangeDropDownOpened: $isTireChangeDropDownOpened");
+
+                                              changeTireStateValue =
+                                                  isTireChange;
+                                              print(
+                                                  "changeTireStateValue: $changeTireStateValue");
                                             });
                                           },
                                           activeColor:
@@ -212,7 +228,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                     TextView.getSmallText12(
                                       "Do you have a spare tire with you?",
                                       Assets.poppinsRegular,
-                                      color: isTireChangeDropDownOpened
+                                      color: (isTireChangeDropDownOpened ||
+                                              changeTireStateValue)
                                           ? AppColors.whiteTextColor
                                           : AppColors.requestTowTextColor,
                                       lines: 1,
@@ -249,7 +266,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                     width: sizes!.widthRatio * 335.0,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(12)),
-                      color: isLockoutServiceDropDownOpened
+                      color: (isLockoutServiceDropDownOpened ||
+                              changeLockOutStateValue)
                           ? AppColors.getStartedButtonColor
                           : AppColors.homeScreenContainerColor,
                       boxShadow: const [
@@ -274,7 +292,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                             children: [
                               Row(
                                 children: [
-                                  isLockoutServiceDropDownOpened
+                                  (isLockoutServiceDropDownOpened ||
+                                          changeLockOutStateValue)
                                       ? Image.asset(
                                           "assets/png/white_lockout_icon@3x.png",
                                           height: sizes!.heightRatio * 35.0,
@@ -290,7 +309,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                   ),
                                   TextView.getRegularBoldWith13(
                                       "Lockout Service", Assets.poppinsMedium,
-                                      color: isLockoutServiceDropDownOpened
+                                      color: (isLockoutServiceDropDownOpened ||
+                                              changeLockOutStateValue)
                                           ? AppColors.whiteTextColor
                                           : AppColors.pass,
                                       lines: 1),
@@ -300,7 +320,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 children: [
                                   TextView.getMediumText16(
                                       "\$ 32", Assets.poppinsMedium,
-                                      color: isLockoutServiceDropDownOpened
+                                      color: (isLockoutServiceDropDownOpened ||
+                                              changeLockOutStateValue)
                                           ? AppColors.whiteTextColor
                                           : AppColors.requestTowTextColor,
                                       lines: 1,
@@ -308,7 +329,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                   SizedBox(
                                     width: sizes!.widthRatio * 17.3,
                                   ),
-                                  isLockoutServiceDropDownOpened
+                                  (isLockoutServiceDropDownOpened ||
+                                          changeLockOutStateValue)
                                       ? Image.asset(
                                           "assets/png/white_frop_down_icon@3x.png",
                                           height: sizes!.heightRatio * 12.62,
@@ -364,8 +386,13 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                           onChanged: (bool? value) {
                                             setState(() {
                                               isLockOutService = value!;
+                                              isLockoutServiceDropDownOpened =
+                                                  !isLockoutServiceDropDownOpened;
                                               print(
                                                   "isLockOutService: $isLockOutService");
+
+                                              changeLockOutStateValue =
+                                                  isLockOutService;
                                             });
                                           },
                                           activeColor:
@@ -414,9 +441,10 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                     width: sizes!.widthRatio * 335.0,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(12)),
-                      color: isFuelDeliveryDropDownOpened
-                          ? AppColors.getStartedButtonColor
-                          : AppColors.homeScreenContainerColor,
+                      color:
+                          (isFuelDeliveryDropDownOpened || changeFuelStateValue)
+                              ? AppColors.getStartedButtonColor
+                              : AppColors.homeScreenContainerColor,
                       boxShadow: const [
                         BoxShadow(
                           color: AppColors.homeScreenContainerColorShadow,
@@ -439,7 +467,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                             children: [
                               Row(
                                 children: [
-                                  isFuelDeliveryDropDownOpened
+                                  (isFuelDeliveryDropDownOpened ||
+                                          changeFuelStateValue)
                                       ? Image.asset(
                                           "assets/png/white_fuel_icon@3x.png",
                                           height: sizes!.heightRatio * 35.0,
@@ -455,7 +484,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                   ),
                                   TextView.getRegularBoldWith13(
                                       "Fuel Delivery", Assets.poppinsMedium,
-                                      color: isFuelDeliveryDropDownOpened
+                                      color: (isFuelDeliveryDropDownOpened ||
+                                              changeFuelStateValue)
                                           ? AppColors.whiteTextColor
                                           : AppColors.pass,
                                       lines: 1),
@@ -465,7 +495,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 children: [
                                   TextView.getMediumText16(
                                       "\$ 32", Assets.poppinsMedium,
-                                      color: isFuelDeliveryDropDownOpened
+                                      color: (isFuelDeliveryDropDownOpened ||
+                                              changeFuelStateValue)
                                           ? AppColors.whiteTextColor
                                           : AppColors.requestTowTextColor,
                                       lines: 1,
@@ -473,7 +504,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                   SizedBox(
                                     width: sizes!.widthRatio * 17.3,
                                   ),
-                                  isFuelDeliveryDropDownOpened
+                                  (isFuelDeliveryDropDownOpened ||
+                                          changeFuelStateValue)
                                       ? Image.asset(
                                           "assets/png/white_frop_down_icon@3x.png",
                                           height: sizes!.heightRatio * 12.62,
@@ -529,6 +561,12 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                           onChanged: (bool? value) {
                                             setState(() {
                                               isFuelDelivery = value!;
+                                              isFuelDeliveryDropDownOpened =
+                                                  !isFuelDeliveryDropDownOpened;
+
+                                              changeFuelStateValue =
+                                                  isFuelDelivery;
+
                                               print(
                                                   "isFuelDelivery: $isFuelDelivery");
                                             });
