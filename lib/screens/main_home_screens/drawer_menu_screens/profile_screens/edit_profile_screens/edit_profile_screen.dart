@@ -67,10 +67,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   void initState() {
-    _firstNameController = TextEditingController();
-    _lastNameController = TextEditingController();
-    _emailController = TextEditingController();
-    _phoneNumberController = TextEditingController();
+    _firstNameController = TextEditingController(text: _firstName);
+    _lastNameController = TextEditingController(text: _lastName);
+    _emailController = TextEditingController(text: _email);
+    _phoneNumberController = TextEditingController(text: _phoneNumber);
     _passwordController = TextEditingController();
 
     editProfileProvider = EditProfileProvider();

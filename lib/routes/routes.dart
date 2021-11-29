@@ -1,4 +1,5 @@
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
+import 'package:quick_tow_trucker/screens/get_started_screens/get_started_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/add_service_screens/add_service_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/booking_history_screens/booking_history_detail_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/history_screen.dart';
@@ -16,7 +17,6 @@ import 'package:quick_tow_trucker/screens/main_home_screens/end_ride_screens/end
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/payment_total_screens/payment_total_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/rating_review_screens/rating_review_screen.dart';
-import 'package:quick_tow_trucker/screens/splash_screens/splash_screen.dart';
 
 class Routes {
   static const String splash = '/';
@@ -44,7 +44,7 @@ class Routes {
   static const String accountDetailScreen = '/accountDetailScreen';
 
   static final routes = {
-    splash: (context) => const SplashScreen(),
+    splash: (context) => const GetStartedScreen(),
     login: (context) => const LoginScreen(),
     findBookingScreen: (context) => const FindBookingScreen(),
     profileScreen: (context) => const ProfileScreen(),
