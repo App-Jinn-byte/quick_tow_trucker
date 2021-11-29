@@ -325,8 +325,8 @@ class CommonWidgets {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextView.getSubHeadingTextWith15(
-                    "Vehicle Information", Assets.poppinsMedium,
+                TextView.getMediumText16(
+                    "Vehicle Information", Assets.poppinsSemiBold,
                     color: AppColors.openTheTruckerAppTextColor,
                     lines: 1,
                     fontWeight: FontWeight.bold),

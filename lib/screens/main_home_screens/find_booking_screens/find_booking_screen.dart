@@ -21,6 +21,10 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      settingPopUp(context);
+    });
   }
 
   @override
@@ -49,13 +53,11 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                 SizedBox(
                   height: sizes!.heightRatio * 62.0,
                 ),
-
                 TextView.getTextWith24("No New Request!", Assets.poppinsMedium,
                     color: AppColors.blackTextColor, lines: 1),
                 SizedBox(
                   height: sizes!.heightRatio * 6.0,
                 ),
-
                 TextView.getMediumText14(
                     "We Will Notify You Soon.", Assets.poppinsRegular,
                     color: AppColors.officeDetailText,
@@ -90,21 +92,6 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                     ),
                   ),
                 ),
-
-                // Expanded(
-                //     child: ListView.builder(
-                //         itemCount: 10,
-                //         itemBuilder: (context, index) {
-                //           return Padding(
-                //             padding: EdgeInsets.only(
-                //                 left: sizes!.widthRatio * 20.0,
-                //                 right: sizes!.widthRatio * 20.0,
-                //                 top: sizes!.heightRatio * 10.0,
-                //                 bottom: sizes!.heightRatio * 10.0),
-                //             child: CommonWidgets.getBookingContainer(
-                //                 context: context),
-                //           );
-                //         })),
               ],
             )),
       ),
@@ -132,6 +119,32 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
         pageBuilder: (context, animation, animationTime) {
           return Center(
               child: PopUpComponents.getBookingUpdatedPopUp(
+            context,
+          ));
+        });
+  }
+
+  static void settingPopUp(context) {
+    showGeneralDialog(
+        barrierColor: Colors.black.withOpacity(0.5),
+        //SHADOW EFFECT
+        transitionBuilder: (context, animation, animationTime, widget) {
+          animation =
+              CurvedAnimation(parent: animation, curve: Curves.decelerate);
+          return ScaleTransition(
+            alignment: Alignment.center,
+            scale: animation,
+            child: widget,
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 500),
+        // DURATION FOR ANIMATION
+        barrierDismissible: false,
+        barrierLabel: 'LABEL',
+        context: context,
+        pageBuilder: (context, animation, animationTime) {
+          return Center(
+              child: PopUpComponents.welcomeBackScreenCustomPopUp(
             context,
           ));
         });

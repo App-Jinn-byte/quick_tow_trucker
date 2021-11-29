@@ -173,11 +173,12 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
                       right: sizes!.heightRatio * 29.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: TextView.getMediumText16(
-                        "Update Vehicle Information", Assets.poppinsMedium,
-                        color: AppColors.openTheTruckerAppTextColor,
-                        lines: 1,
-                        fontWeight: FontWeight.bold),
+                    child: TextView.getMediumText18(
+                      "Update Vehicle Information",
+                      Assets.poppinsMedium,
+                      color: AppColors.openTheTruckerAppTextColor,
+                      lines: 1,
+                    ),
                   ),
                 ),
                 SizedBox(
