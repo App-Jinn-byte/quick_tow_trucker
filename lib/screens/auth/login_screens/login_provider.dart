@@ -46,12 +46,16 @@ class LoginProvider extends ChangeNotifier {
       if (loginResponse != null) {
         PreferenceUtils.clearPreferences();
 
+
         await PreferenceUtils.setLoginResponse(loginResponse).then((_) {
           String name = PreferenceUtils.getString(Strings.loginFirstName) ?? "";
           String savedToken =
               PreferenceUtils.getString(Strings.loginUserToken) ?? "";
           print("UserName: $name");
           print("savedToken: $savedToken");
+
+          var userPhoto = PreferenceUtils.getUserImage();
+          print("userPhoto: $userPhoto");
 
           print("loginResponse: ${loginResponse.data!.toJson()}");
           isLoginSuccessful = true;

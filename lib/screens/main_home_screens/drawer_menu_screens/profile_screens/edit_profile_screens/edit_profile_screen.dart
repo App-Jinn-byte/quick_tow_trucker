@@ -48,6 +48,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final String _password =
       PreferenceUtils.getString(Strings.loginPassword) ?? "******";
 
+  final dynamic _userPhoto = PreferenceUtils.getUserImage();
+
   //File? _image;
   String? imgString;
   ImagePicker? imagePicker = ImagePicker();
@@ -79,6 +81,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     editProfileProvider.init(context: context);
 
     print("Current User ID: $_userId");
+    bool isImageUrl = Uri.tryParse(_userPhoto!)?.hasAbsolutePath ?? false;
 
     _isFirstNameValid = true;
     _isLastNameValid = true;
@@ -189,12 +192,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: CommonWidgets.getProfileImage(
-                      // profileImg: image,
+                      profileImg: _userPhoto,
                       // selectedImage: selectedImageByUser,
-                      // isImageUploaded: isImageUploaded,
+                      isImageUploaded: true,
                       onEditImage: () {
-                    getImage();
-                  }),
+                        getImage();
+                      }),
                 ),
                 SizedBox(
                   height: sizes!.heightRatio * 35.0,

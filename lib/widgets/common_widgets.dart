@@ -1482,7 +1482,7 @@ class CommonWidgets {
             ],
           ),
           backgroundImage: (isImageUploaded ?? false)
-              ? NetworkImage("$baseUrl$profileImg")
+              ? NetworkImage("$profileImg")
               : const AssetImage(
                   "assets/png/photo@2x.png",
                 ) as ImageProvider,

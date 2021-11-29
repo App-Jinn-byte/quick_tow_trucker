@@ -67,6 +67,8 @@ class PreferenceUtils {
     await PreferenceUtils.setString(
         Strings.loginUserId, loginResponse.data?.user?.id ?? "");
 
+    await PreferenceUtils.setUserImage(loginResponse.data?.user?.profilePhoto);
+
     await PreferenceUtils.setString(
         Strings.loginFirstName, loginResponse.data?.user?.firstName ?? "");
     await PreferenceUtils.setString(
