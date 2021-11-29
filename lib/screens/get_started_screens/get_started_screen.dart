@@ -4,23 +4,24 @@ import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
-import 'package:quick_tow_trucker/screens/splash_screens/splash_provider.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+import 'get_started_provider.dart';
+
+class GetStartedScreen extends StatefulWidget {
+  const GetStartedScreen({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _GetStartedScreenState createState() => _GetStartedScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  late SplashProvider splashProvider;
+class _GetStartedScreenState extends State<GetStartedScreen> {
+  late GetStartedProvider splashProvider;
 
   @override
   void initState() {
-    splashProvider = SplashProvider();
-    splashProvider = Provider.of<SplashProvider>(context, listen: false);
+    splashProvider = GetStartedProvider();
+    splashProvider = Provider.of<GetStartedProvider>(context, listen: false);
     splashProvider.init(context: context);
 
     super.initState();
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     initializeResources(context: context);
-    splashProvider = Provider.of<SplashProvider>(context, listen: true);
+    splashProvider = Provider.of<GetStartedProvider>(context, listen: true);
 
     return Scaffold(
       body: Container(

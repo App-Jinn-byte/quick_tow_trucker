@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
-import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
-import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/account_details_screens/account_detail_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
-
-import '../../../../main.dart';
 import 'company_support_screens/message_screen.dart';
 import 'driver_license_screens/driver_license_screen.dart';
 import 'edit_profile_screens/edit_profile_screen.dart';
@@ -39,10 +34,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final String _phone =
       PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(900) 900987";
   final dynamic _userPhoto = PreferenceUtils.getUserImage();
+  late bool isImageUrl;
 
   @override
   void initState() {
     print("_userPhoto: $_userPhoto");
+    isImageUrl = Uri.tryParse(_userPhoto!)?.hasAbsolutePath ?? false;
     super.initState();
   }
 
@@ -90,10 +87,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: sizes!.heightRatio * 88,
                       width: sizes!.widthRatio * 88,
                       child: CircleAvatar(
-                        backgroundImage: //NetworkImage("http://$_userPhoto"),
-                            AssetImage(
-                          "assets/png/photo@2x.png",
-                        ),
+                        backgroundImage: isImageUrl
+                            ? NetworkImage(_userPhoto!)
+                            : const AssetImage(
+                                "assets/png/photo@2x.png",
+                              ) as ImageProvider,
                         radius: 50.0,
                         backgroundColor: AppColors.transparentColor,
                       ),

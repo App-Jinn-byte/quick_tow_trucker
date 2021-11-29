@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_provider.dart';
+import 'package:quick_tow_trucker/screens/get_started_screens/get_started_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/add_service_screens/add_service_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/booking_history_screens/booking_history_detail_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/history_provider.dart';
@@ -17,11 +18,10 @@ import 'package:quick_tow_trucker/screens/main_home_screens/en_route_screens/en_
 import 'package:quick_tow_trucker/screens/main_home_screens/end_ride_screens/end_ride_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/rating_review_screens/rating_review_provider.dart';
-import 'package:quick_tow_trucker/screens/splash_screens/splash_provider.dart';
 
 final multiProviders = [
-  ChangeNotifierProvider<SplashProvider>(
-    create: (_) => SplashProvider(),
+  ChangeNotifierProvider<GetStartedProvider>(
+    create: (_) => GetStartedProvider(),
     lazy: true,
   ),
   ChangeNotifierProvider<LoginProvider>(

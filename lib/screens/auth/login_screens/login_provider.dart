@@ -91,5 +91,4 @@ class LoginProvider extends ChangeNotifier {
       Toasts.getErrorToast(text: "Invalid email or password");
     }
   }
-
 }

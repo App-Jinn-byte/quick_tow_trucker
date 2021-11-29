@@ -5,7 +5,7 @@ import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_screen.dart';
 
-class SplashProvider extends ChangeNotifier {
+class GetStartedProvider extends ChangeNotifier {
   BuildContext? context;
 
   Future<void> init({@required BuildContext? context}) async {
@@ -16,7 +16,7 @@ class SplashProvider extends ChangeNotifier {
 
   Future<void> navigateToNextScreen() async {
     await Future.delayed(const Duration(
-      seconds: 3,
+      seconds: 1,
     ));
     if (PreferenceUtils.getString(Strings.loginFirstName)!.isNotEmpty &&
         PreferenceUtils.getString(Strings.loginPassword)!.isNotEmpty) {

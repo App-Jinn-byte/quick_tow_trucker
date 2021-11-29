@@ -22,6 +22,9 @@ class CommonDrawerBar {
     String _email =
         PreferenceUtils.getString(Strings.loginEmail) ?? "Ala@gmail.com";
 
+    final dynamic _userPhoto = PreferenceUtils.getUserImage();
+    bool isImageUrl = Uri.tryParse(_userPhoto!)?.hasAbsolutePath ?? false;
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -37,10 +40,12 @@ class CommonDrawerBar {
                   SizedBox(
                     height: sizes!.heightRatio * 45,
                     width: sizes!.widthRatio * 45,
-                    child: const CircleAvatar(
-                      backgroundImage: AssetImage(
-                        "assets/png/avatar_user_icon@2x.png",
-                      ),
+                    child: CircleAvatar(
+                      backgroundImage: isImageUrl
+                          ? NetworkImage(_userPhoto!)
+                          : const AssetImage(
+                              "assets/png/photo@2x.png",
+                            ) as ImageProvider,
                       radius: 50.0,
                       backgroundColor: AppColors.transparentColor,
                     ),
