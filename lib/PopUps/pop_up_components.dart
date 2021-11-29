@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
@@ -530,6 +529,7 @@ class PopUpComponents {
                               setState(() {
                                 _character = value;
                                 print("isActiveStatus: $_character");
+
                               });
                             },
                           ),

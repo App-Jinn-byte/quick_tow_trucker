@@ -3,10 +3,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart' as maps;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
-
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/message_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/end_ride_screens/end_ride_screen.dart';
+import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 
 class EnRouteScreen extends StatefulWidget {
@@ -56,7 +56,7 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,
-      drawer: CommonWidgets.getDrawerBar(context: context, isCurrentScreen: 7),
+      drawer: CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 7),
       body: SizedBox(
           height: sizes!.height,
           width: sizes!.width,

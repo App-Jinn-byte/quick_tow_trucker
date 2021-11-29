@@ -26,7 +26,7 @@ class CommonWidgets {
 
   static Widget getBookingContainer({required BuildContext context}) {
     return Container(
-      height: sizes!.heightRatio * 435,
+      height: sizes!.heightRatio * 450,
       width: sizes!.widthRatio * 326,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -291,7 +291,14 @@ class CommonWidgets {
     );
   }
 
-  static Widget getVehicleDetailContainer({@required Function? onEditPress}) {
+  static Widget getVehicleDetailContainer({
+    @required Function? onEditPress,
+    @required Function? onDeletePress,
+    @required String? make,
+    @required String? model,
+    @required String? plateNumber,
+    @required String? category,
+  }) {
     return Container(
       height: sizes!.heightRatio * 253.0,
       width: sizes!.widthRatio * 315.0,
@@ -342,7 +349,9 @@ class CommonWidgets {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Toasts.getErrorToast(text: "Try it Later");
+                        if (onDeletePress != null) {
+                          onDeletePress.call();
+                        }
                       },
                       child: Image.asset(
                         "assets/png/delete_icon@2x.png",
@@ -381,9 +390,11 @@ class CommonWidgets {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextView.getSmallText12("Honda", Assets.poppinsLight,
+                    TextView.getSmallText12(
+                        make ?? "Honda", Assets.poppinsLight,
                         color: AppColors.pass, lines: 1),
-                    TextView.getSmallText12("Civic-X", Assets.poppinsLight,
+                    TextView.getSmallText12(
+                        model ?? "Civic-X", Assets.poppinsLight,
                         color: AppColors.pass, lines: 1)
                   ],
                 ),
@@ -425,9 +436,11 @@ class CommonWidgets {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextView.getSmallText12("LEU-7652", Assets.poppinsLight,
+                    TextView.getSmallText12(
+                        plateNumber ?? "LEU-7652", Assets.poppinsLight,
                         color: AppColors.pass, lines: 1),
-                    TextView.getSmallText12("FWD Only", Assets.poppinsLight,
+                    TextView.getSmallText12(
+                        category ?? "FWD Only", Assets.poppinsLight,
                         color: AppColors.pass, lines: 1)
                   ],
                 ),
@@ -1308,185 +1321,6 @@ class CommonWidgets {
                 color: AppColors.blackTextColor, lines: 1),
           ],
         ),
-      ),
-    );
-  }
-
-  static Widget getDrawerBar(
-      {required BuildContext context, @required int? isCurrentScreen}) {
-    String firstName =
-        PreferenceUtils.getString(Strings.loginFirstName) ?? "Loading...";
-    String lastName = PreferenceUtils.getString(Strings.loginLastName) ?? "";
-    String email =
-        PreferenceUtils.getString(Strings.loginEmail) ?? "Loading...";
-
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: sizes!.heightRatio * 45,
-                    width: sizes!.widthRatio * 45,
-                    child: const CircleAvatar(
-                      backgroundImage: AssetImage(
-                        "assets/png/avatar_user_icon@2x.png",
-                      ),
-                      radius: 50.0,
-                      backgroundColor: AppColors.transparentColor,
-                    ),
-                  ),
-                  SizedBox(
-                    width: sizes!.widthRatio * 10.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: sizes!.heightRatio * 10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextView.getSubHeadingTextWith15(
-                            "Alan", Assets.poppinsMedium,
-                            color: AppColors.blackTextColor,
-                            lines: 1,
-                            fontWeight: FontWeight.bold),
-                        TextView.getRegular13Text(
-                            "Alan@gmail.com", Assets.poppinsRegular,
-                            color: AppColors.blackTextColor, lines: 1)
-                      ],
-                    ),
-                  )
-                ],
-              )),
-          ListTile(
-            title: Align(
-              alignment: Alignment.centerLeft,
-              child: TextView.getDrawerMenuText13("Home", Assets.poppinsMedium,
-                  color: AppColors.blackTextColor, lines: 1),
-            ),
-            leading: Image.asset(
-              "assets/png/home_icon@2x.png",
-              height: sizes!.heightRatio * 32,
-              width: sizes!.widthRatio * 32,
-            ),
-            onTap: () {
-              if (isCurrentScreen == 1) {
-                Navigator.pop(context);
-              } else {
-                // Navigator.pop(context);
-                Navigator.pushReplacement(
-                    context, SlideRightRoute(page: const FindBookingScreen()));
-              }
-            },
-          ),
-          const Divider(),
-          ListTile(
-            title: Align(
-              alignment: Alignment.centerLeft,
-              child: TextView.getDrawerMenuText13(
-                  "Profile", Assets.poppinsMedium,
-                  color: AppColors.blackTextColor, lines: 1),
-            ),
-            leading: Image.asset(
-              "assets/png/profile_icon@2x.png",
-              height: sizes!.heightRatio * 32,
-              width: sizes!.widthRatio * 32,
-            ),
-            onTap: () {
-              if (isCurrentScreen == 2) {
-                Navigator.pop(context);
-              } else {
-                // Navigator.pop(context);
-                Navigator.pushReplacement(
-                    context, SlideRightRoute(page: const ProfileScreen()));
-              }
-            },
-          ),
-          const Divider(),
-          ListTile(
-            title: Align(
-              alignment: Alignment.centerLeft,
-              child: TextView.getDrawerMenuText13(
-                  "Notification", Assets.poppinsMedium,
-                  color: AppColors.blackTextColor, lines: 1),
-            ),
-            leading: Image.asset(
-              "assets/png/notification_icon@2x.png",
-              height: sizes!.heightRatio * 32,
-              width: sizes!.widthRatio * 32,
-            ),
-            onTap: () {
-              if (isCurrentScreen == 3) {
-                Navigator.pop(context);
-              } else {
-                // Navigator.pop(context);
-                Navigator.pushReplacement(
-                    context, SlideRightRoute(page: const NotificationScreen()));
-              }
-            },
-          ),
-
-          const Divider(),
-          ListTile(
-            title: Align(
-              alignment: Alignment.centerLeft,
-              child: TextView.getDrawerMenuText13(
-                  "History", Assets.poppinsMedium,
-                  color: AppColors.blackTextColor, lines: 1),
-            ),
-            leading: Image.asset(
-              "assets/png/history_drawer_icon@2x.png",
-              height: sizes!.heightRatio * 32,
-              width: sizes!.widthRatio * 32,
-            ),
-            onTap: () {
-              if (isCurrentScreen == 4) {
-                Navigator.pop(context);
-              } else {
-                // Navigator.pop(context);
-                Navigator.pushReplacement(
-                    context, SlideRightRoute(page: const HistoryScreen()));
-                //  TODO: Kindly double-check Push Replacement
-              }
-            },
-          ),
-          const Divider(),
-          ListTile(
-            title: Align(
-              alignment: Alignment.centerLeft,
-              child: TextView.getDrawerMenuText13(
-                  "Settings", Assets.poppinsMedium,
-                  color: AppColors.blackTextColor, lines: 1),
-            ),
-            leading: Image.asset(
-              "assets/png/setting_icon@2x.png",
-              height: sizes!.heightRatio * 32,
-              width: sizes!.widthRatio * 32,
-            ),
-            onTap: () {
-              if (isCurrentScreen == 5) {
-                Navigator.pop(context);
-              } else {
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                    context, SlideRightRoute(page: const SettingScreen()));
-
-                //  TODO: Kindly double-check Push Replacement
-              }
-            },
-          ),
-          const Divider(),
-
-          // TextView.getDrawerMenuText13("V: 1.0.0", Assets.poppinsMedium,
-          //     color: AppColors.getStartedButtonColor, lines: 1)
-        ],
       ),
     );
   }

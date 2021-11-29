@@ -3,6 +3,15 @@
 <plist version="1.0">
 	<dict>
 		<!--  Basic Permissions   -->
+
+		  <key>NSMicrophoneUsageDescription</key>
+                <string>App needs access to mircophone for video</string>
+                <key>NSCameraUsageDescription</key>
+                <string>To capture profile photo please grant camera access</string>
+                <key>NSPhotoLibraryUsageDescription</key>
+                <string>App needs access to photo lib for profile images</string>
+
+
 		<key>UI Background Modes</key>
 		<string>Location</string>
 		<key>NSLocationAlwaysUsageDescription</key>
