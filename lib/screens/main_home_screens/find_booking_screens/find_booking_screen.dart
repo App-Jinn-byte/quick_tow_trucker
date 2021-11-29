@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart' as maps;
 import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
@@ -53,13 +51,11 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                 SizedBox(
                   height: sizes!.heightRatio * 62.0,
                 ),
-
                 TextView.getTextWith24("No New Request!", Assets.poppinsMedium,
                     color: AppColors.blackTextColor, lines: 1),
                 SizedBox(
                   height: sizes!.heightRatio * 6.0,
                 ),
-
                 TextView.getMediumText14(
                     "We Will Notify You Soon.", Assets.poppinsRegular,
                     color: AppColors.officeDetailText,
@@ -94,21 +90,6 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                     ),
                   ),
                 ),
-
-                // Expanded(
-                //     child: ListView.builder(
-                //         itemCount: 10,
-                //         itemBuilder: (context, index) {
-                //           return Padding(
-                //             padding: EdgeInsets.only(
-                //                 left: sizes!.widthRatio * 20.0,
-                //                 right: sizes!.widthRatio * 20.0,
-                //                 top: sizes!.heightRatio * 10.0,
-                //                 bottom: sizes!.heightRatio * 10.0),
-                //             child: CommonWidgets.getBookingContainer(
-                //                 context: context),
-                //           );
-                //         })),
               ],
             )),
       ),
