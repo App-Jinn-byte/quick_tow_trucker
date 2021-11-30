@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
-import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/profile_provider.dart';
 import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
@@ -23,28 +24,25 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  var scaffoldKey = GlobalKey<ScaffoldState>();
+  late ProfileProvider profileProvider;
 
-  final String _firstName =
-      PreferenceUtils.getString(Strings.loginFirstName) ?? "Alan";
-  final String _lastName =
-      PreferenceUtils.getString(Strings.loginLastName) ?? "Thor";
-  final String _email =
-      PreferenceUtils.getString(Strings.loginEmail) ?? "Alan@gmail.com";
-  final String _phone =
-      PreferenceUtils.getString(Strings.loginPhoneNo) ?? "(900) 900987";
-  final dynamic _userPhoto = PreferenceUtils.getUserImage();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   late bool isImageUrl;
 
   @override
   void initState() {
-    print("_userPhoto: $_userPhoto");
-    isImageUrl = Uri.tryParse(_userPhoto!)?.hasAbsolutePath ?? false;
+    profileProvider = ProfileProvider();
+    profileProvider = Provider.of<ProfileProvider>(context, listen: false);
+    profileProvider.init(context: context);
+    print("_userPhoto: ${profileProvider.userPhoto}");
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    profileProvider = Provider.of<ProfileProvider>(context, listen: true);
+    isImageUrl =
+        Uri.tryParse(profileProvider.userPhoto!)?.hasAbsolutePath ?? false;
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,
@@ -88,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       width: sizes!.widthRatio * 88,
                       child: CircleAvatar(
                         backgroundImage: isImageUrl
-                            ? NetworkImage(_userPhoto!)
+                            ? NetworkImage(profileProvider.userPhoto!)
                             : const AssetImage(
                                 "assets/png/photo@2x.png",
                               ) as ImageProvider,
@@ -102,16 +100,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextView.getMediumText18(
-                            _firstName + " " + _lastName,
+                            profileProvider.firstName +
+                                " " +
+                                profileProvider.lastName,
                             Assets.poppinsMedium,
                             color: AppColors.blackTextColor,
                             lines: 1,
                           ),
                           TextView.getRegular13Text(
-                              _email, Assets.poppinsRegular,
+                              profileProvider.email, Assets.poppinsRegular,
                               color: AppColors.blackTextColor, lines: 1),
                           TextView.getRegular13Text(
-                              _phone, Assets.poppinsRegular,
+                              profileProvider.phone, Assets.poppinsRegular,
                               color: AppColors.blackTextColor, lines: 1)
                         ],
                       ),

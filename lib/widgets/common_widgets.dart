@@ -2422,6 +2422,73 @@ class CommonWidgets {
     );
   }
 
+  static Widget customTextFieldReadOnlyWithCustomContainerIcon(
+      {@required String? placeHolder,
+      @required dynamic icon,
+      @required bool? isValid,
+      @required TextEditingController? controller,
+      @required dynamic keyboardType}) {
+    isValid ??= true;
+
+    return Container(
+      padding: EdgeInsets.only(
+          left: sizes!.widthRatio * 8, right: sizes!.widthRatio * 7),
+      width: sizes!.widthRatio * 325,
+      height: sizes!.heightRatio * 45,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: isValid
+              ? AppColors.textFieldBorderColor
+              : AppColors.redColor, //AppColors.textFieldBorderColor,
+          width: isValid ? 0.25 : 1,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(6)),
+        color: AppColors.whiteTextColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.smallButtonShadow,
+            blurRadius: 18,
+            offset: const Offset(0, 0),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Row(
+          children: [
+            SizedBox(
+              height: sizes!.heightRatio * 29,
+              width: sizes!.widthRatio * 36,
+              child: Image.asset(icon),
+            ),
+            SizedBox(
+              width: sizes!.widthRatio * 13,
+            ),
+            Expanded(
+              child: TextField(
+                textAlignVertical: TextAlignVertical(y: 0.0),
+                obscureText: false,
+                controller: controller,
+                keyboardType: keyboardType,
+                readOnly: true,
+                decoration: InputDecoration(
+                  hintText: placeHolder,
+                  hintStyle: const TextStyle(
+                      color: AppColors.lightGreyTextColor,
+                      fontFamily: Assets.poppinsLight,
+                      fontSize: 14),
+                  contentPadding: EdgeInsets.only(
+                      bottom: sizes!.heightRatio * 15.0,
+                      top: sizes!.heightRatio * 12.0),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   static Widget customTextFieldWithPasswordCustomContainerIcon(
       {@required String? placeHolder,
       @required dynamic icon,

@@ -10,6 +10,7 @@ import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
+import '../profile_provider.dart';
 import 'edit_profile_provider.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -27,6 +28,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   late TextEditingController _passwordController;
 
   late EditProfileProvider editProfileProvider;
+  late ProfileProvider profileProvider;
 
   late bool _isFirstNameValid;
   late bool _isLastNameValid;
@@ -79,6 +81,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     editProfileProvider =
         Provider.of<EditProfileProvider>(context, listen: false);
     editProfileProvider.init(context: context);
+
+    profileProvider = ProfileProvider();
+    profileProvider = Provider.of<ProfileProvider>(context, listen: false);
+    profileProvider.init(context: context);
 
     print("Current User ID: $_userId");
     bool isImageUrl = Uri.tryParse(_userPhoto!)?.hasAbsolutePath ?? false;
@@ -164,6 +170,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     editProfileProvider =
         Provider.of<EditProfileProvider>(context, listen: true);
+    profileProvider = Provider.of<ProfileProvider>(context, listen: true);
+
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
@@ -192,12 +200,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: CommonWidgets.getProfileImage(
-                      profileImg: _userPhoto,
+                      // profileImg: _userPhoto,
                       // selectedImage: selectedImageByUser,
-                      isImageUploaded: true,
+                      // isImageUploaded: true,
                       onEditImage: () {
-                        getImage();
-                      }),
+                    getImage();
+                  }),
                 ),
                 SizedBox(
                   height: sizes!.heightRatio * 35.0,
@@ -274,7 +282,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   padding: EdgeInsets.only(
                       left: sizes!.widthRatio * 30,
                       right: sizes!.widthRatio * 30),
-                  child: CommonWidgets.customTextFieldWithCustomContainerIcon(
+                  child: CommonWidgets
+                      .customTextFieldReadOnlyWithCustomContainerIcon(
                     placeHolder: "Alan@gmail.com",
                     icon: "assets/png/email_icon@2x.png",
                     controller: _emailController,
@@ -388,6 +397,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         profilePhoto: "profilePhoto");
 
     if (editProfileProvider.isEditProfileSuccessful == true) {
+      profileProvider.getUserDataFromStorage();
       Toasts.getSuccessToast(text: "Profile Updated");
     }
   }

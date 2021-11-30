@@ -9,6 +9,7 @@ import 'package:quick_tow_trucker/network_manager/models.dart';
 import 'package:quick_tow_trucker/network_manager/my_api.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/profile_screen.dart';
 import 'package:quick_tow_trucker/widgets/loader.dart';
 
 class EditProfileProvider extends ChangeNotifier {
@@ -82,7 +83,7 @@ class EditProfileProvider extends ChangeNotifier {
         "firstName": firstName, //"Driver",
         "lastName": lastName, //"102",
         "phoneNumber": phoneNumber, //"90233023021090",
-        "profilePhoto": profilePhoto, //"string"
+        "profilePhoto": PreferenceUtils.getUserImage() ?? "", //"string"
       };
 
       print("URL: $editProfileApiUrl");
@@ -103,20 +104,20 @@ class EditProfileProvider extends ChangeNotifier {
         await PreferenceUtils.setEditProfileResponse(editProfileResponse)
             .then((_) {
           String name = PreferenceUtils.getString(Strings.loginFirstName) ?? "";
-
-          print("UserName: $name");
+          print("UpdatedUserName: $name");
           print("editProfileResponse: ${editProfileResponse.toJson()}");
           isEditProfileSuccessful = true;
           _loader.hideLoader(context!);
-          Navigator.pop(context!);
+          //Navigator.pop(context!);
+          Navigator.pushReplacement(
+            context!,
+            MaterialPageRoute(builder: (context) => const ProfileScreen()),
+          );
           notifyListeners();
         }).onError((error, stackTrace) {
           print("Save Error: ${error.toString()}");
           _loader.hideLoader(context!);
         });
-
-
-
       } else {
         print("signUpResponse: Something wrong");
         _loader.hideLoader(context!);
