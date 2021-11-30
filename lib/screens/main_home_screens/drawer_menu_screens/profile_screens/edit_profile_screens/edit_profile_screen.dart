@@ -200,12 +200,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: CommonWidgets.getProfileImage(
-                      // profileImg: _userPhoto,
-                      // selectedImage: selectedImageByUser,
-                      // isImageUploaded: true,
+                      profileImg: _userPhoto,
+                      selectedImage: editProfileProvider.myImage,
+                      isImageUploaded: editProfileProvider.pickedImage,
                       onEditImage: () {
-                    getImage();
-                  }),
+                        getImage();
+                      }),
                 ),
                 SizedBox(
                   height: sizes!.heightRatio * 35.0,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -1450,45 +1452,41 @@ class CommonWidgets {
     @required String? profileImg,
     @required Function? onEditImage,
     @required bool? isImageUploaded,
-    @required dynamic selectedImage,
+    @required File? selectedImage,
   }) {
     return Align(
       alignment: Alignment.center,
-      child: Container(
-        child: CircleAvatar(
-          child: Stack(
-            children: [
-              Positioned(
-                  bottom: 5,
-                  right: 10,
-                  child: GestureDetector(
-                    onTap: () {
-                      if (onEditImage != null) {
-                        onEditImage.call();
-                      }
-                    },
-                    child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: AppColors.greenColor,
-                          border: Border.all(color: AppColors.whiteTextColor),
-                          borderRadius: BorderRadius.circular(
-                            100,
-                          ),
+      child: CircleAvatar(
+        child: Stack(
+          children: [
+            Positioned(
+                bottom: 5,
+                right: 10,
+                child: GestureDetector(
+                  onTap: () {
+                    if (onEditImage != null) {
+                      onEditImage.call();
+                    }
+                  },
+                  child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                        color: AppColors.greenColor,
+                        border: Border.all(color: AppColors.whiteTextColor),
+                        borderRadius: BorderRadius.circular(
+                          100,
                         ),
-                        child: Image.asset("assets/png/edit_icon.png")),
-                  )),
-            ],
-          ),
-          backgroundImage: (isImageUploaded ?? false)
-              ? NetworkImage("$profileImg")
-              : const AssetImage(
-                  "assets/png/photo@2x.png",
-                ) as ImageProvider,
-          radius: 60.0,
-          backgroundColor: AppColors.transparentColor,
+                      ),
+                      child: Image.asset("assets/png/edit_icon.png")),
+                )),
+          ],
         ),
+        backgroundImage: (selectedImage == null)
+            ? NetworkImage("$profileImg")
+            : FileImage(selectedImage) as ImageProvider,
+        radius: 60.0,
+        backgroundColor: AppColors.transparentColor,
       ),
     );
   }
