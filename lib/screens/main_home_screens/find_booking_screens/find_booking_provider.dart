@@ -16,6 +16,7 @@ class FindBookingProvider extends ChangeNotifier {
   Future<void> init({@required BuildContext? context}) async {
     this.context = context;
     isBookingListLoaded = false;
+
   }
 
   Future<void> getAllBookingList() async {
@@ -32,13 +33,14 @@ class FindBookingProvider extends ChangeNotifier {
         print(
             "getAllBookingListResponse: ${getAllBookingListResponse.toJson()}");
         isBookingListLoaded = true;
-        _loader.hideLoader(context!);
+        // _loader.hideLoader(context!);
         notifyListeners();
       } else {
-        _loader.hideLoader(context!);
+        // _loader.hideLoader(context!);
       }
     } catch (e) {
-      _loader.hideLoader(context!);
+      // _loader.hideLoader(context!);
+      print("getAllBookingListResponse-Error: ${e.toString()}");
     }
   }
 }

@@ -17,8 +17,8 @@ class FindBookingScreen extends StatefulWidget {
 }
 
 class _FindBookingScreenState extends State<FindBookingScreen> {
-  late FindBookingProvider findBookingProvider;
 
+  late FindBookingProvider findBookingProvider;
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -31,8 +31,10 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
     findBookingProvider.init(context: context);
 
     WidgetsBinding.instance!.addPostFrameCallback((_) {
-      // findBookingProvider.getAllBookingList();
       settingPopUp(context);
+      findBookingProvider.getAllBookingList().then((_) {
+        getAvailableBookingPopUp(context);
+      });
     });
   }
 
@@ -63,17 +65,26 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                 SizedBox(
                   height: sizes!.heightRatio * 62.0,
                 ),
-
-                TextView.getTextWith24("No New Request!", Assets.poppinsMedium,
-                    color: AppColors.blackTextColor, lines: 1),
+                findBookingProvider.isBookingListLoaded == true
+                    ? TextView.getTextWith24(
+                        "New Request Available!", Assets.poppinsMedium,
+                        color: AppColors.blackTextColor, lines: 1)
+                    : TextView.getTextWith24(
+                        "No New Request!", Assets.poppinsMedium,
+                        color: AppColors.blackTextColor, lines: 1),
                 SizedBox(
                   height: sizes!.heightRatio * 6.0,
                 ),
-                TextView.getMediumText14(
-                    "We Will Notify You Soon.", Assets.poppinsRegular,
-                    color: AppColors.officeDetailText,
-                    fontWeight: FontWeight.normal,
-                    lines: 1),
+                findBookingProvider.isBookingListLoaded == true
+                    ? TextView.getMediumText14("Pick Up", Assets.poppinsRegular,
+                        color: AppColors.officeDetailText,
+                        fontWeight: FontWeight.normal,
+                        lines: 1)
+                    : TextView.getMediumText14(
+                        "We Will Notify You Soon.", Assets.poppinsRegular,
+                        color: AppColors.officeDetailText,
+                        fontWeight: FontWeight.normal,
+                        lines: 1),
                 const Spacer(),
                 Padding(
                   padding: EdgeInsets.only(bottom: sizes!.heightRatio * 90.0),
@@ -107,6 +118,10 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
             )),
       ),
     );
+  }
+
+  void checkRequestAvailable(context) {
+    getAvailableBookingPopUp(context);
   }
 
   static void getAvailableBookingPopUp(context) {

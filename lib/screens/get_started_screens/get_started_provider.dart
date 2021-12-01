@@ -16,9 +16,9 @@ class GetStartedProvider extends ChangeNotifier {
 
   Future<void> navigateToNextScreen() async {
     await Future.delayed(const Duration(
-      seconds: 1,
+      seconds: 3,
     ));
-    if (PreferenceUtils.getString(Strings.loginFirstName)!.isNotEmpty &&
+    if (PreferenceUtils.getString(Strings.loginEmail)!.isNotEmpty &&
         PreferenceUtils.getString(Strings.loginPassword)!.isNotEmpty) {
       await Navigator.pushReplacement(
           context!, SlideRightRoute(page: const FindBookingScreen()));
