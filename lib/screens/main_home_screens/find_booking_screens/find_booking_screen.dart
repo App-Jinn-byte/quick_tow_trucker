@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/find_booking_screens/find_booking_provider.dart';
 import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
@@ -15,19 +17,28 @@ class FindBookingScreen extends StatefulWidget {
 }
 
 class _FindBookingScreenState extends State<FindBookingScreen> {
+  late FindBookingProvider findBookingProvider;
+
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
 
+    findBookingProvider = FindBookingProvider();
+    findBookingProvider =
+        Provider.of<FindBookingProvider>(context, listen: false);
+    findBookingProvider.init(context: context);
+
     WidgetsBinding.instance!.addPostFrameCallback((_) {
+      // findBookingProvider.getAllBookingList();
       settingPopUp(context);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<FindBookingProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
@@ -52,6 +63,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                 SizedBox(
                   height: sizes!.heightRatio * 62.0,
                 ),
+
                 TextView.getTextWith24("No New Request!", Assets.poppinsMedium,
                     color: AppColors.blackTextColor, lines: 1),
                 SizedBox(

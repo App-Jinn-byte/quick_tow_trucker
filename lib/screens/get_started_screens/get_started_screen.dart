@@ -30,7 +30,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   Widget build(BuildContext context) {
     initializeResources(context: context);
-    splashProvider = Provider.of<GetStartedProvider>(context, listen: true);
+    Provider.of<GetStartedProvider>(context, listen: true);
 
     return Scaffold(
       body: Container(

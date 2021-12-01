@@ -10,3 +10,4 @@ const String getVehicleByUserIdApiUrl =
     "$baseUrl/api/Vehicle/GetVehiclesByUserId/";
 const String updateVehicleApiUrl = "$baseUrl/api/Vehicle/UpdateVehicle";
 const String deleteVehicleApiUrl = "$baseUrl/api/Vehicle/DeleteVehicle/";
+const String getAllBookingListApiUrl = "$baseUrl/api/Request/GetAll/";

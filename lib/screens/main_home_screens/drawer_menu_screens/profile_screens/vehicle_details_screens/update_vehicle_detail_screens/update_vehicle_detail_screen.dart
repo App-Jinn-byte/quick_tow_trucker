@@ -139,10 +139,8 @@ class _UpdateVehicleDetailScreenState extends State<UpdateVehicleDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    updateVehicleDetailProvider =
-        Provider.of<UpdateVehicleDetailProvider>(context, listen: true);
-    vehicleDetailProvider =
-        Provider.of<VehicleDetailProvider>(context, listen: true);
+    Provider.of<UpdateVehicleDetailProvider>(context, listen: true);
+    Provider.of<VehicleDetailProvider>(context, listen: true);
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(

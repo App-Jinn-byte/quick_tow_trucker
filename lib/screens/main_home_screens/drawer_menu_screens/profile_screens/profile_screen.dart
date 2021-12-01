@@ -40,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    profileProvider = Provider.of<ProfileProvider>(context, listen: true);
+    Provider.of<ProfileProvider>(context, listen: true);
     isImageUrl =
         Uri.tryParse(profileProvider.userPhoto!)?.hasAbsolutePath ?? false;
     return SafeArea(

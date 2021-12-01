@@ -31,10 +31,6 @@ class _EndRideScreenState extends State<EndRideScreen> {
 
   @override
   void initState() {
-    // welcomeBackPopUp();
-
-    // setCustomMapPin();
-
     BitmapDescriptor.fromAssetImage(
             const ImageConfiguration(devicePixelRatio: 2.5),
             'assets/destination_map_marker.png')

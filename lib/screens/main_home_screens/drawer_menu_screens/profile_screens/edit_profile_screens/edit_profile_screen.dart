@@ -168,9 +168,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    editProfileProvider =
-        Provider.of<EditProfileProvider>(context, listen: true);
-    profileProvider = Provider.of<ProfileProvider>(context, listen: true);
+    Provider.of<EditProfileProvider>(context, listen: true);
+    Provider.of<ProfileProvider>(context, listen: true);
 
     return SafeArea(
         child: Scaffold(

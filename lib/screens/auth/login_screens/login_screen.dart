@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    loginProvider = Provider.of<LoginProvider>(context, listen: true);
+   Provider.of<LoginProvider>(context, listen: true);
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
