@@ -28,7 +28,7 @@ class VehicleDetailProvider extends ChangeNotifier {
       // _loader.showLoader(context: context);
 
       Map<String, dynamic> header = {"Content-Type": "application/json"};
-      print("URL: $getVehicleByUserIdApiUrl");
+      debugPrint("URL: $getVehicleByUserIdApiUrl");
 
       getUserVehicleResponse = await MyApi.callGetApi(
           url: getVehicleByUserIdApiUrl + userID.toString(),
@@ -37,14 +37,14 @@ class VehicleDetailProvider extends ChangeNotifier {
           modelName: Models.getUserVehicleModel);
 
       if (getUserVehicleResponse != null) {
-        print("getUserVehicleResponse: ${getUserVehicleResponse.toJson()}");
+        debugPrint("getUserVehicleResponse: ${getUserVehicleResponse.toJson()}");
         isVehicleDataLoaded = true;
         notifyListeners();
       } else {
-        print("Something is wrong");
+        debugPrint("Something is wrong");
       }
     } catch (e) {
-      print("Catch-Error: ${e.toString()}");
+      debugPrint("Catch-Error: ${e.toString()}");
     }
   }
 
@@ -54,9 +54,9 @@ class VehicleDetailProvider extends ChangeNotifier {
 
       Map<String, dynamic> header = {"Content-Type": "application/json"};
       Map<String, dynamic> body = {};
-      print("URL: $deleteVehicleApiUrl");
+      debugPrint("URL: $deleteVehicleApiUrl");
 
-      print("vehicleID: $vehicleID");
+      debugPrint("vehicleID: $vehicleID");
 
       deleteVehicleResponse = await MyApi.callDeleteApi(
           url: "$deleteVehicleApiUrl$vehicleID",
@@ -64,16 +64,16 @@ class VehicleDetailProvider extends ChangeNotifier {
           modelName: Models.deleteVehicleModel);
 
       if (deleteVehicleResponse != null) {
-        print("deleteVehicleResponse: ${deleteVehicleResponse.toJson()}");
-        isVehicleDeleted = true;
+        debugPrint("deleteVehicleResponse: ${deleteVehicleResponse.toJson()}");
         _loader.hideLoader(context!);
         Toasts.getSuccessToast(text: deleteVehicleResponse.data);
+        isVehicleDeleted = true;
         notifyListeners();
       } else {
-        print("Something is wrong");
+        debugPrint("Something is wrong");
       }
     } catch (e) {
-      print("Delete-Vehicle: ${e.toString()}");
+      debugPrint("Delete-Vehicle: ${e.toString()}");
       _loader.hideLoader(context!);
     }
   }

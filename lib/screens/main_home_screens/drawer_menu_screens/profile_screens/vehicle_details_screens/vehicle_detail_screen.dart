@@ -59,7 +59,7 @@ class _VehicleDetailScreenState extends State<VehicleDetailScreen> {
                         Navigator.pop(context);
                       }),
                   SizedBox(
-                    height: sizes!.heightRatio * 25.0,
+                    height: sizes!.heightRatio * 20.0,
                   ),
                   Expanded(
                     child: Padding(
