@@ -352,4 +352,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         context, SlideRightRoute(page: const LoginScreen()));
     // const MyApp().restartApp(context: context);
   }
+
+
 }
