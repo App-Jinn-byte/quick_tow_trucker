@@ -59,8 +59,7 @@ class PopUpComponents {
                     padding: EdgeInsets.only(
                         left: sizes!.widthRatio * 20.0,
                         right: sizes!.widthRatio * 20.0),
-                    child: CommonWidgets.getStartButton("OK",
-                        onPress: () {
+                    child: CommonWidgets.getStartButton("OK", onPress: () {
                       if (confirmOnPress != null) {
                         confirmOnPress.call();
                       }
@@ -433,8 +432,6 @@ class PopUpComponents {
   }
 
   static Widget welcomeBackScreenCustomPopUp(BuildContext context) {
-    int val = -1;
-
     selectYourStatus? _character = selectYourStatus.active;
 
     return BackdropFilter(
@@ -513,7 +510,8 @@ class PopUpComponents {
                           alignment: Alignment.centerLeft,
                           child: TextView.getMediumText18(
                               "Select Your Status", Assets.poppinsMedium,
-                              color: AppColors.openTheTruckerAppTextColor, lines: 1),
+                              color: AppColors.openTheTruckerAppTextColor,
+                              lines: 1),
                         ),
                       ),
                       SizedBox(
@@ -529,7 +527,6 @@ class PopUpComponents {
                               setState(() {
                                 _character = value;
                                 print("isActiveStatus: $_character");
-
                               });
                             },
                           ),
@@ -982,7 +979,18 @@ class PopUpComponents {
     );
   }
 
-  static Widget getBookingUpdatedPopUp(BuildContext context) {
+  static Widget getBookingUpdatedPopUp(
+    BuildContext context, {
+    @required String? userName,
+    @required dynamic rating,
+    @required String? requestType,
+    @required String? make,
+    @required String? model,
+    @required String? plateNumber,
+    @required String? category,
+    @required Function? onDeclinePress,
+    @required Function? onAcceptPress,
+  }) {
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
       child: Dialog(
@@ -1024,7 +1032,8 @@ class PopUpComponents {
                             Row(
                               children: [
                                 TextView.getSubHeadingTextWith15(
-                                    "John Doe", Assets.poppinsMedium,
+                                    userName ?? "John Doe",
+                                    Assets.poppinsMedium,
                                     color: AppColors.blackTextColor,
                                     lines: 1,
                                     fontWeight: FontWeight.normal),
@@ -1040,20 +1049,13 @@ class PopUpComponents {
                                   width: sizes!.widthRatio * 2.0,
                                 ),
                                 TextView.getRegularText(
-                                    "5.00", Assets.poppinsLight,
+                                    rating ?? "5.00", Assets.poppinsLight,
                                     color: AppColors.blackTextColor, lines: 1)
                               ],
                             ),
                             SizedBox(
                               height: sizes!.heightRatio * 5.0,
                             ),
-
-                            // Image.asset(
-                            //   "assets/png/tow_request_container_icon@2x.png",
-                            //   height: sizes!.heightRatio * 29.0,
-                            //   width: sizes!.widthRatio * 99.0,
-                            // )
-
                             Container(
                               height: 29.0,
                               width: 99.0,
@@ -1063,7 +1065,8 @@ class PopUpComponents {
                                 color: AppColors.bookingTagContainerColor,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: AppColors.getStartedButtonColorShadow,
+                                    color:
+                                        AppColors.getStartedButtonColorShadow,
                                     blurRadius: 0.5,
                                     offset: Offset(0, 0),
                                   ),
@@ -1071,7 +1074,8 @@ class PopUpComponents {
                               ),
                               child: Center(
                                 child: TextView.getSmallBoldText12(
-                                    "Tow Request", Assets.poppinsMedium,
+                                    requestType ?? "Tow Request",
+                                    Assets.poppinsMedium,
                                     color: AppColors.whiteTextColor,
                                     lines: 1),
                               ),
@@ -1179,10 +1183,11 @@ class PopUpComponents {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextView.getSmallText12("Honda", Assets.poppinsLight,
+                        TextView.getSmallText12(
+                            make ?? "Honda", Assets.poppinsLight,
                             color: AppColors.subHeadingTextColor, lines: 1),
                         TextView.getSmallText12(
-                            "Civic - X", Assets.poppinsLight,
+                            model ?? "Civic - X", Assets.poppinsLight,
                             color: AppColors.subHeadingTextColor, lines: 1),
                       ],
                     ),
@@ -1225,9 +1230,11 @@ class PopUpComponents {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextView.getSmallText12("LEU-7652", Assets.poppinsLight,
+                        TextView.getSmallText12(
+                            plateNumber ?? "LEU-7652", Assets.poppinsLight,
                             color: AppColors.subHeadingTextColor, lines: 1),
-                        TextView.getSmallText12("4 wheel", Assets.poppinsLight,
+                        TextView.getSmallText12(
+                            category ?? "4 wheel", Assets.poppinsLight,
                             color: AppColors.subHeadingTextColor, lines: 1),
                       ],
                     ),
@@ -1274,13 +1281,14 @@ class PopUpComponents {
                     children: [
                       PopUpComponents.getCustomOutlineBtn("Decline",
                           onPress: () {
-                        Navigator.pop(context);
+                        if (onDeclinePress != null) {
+                          onDeclinePress.call();
+                        }
                       }),
                       PopUpComponents.getPopUpButton("Accept", onPress: () {
-                        Navigator.pop(context);
-
-                        Navigator.push(context,
-                            SlideRightRoute(page: const EnRouteScreen()));
+                        if (onAcceptPress != null) {
+                          onAcceptPress.call();
+                        }
                       })
                     ],
                   )
