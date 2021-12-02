@@ -193,7 +193,8 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
                   plateNumber: plateNumber,
                   category: category,
                   onAcceptPress: onAcceptPress,
-                  onDeclinePress: onDeclinePress));
+                  onDeclinePress: onDeclinePress,
+                  additionalNote: additionalNote));
         });
   }
 
