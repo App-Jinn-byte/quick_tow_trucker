@@ -142,8 +142,10 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
             findBookingProvider.getAllBookingListResponse.data![0].vehicleModel,
         plateNumber: findBookingProvider
             .getAllBookingListResponse.data![0].vehicleLicensePlateNumber,
-        category: findBookingProvider.getAllBookingListResponse.data![0]
-            .vehicleTransmissionTypeId, onDeclinePress: () {
+        category: findBookingProvider
+            .getAllBookingListResponse.data![0].vehicleTransmissionTypeId,
+        additionalNote: findBookingProvider.getAllBookingListResponse.data![0]
+            .vehicleAddtionalNotes, onDeclinePress: () {
       rejectBooking();
     }, onAcceptPress: () {
       acceptBooking();
@@ -159,6 +161,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
     @required String? model,
     @required String? plateNumber,
     @required String? category,
+    @required String? additionalNote,
     @required Function? onDeclinePress,
     @required Function? onAcceptPress,
   }) {

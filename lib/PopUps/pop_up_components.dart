@@ -988,6 +988,7 @@ class PopUpComponents {
     @required String? model,
     @required String? plateNumber,
     @required String? category,
+    @required String? additionalNote,
     @required Function? onDeclinePress,
     @required Function? onAcceptPress,
   }) {
@@ -1265,11 +1266,8 @@ class PopUpComponents {
                       padding: const EdgeInsets.all(8.0),
                       child: SingleChildScrollView(
                         child: TextView.getSmallText12(
-                            "Hello, I have problem with the front right wheel. "
-                            "Hello, I have problem with the front right wheel. ",
-                            Assets.poppinsLight,
-                            color: AppColors.subHeadingTextColor,
-                            lines: 5),
+                            additionalNote ?? "Nothing!", Assets.poppinsLight,
+                            color: AppColors.subHeadingTextColor, lines: 5),
                       ),
                     )),
                   ),
