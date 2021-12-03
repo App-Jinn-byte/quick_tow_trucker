@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/models/vehicle/update_vehicle_response.dart';
 import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/network_manager/models.dart';
 import 'package:quick_tow_trucker/network_manager/my_api.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/routes/routes.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/vehicle_details_screens/vehicle_detail_screen.dart';
 import 'package:quick_tow_trucker/widgets/loader.dart';
 
 class UpdateVehicleDetailProvider extends ChangeNotifier {
@@ -54,9 +56,9 @@ class UpdateVehicleDetailProvider extends ChangeNotifier {
         print("updateVehicleResponse: ${updateVehicleResponse.toJson()}");
         isVehicleUpdatedSuccessfully = true;
         _loader.hideLoader(context!);
-        // Navigator.pop(context!);
-        Navigator.of(context!).pushNamedAndRemoveUntil(
-            Routes.vehicleDetailScreen, (Route<dynamic> route) => false);
+        Navigator.push(
+            context!, SlideRightRoute(page: const VehicleDetailScreen()));
+
         notifyListeners();
       } else {
         print("Something is wrong");
