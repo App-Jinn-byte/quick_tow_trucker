@@ -38,6 +38,7 @@ class Strings {
   static const String editProfileUserTypeId = "editProfileUserTypeId";
   static const String editProfileUserType = "editProfileUserType";
   static const String editProfileDeviceId = "editProfileDeviceId";
+  static const String deviceId = "deviceId";
 
   static const String filePath = "filePath";
   static const String userImageKey = "UserImageKey";

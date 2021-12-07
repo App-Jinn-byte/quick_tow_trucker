@@ -1,9 +1,12 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_provider.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
@@ -38,12 +41,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
+    super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
 
     loginProvider = LoginProvider();
     loginProvider = Provider.of<LoginProvider>(context, listen: false);
     loginProvider.init(context: context);
+    getDeviceInfo();
 
     hiddenPassword = true;
     isValidEmail = true;
@@ -74,13 +79,11 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       });
     });
-
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-   Provider.of<LoginProvider>(context, listen: true);
+    Provider.of<LoginProvider>(context, listen: true);
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
@@ -233,6 +236,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
     // Navigator.pushReplacement(
     //     context, SlideRightRoute(page: const FindBookingScreen()));
+  }
+
+  Future getDeviceInfo() async {
+    try {
+      FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+      _firebaseMessaging.getToken().then((token) {
+        print("Here is fcm token >>>>>>>>>>>>>>>>>>>>>>>" + token.toString());
+        PreferenceUtils.setString(Strings.deviceId, token.toString());
+      });
+    } catch (ex) {
+      print(ex);
+    }
   }
 }
 

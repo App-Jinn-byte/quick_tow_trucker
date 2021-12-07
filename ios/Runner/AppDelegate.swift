@@ -1,7 +1,8 @@
 import UIKit
 import Flutter
 import GoogleMaps
-
+import Firebase
+import FirebaseCrashlytics
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -11,7 +12,8 @@ import GoogleMaps
   ) -> Bool {
       
       
-      GMSServices.provideAPIKey("AIzaSyDHxZ--0FYqNItvE-kf3Sz2jlRtgt0Mp3Q")
+      GMSServices.provideAPIKey("AIzaSyB20XGkT-LGQV7DexxbA5_q_HQrss1moSQ")
+      FirebaseApp.configure()
 
       
       

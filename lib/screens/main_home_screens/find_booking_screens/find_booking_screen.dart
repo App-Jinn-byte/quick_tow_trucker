@@ -1,8 +1,10 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
+import 'package:quick_tow_trucker/network_manager/NotificationHandler.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/colors.dart';
 import 'package:quick_tow_trucker/res/res.dart';
@@ -35,6 +37,18 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
     findBookingProvider =
         Provider.of<FindBookingProvider>(context, listen: false);
     findBookingProvider.init(context: context);
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      //    Notifications.handleNotification(message.data, context);
+      Toasts.getSuccessToast(text: "Hi notification onMessage");
+      NotificationHandler.handleNotification(message.data, context);
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      //   Notifications.handleNotification(message.data, context);
+      Toasts.getSuccessToast(text: "Hi notification onMessageOpenedApp");
+      NotificationHandler.handleNotification(message.data, context);
+    });
 
     debugPrint("_userID: $_userId");
 

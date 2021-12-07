@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "776316321962",
+    "project_id": "quicktowapp",
+    "storage_bucket": "quicktowapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776316321962:android:30b73d32ac2aecdabf50d3",
+        "android_client_info": {
+          "package_name": "com.jinnbyte.quick_tow.quick_tow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776316321962-vf6egqj3ehlcjaliteghu6d30siudamo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jinnbyte.quick_tow.quick_tow",
+            "certificate_hash": "5e9066b4d0a9349b843f5171da68ea2ebdd4a1fa"
+          }
+        },
+        {
+          "client_id": "776316321962-icm5k2mlatflsqcdl7thgmth64u8g6tj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC593h9HofTbIjG8CW2tiXT49ILu7kbqD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776316321962-icm5k2mlatflsqcdl7thgmth64u8g6tj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "776316321962-c1cobmq5avaf3rvm71qklmdbrc332tgf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jinnbyte.quicktow.quickTow"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776316321962:android:5d0cb7abbdfef5c1bf50d3",
+        "android_client_info": {
+          "package_name": "com.jinnbyte.quick_tow_trucker.quick_tow_trucker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776316321962-4162qcc4ssas8msvurabrd32a1cfha17.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jinnbyte.quick_tow_trucker.quick_tow_trucker",
+            "certificate_hash": "5e9066b4d0a9349b843f5171da68ea2ebdd4a1fa"
+          }
+        },
+        {
+          "client_id": "776316321962-icm5k2mlatflsqcdl7thgmth64u8g6tj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC593h9HofTbIjG8CW2tiXT49ILu7kbqD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776316321962-icm5k2mlatflsqcdl7thgmth64u8g6tj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "776316321962-c1cobmq5avaf3rvm71qklmdbrc332tgf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jinnbyte.quicktow.quickTow"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
