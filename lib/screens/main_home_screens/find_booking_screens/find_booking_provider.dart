@@ -5,7 +5,6 @@ import 'package:quick_tow_trucker/models/booking/get_all_booking_list_response.d
 import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/network_manager/models.dart';
 import 'package:quick_tow_trucker/network_manager/my_api.dart';
-import 'package:quick_tow_trucker/widgets/loader.dart';
 
 class FindBookingProvider extends ChangeNotifier {
   BuildContext? context;
@@ -13,13 +12,13 @@ class FindBookingProvider extends ChangeNotifier {
   bool isBookingListLoaded = false;
   bool isBookingAccepted = false;
   bool isBookingRejected = false;
+
   GetAllBookingListResponse getAllBookingListResponse =
       GetAllBookingListResponse();
-
   BookingAcceptedResponse bookingAcceptedResponse = BookingAcceptedResponse();
   BookingRejectedResponse bookingRejectedResponse = BookingRejectedResponse();
 
-  final Loader _loader = Loader();
+  // final Loader _loader = Loader();
 
   Future<void> init({@required BuildContext? context}) async {
     this.context = context;
@@ -34,12 +33,12 @@ class FindBookingProvider extends ChangeNotifier {
       required dynamic requestStatusId}) async {
     try {
       Map<String, dynamic> header = {"Content-Type": "application/json"};
-
       Map<String, dynamic> body = {
         "requestId": requestId,
         "userId": truckerUserID,
         "requestatusId": 1
       };
+
       debugPrint("URL: $bookingAcceptedApiUrl");
       debugPrint("Body: $body");
 
@@ -49,7 +48,8 @@ class FindBookingProvider extends ChangeNotifier {
           body: body,
           modelName: Models.bookingAcceptedModel);
 
-      if (bookingAcceptedResponse != null) {
+      // bookingAcceptedResponse != null
+      if (bookingAcceptedResponse.code == 1) {
         debugPrint(
             "bookingAcceptedResponse: ${bookingAcceptedResponse.toJson()}");
         isBookingAccepted = true;
@@ -80,12 +80,14 @@ class FindBookingProvider extends ChangeNotifier {
           myHeaders: header,
           body: body,
           modelName: Models.bookingRejectedModel);
-
-      if (bookingRejectedResponse != null) {
+      // bookingRejectedResponse != null
+      if (bookingRejectedResponse.code == 1) {
         debugPrint(
             "bookingRejectedResponse: ${bookingRejectedResponse.toJson()}");
         isBookingRejected = true;
         notifyListeners();
+      } else {
+        debugPrint("bookingRejectedResponse: There is any error");
       }
     } catch (e) {
       debugPrint("Catch-Accept-Error: ${e.toString()}");
@@ -101,15 +103,15 @@ class FindBookingProvider extends ChangeNotifier {
           url: getAllBookingListApiUrl,
           myHeaders: header,
           modelName: Models.getAllBookingListModel);
-
-      if (getAllBookingListResponse != null) {
+      // getAllBookingListResponse != null
+      if (getAllBookingListResponse.code == 1) {
         debugPrint(
             "getAllBookingListResponse: ${getAllBookingListResponse.toJson()}");
         isBookingListLoaded = true;
         // _loader.hideLoader(context!);
         notifyListeners();
       } else {
-        // _loader.hideLoader(context!);
+        debugPrint("getAllBookingListResponse: There is any error");
       }
     } catch (e) {
       // _loader.hideLoader(context!);

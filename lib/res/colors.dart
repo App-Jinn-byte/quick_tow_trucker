@@ -46,7 +46,7 @@ class AppColors {
 
   static const appTheme = Color.fromRGBO(117, 176, 46, 1);
   static const appBackground = Color.fromRGBO(223, 237, 239, 1);
-  static final buttonBlue = Color.fromRGBO(19, 31, 84, 1);
+  static const buttonBlue = Color.fromRGBO(19, 31, 84, 1);
   static final buttonBlueShadow = Color.fromRGBO(60, 76, 146, 0.85);
   static final buttonBlueShadowlight = Color.fromRGBO(60, 76, 146, 0.29);
   static final loginWelcome = Color.fromRGBO(22, 29, 60, 1);

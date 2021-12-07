@@ -28,36 +28,31 @@ class LoginProvider extends ChangeNotifier {
       _loader.showLoader(context: context);
 
       Map<String, dynamic> header = {"Content-Type": "application/json"};
-
       Map<String, dynamic> body = {"Email": email, "Password": password};
-
-      // "Email": "driver@gmail.com",
-      // "Password": "123Qw#"
-
-      print("URL: $loginApiUrl");
+      debugPrint("URL: $loginApiUrl");
 
       loginResponse = await MyApi.callPostApi(
           url: loginApiUrl,
           body: body,
           myHeaders: header,
           modelName: Models.loginModel);
-      print("LoginBody: $body");
+      debugPrint("LoginBody: $body");
 
-      if (loginResponse != null) {
+      // LoginResponse != null
+      if (loginResponse.code == 1) {
         PreferenceUtils.clearPreferences();
-
 
         await PreferenceUtils.setLoginResponse(loginResponse).then((_) {
           String name = PreferenceUtils.getString(Strings.loginFirstName) ?? "";
           String savedToken =
               PreferenceUtils.getString(Strings.loginUserToken) ?? "";
-          print("UserName: $name");
-          print("savedToken: $savedToken");
+          debugPrint("UserName: $name");
+          debugPrint("savedToken: $savedToken");
 
           var userPhoto = PreferenceUtils.getUserImage();
-          print("userPhoto: $userPhoto");
+          debugPrint("userPhoto: $userPhoto");
 
-          print("loginResponse: ${loginResponse.data!.toJson()}");
+          debugPrint("loginResponse: ${loginResponse.data!.toJson()}");
           isLoginSuccessful = true;
           _loader.hideLoader(context!);
 
@@ -66,15 +61,15 @@ class LoginProvider extends ChangeNotifier {
 
           notifyListeners();
         }).onError((error, stackTrace) {
-          print("Save Error: ${error.toString()}");
+          debugPrint("Save Error: ${error.toString()}");
           _loader.hideLoader(context!);
         });
       } else {
-        print("loginResponse: Something wrong");
+        debugPrint("loginResponse: There is any error");
         _loader.hideLoader(context!);
       }
     } catch (e) {
-      print("Catch-Error-Login: ${e.toString()}");
+      debugPrint("Catch-Error-Login: ${e.toString()}");
       _loader.hideLoader(context!);
     }
   }

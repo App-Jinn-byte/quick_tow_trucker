@@ -242,11 +242,11 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
       _firebaseMessaging.getToken().then((token) {
-        print("Here is fcm token >>>>>>>>>>>>>>>>>>>>>>>" + token.toString());
+        debugPrint("FCMToken:=>" + token.toString());
         PreferenceUtils.setString(Strings.deviceId, token.toString());
       });
     } catch (ex) {
-      print(ex);
+      debugPrint("FCM Token Error: ${ex.toString()}");
     }
   }
 }

@@ -38,15 +38,15 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
         Provider.of<FindBookingProvider>(context, listen: false);
     findBookingProvider.init(context: context);
 
+    // On Message
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      //    Notifications.handleNotification(message.data, context);
-      Toasts.getSuccessToast(text: "Hi notification onMessage");
+      Toasts.getSuccessToast(text: "Hey there, Notification onMessage");
       NotificationHandler.handleNotification(message.data, context);
     });
-
+    // On Message Opened App
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      //   Notifications.handleNotification(message.data, context);
-      Toasts.getSuccessToast(text: "Hi notification onMessageOpenedApp");
+      Toasts.getSuccessToast(
+          text: "Hey there, Notification onMessageOpenedApp");
       NotificationHandler.handleNotification(message.data, context);
     });
 
