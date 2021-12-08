@@ -12,8 +12,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // make sure you call `initializeApp` before using other Firebase services.
   Toasts.getSuccessToast(text: message.data["orderId"]);
   // NotificationHandler.handleNotification(message.data);
-  print("Handling a background message: ${message.messageId}");
+  debugPrint("Handling a background message: ${message.messageId}");
 }
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -22,7 +23,6 @@ void main() async {
   FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
   // FirebaseCrashlytics.instance.crash(); For Test Crashing
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
 
   runApp(const MyApp());
 }

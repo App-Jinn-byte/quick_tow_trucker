@@ -133,7 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       "It is a long established fact that a reader will be distracted.",
                       Assets.poppinsLight,
                       color: AppColors.subHeadingTextColor,
-                      lines: 2),
+                      lines: 2,
+                      fontWeight: FontWeight.normal),
                 ),
                 SizedBox(
                   height: sizes!.heightRatio * 35, //45
@@ -226,7 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void moveToHomeScreen() async {
     var email = emailController.text.toString().trim();
     var password = passwordController.text.toString().trim();
-    print("Email: $email, Password: $password");
+    debugPrint("Email: $email, Password: $password");
 
     await loginProvider.callLoginApi(email: email, password: password);
 
@@ -259,6 +260,6 @@ extension StringLoginExtensions on String {
   }
 
   String removeSpaces() {
-    return this.replaceAll(' ', '');
+    return replaceAll(' ', '');
   }
 }

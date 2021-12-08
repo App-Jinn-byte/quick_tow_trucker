@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/res.dart';
-import 'package:quick_tow_trucker/screens/auth/login_screens/login_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
-
 import 'get_started_provider.dart';
 
 class GetStartedScreen extends StatefulWidget {
