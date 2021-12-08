@@ -16,15 +16,16 @@ class GetStartedScreen extends StatefulWidget {
 }
 
 class _GetStartedScreenState extends State<GetStartedScreen> {
-  late GetStartedProvider splashProvider;
+  late GetStartedProvider getStartedProvider;
 
   @override
   void initState() {
-    splashProvider = GetStartedProvider();
-    splashProvider = Provider.of<GetStartedProvider>(context, listen: false);
-    splashProvider.init(context: context);
-
     super.initState();
+
+    getStartedProvider = GetStartedProvider();
+    getStartedProvider =
+        Provider.of<GetStartedProvider>(context, listen: false);
+    getStartedProvider.init(context: context);
   }
 
   @override
@@ -67,7 +68,9 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   }
 
   void moveToLoginScreen() async {
-    Navigator.pushReplacement(
-        context, SlideRightRoute(page: const LoginScreen()));
+    // Navigator.pushReplacement(
+    //     context, SlideRightRoute(page: const LoginScreen()));
+
+    await getStartedProvider.getUserLocationWithPermission();
   }
 }
