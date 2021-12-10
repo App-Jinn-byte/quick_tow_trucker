@@ -1,4 +1,6 @@
 import 'package:provider/provider.dart';
+import 'package:quick_tow_trucker/ChatLogics/View_Providers/Chat_Room_Provider.dart';
+import 'package:quick_tow_trucker/ChatLogics/View_Providers/Message_Provider.dart';
 import 'package:quick_tow_trucker/screens/auth/login_screens/login_provider.dart';
 import 'package:quick_tow_trucker/screens/get_started_screens/get_started_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/add_service_screens/add_service_provider.dart';
@@ -6,7 +8,7 @@ import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/history_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/notification_screens/notification_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/account_details_screens/account_detail_provider.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/message_provider.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/company_support_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/driver_license_screens/driver_license_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/edit_profile_screens/edit_profile_provider.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/insurance_info_screens/insurance_info_provider.dart';
@@ -68,6 +70,10 @@ final multiProviders = [
     create: (_) => InsuranceInfoProvider(),
     lazy: true,
   ),
+  ChangeNotifierProvider<CompanySupportProvider>(
+    create: (_) => CompanySupportProvider(),
+    lazy: true,
+  ),
   ChangeNotifierProvider<MessageProvider>(
     create: (_) => MessageProvider(),
     lazy: true,
@@ -94,6 +100,10 @@ final multiProviders = [
   ),
   ChangeNotifierProvider<AccountDetailProvider>(
     create: (_) => AccountDetailProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<ChatRoomProvider>(
+    create: (_) => ChatRoomProvider(),
     lazy: true,
   ),
 ];

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-class MessageProvider extends ChangeNotifier {
+class CompanySupportProvider extends ChangeNotifier {
   BuildContext? context;
 
   Future<void> init({@required BuildContext? context}) async {

@@ -5,7 +5,7 @@ import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/history_screens/history_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/notification_screens/notification_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/account_details_screens/account_detail_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/message_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/company_support_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/edit_profile_screens/edit_profile_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/insurance_info_screens/insurance_info_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/profile_screen.dart';
@@ -34,6 +34,7 @@ class Routes {
   static const String vehicleDetailScreen = '/vehicleDetailScreen';
   static const String insuranceInfoScreen = '/insuranceInfoScreen';
   static const String messageScreen = '/messageScreen';
+  static const String companySupportScreen = '/companySupportScreen';
   static const String enRouteScreen = '/enRouteScreen';
   static const String endRideScreen = '/endRideScreen';
   static const String paymentTotalScreen = '/paymentTotalScreen';
@@ -54,7 +55,8 @@ class Routes {
     editProfileScreen: (context) => const EditProfileScreen(),
     vehicleDetailScreen: (context) => const VehicleDetailScreen(),
     insuranceInfoScreen: (context) => const InsuranceInfoScreen(),
-    messageScreen: (context) => const MessageScreen(),
+    messageScreen: (context) => const CompanySupportScreen(),
+    companySupportScreen: (context) => const CompanySupportScreen(),
     enRouteScreen: (context) => const EnRouteScreen(),
     endRideScreen: (context) => const EndRideScreen(),
     paymentTotalScreen: (context) => const PaymentTotalScreen(),

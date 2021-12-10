@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quick_tow_trucker/ChatLogics/Chat_Message_Models/User_Model.dart';
+import 'package:quick_tow_trucker/ChatLogics/View_Providers/User_Provider.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/models/auth/login_response.dart';
@@ -42,7 +44,7 @@ class LoginProvider extends ChangeNotifier {
       if (loginResponse.code == 1) {
         PreferenceUtils.clearPreferences();
 
-        await PreferenceUtils.setLoginResponse(loginResponse).then((_) {
+        await PreferenceUtils.setLoginResponse(loginResponse).then((_) async {
           String name = PreferenceUtils.getString(Strings.loginFirstName) ?? "";
           String savedToken =
               PreferenceUtils.getString(Strings.loginUserToken) ?? "";
@@ -51,6 +53,21 @@ class LoginProvider extends ChangeNotifier {
 
           var userPhoto = PreferenceUtils.getUserImage();
           debugPrint("userPhoto: $userPhoto");
+
+          // Chat Logics:
+          UserModel firebaseUser =
+              UserModel(name: name, imageUrl: userPhoto, email: email);
+          // print(
+          //     "firebaseUser: ${firebaseUser.name}, ${firebaseUser.email}, ${firebaseUser.imageUrl}");
+          UserModel? u =
+              await UserProvider().getUserWithEmail(email: firebaseUser.email);
+          if (u != null) {
+            //User Alright Exist
+            firebaseUser.id = u.id;
+          }
+          UserProvider().addUser(firebaseUser);
+          await PreferenceUtils.setString("firebase_id", firebaseUser.id!);
+          // Chat Logics End:
 
           debugPrint("loginResponse: ${loginResponse.data!.toJson()}");
           isLoginSuccessful = true;

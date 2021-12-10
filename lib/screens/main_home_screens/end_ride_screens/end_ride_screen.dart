@@ -5,7 +5,7 @@ import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/add_service_screens/add_service_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/message_screen.dart';
+import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/company_support_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/payment_total_screens/payment_total_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
@@ -127,7 +127,7 @@ class _EndRideScreenState extends State<EndRideScreen> {
                   child: CommonWidgets.getBottomCardEndRideScreen(
                     onChatPress: () {
                       Navigator.push(context,
-                          SlideRightRoute(page: const MessageScreen()));
+                          SlideRightRoute(page: const CompanySupportScreen()));
                     },
                     onViewDetailPress: () {
                       viewDetailsPopUp(context);

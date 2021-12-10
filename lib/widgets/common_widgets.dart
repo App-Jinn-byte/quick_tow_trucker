@@ -632,7 +632,6 @@ class CommonWidgets {
     @required Function? onViewDetailPress,
     @required Function? onCancelRidePress,
     @required Function? onStartRidePress,
-    @required String? btn4Text,
   }) {
     return Container(
       height: sizes!.heightRatio * 296,
@@ -758,7 +757,7 @@ class CommonWidgets {
                 SizedBox(
                   width: sizes!.widthRatio * 10.0,
                 ),
-                CommonWidgets.getCustomBtn(btn4Text ?? "Start Ride",
+                CommonWidgets.getCustomBtn("Start Ride",
                     onPress: () {
                   if (onStartRidePress != null) {
                     onStartRidePress.call();

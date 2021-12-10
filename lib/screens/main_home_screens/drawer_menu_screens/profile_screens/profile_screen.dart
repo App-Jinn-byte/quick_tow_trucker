@@ -10,7 +10,7 @@ import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/
 import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
-import 'company_support_screens/message_screen.dart';
+import 'company_support_screens/company_support_screen.dart';
 import 'driver_license_screens/driver_license_screen.dart';
 import 'edit_profile_screens/edit_profile_screen.dart';
 import 'insurance_info_screens/insurance_info_screen.dart';
@@ -276,7 +276,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context, SlideRightRoute(page: const MessageScreen()));
+                        context, SlideRightRoute(page: const CompanySupportScreen()));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as maps;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:quick_tow_trucker/ChatLogics/Chat_Message_Models/Chat_Room_Model.dart';
+import 'package:quick_tow_trucker/ChatLogics/View_Providers/Chat_Room_Provider.dart';
+import 'package:quick_tow_trucker/ChatLogics/View_Providers/User_Provider.dart';
+import 'package:quick_tow_trucker/ChatLogics/message_screens/message_screen.dart';
 import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
+import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/res/res.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/message_screen.dart';
+import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/end_ride_screens/end_ride_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
@@ -56,7 +61,8 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,
-      drawer: CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 7),
+      drawer:
+          CommonDrawerBar.getDrawerBar(context: context, isCurrentScreen: 7),
       body: SizedBox(
           height: sizes!.height,
           width: sizes!.width,
@@ -109,8 +115,7 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
                 top: sizes!.heightRatio * 200.0,
                 left: sizes!.widthRatio * 20.0,
                 // right: sizes!.widthRatio * 45,
-                child:
-                    CommonWidgets.getAwayContainer(arrivingTime: "30 Mins"),
+                child: CommonWidgets.getAwayContainer(arrivingTime: "30 Mins"),
               ),
               Positioned(
                   bottom: sizes!.heightRatio * 280.0,
@@ -130,8 +135,7 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
                   child: CommonWidgets.getBottomCard(
                       onCancelRidePress: () {},
                       onChatPress: () {
-                        Navigator.push(context,
-                            SlideRightRoute(page: const MessageScreen()));
+                        goToMessageScreen();
                       },
                       onStartRidePress: () {
                         Navigator.push(context,
@@ -143,6 +147,26 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
             ],
           )),
     ));
+  }
+
+  void goToMessageScreen() async {
+    var getEmail = PreferenceUtils.getString(Strings.loginEmail);
+    debugPrint("getEmail: $getEmail");
+    dynamic otherUser =
+        await UserProvider().getUserWithEmail(email: "thor@jinnbyte.com");
+    String? currentUserID = UserProvider().getCurrentUserId();
+    await ChatRoomProvider()
+        .CreateNewRoomBetween(otherUser!.id!, currentUserID!)
+        .then((ChatRoomModel chatRoom) {
+      Navigator.push(
+          context,
+          SlideRightRoute(
+              page: MessageScreen(
+            chatRoom: chatRoom,
+            profileImage: "",
+            otherUserName: otherUser!.name ?? "Test Driver",
+          ))).then((_) {});
+    });
   }
 
   void viewDetailsPopUp(context) {

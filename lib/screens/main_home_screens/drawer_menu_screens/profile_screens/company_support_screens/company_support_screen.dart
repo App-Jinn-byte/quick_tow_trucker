@@ -1,19 +1,17 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/res/assets.dart';
 import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 
-class MessageScreen extends StatefulWidget {
-  const MessageScreen({Key? key}) : super(key: key);
+class CompanySupportScreen extends StatefulWidget {
+  const CompanySupportScreen({Key? key}) : super(key: key);
 
   @override
-  _MessageScreenState createState() => _MessageScreenState();
+  _CompanySupportScreenState createState() => _CompanySupportScreenState();
 }
 
-class _MessageScreenState extends State<MessageScreen> {
+class _CompanySupportScreenState extends State<CompanySupportScreen> {
   bool senderUser = false;
 
   @override
@@ -23,7 +21,7 @@ class _MessageScreenState extends State<MessageScreen> {
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
-        decoration:  const BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(Assets.mainBgImage), fit: BoxFit.fill)),
         child: Column(
