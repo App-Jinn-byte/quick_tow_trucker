@@ -35,6 +35,7 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
 
   @override
   void initState() {
+    super.initState();
     BitmapDescriptor.fromAssetImage(
             const ImageConfiguration(devicePixelRatio: 2.5),
             'assets/destination_map_marker.png')
@@ -52,8 +53,6 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
       ),
       icon: BitmapDescriptor.defaultMarker,
     ));
-
-    super.initState();
   }
 
   @override
@@ -79,7 +78,6 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
                 zoomControlsEnabled: false,
                 onMapCreated: (GoogleMapController controller) {
                   mapController = controller;
-                  // welcomeBackPopUp(context);
                 },
               )),
               Positioned(
