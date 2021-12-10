@@ -152,6 +152,9 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
     debugPrint("getEmail: $getEmail");
     dynamic otherUser =
         await UserProvider().getUserWithEmail(email: "thor@jinnbyte.com");
+
+    //Trucker Side Email: thor@jinnbyte.com
+
     String? currentUserID = UserProvider().getCurrentUserId();
     await ChatRoomProvider()
         .CreateNewRoomBetween(otherUser!.id!, currentUserID!)
