@@ -13,6 +13,7 @@ import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/end_ride_screens/end_ride_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
+import 'package:quick_tow_trucker/widgets/loader.dart';
 
 class EnRouteScreen extends StatefulWidget {
   const EnRouteScreen({Key? key}) : super(key: key);
@@ -23,6 +24,8 @@ class EnRouteScreen extends StatefulWidget {
 
 class _EnRouteScreenState extends State<EnRouteScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  final Loader _loader = Loader();
+
 
   final CameraPosition _initialLocation = const CameraPosition(
       target: LatLng(31.464796339004113, 74.38949657281934), zoom: 12.0);
@@ -148,6 +151,8 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
   }
 
   void goToMessageScreen() async {
+    _loader.showLoader(context: context);
+
     var getEmail = PreferenceUtils.getString(Strings.loginEmail);
     debugPrint("getEmail: $getEmail");
     dynamic otherUser =
@@ -164,9 +169,12 @@ class _EnRouteScreenState extends State<EnRouteScreen> {
           SlideRightRoute(
               page: MessageScreen(
             chatRoom: chatRoom,
-            profileImage: "",
+            profileImage: "assets/png/avatar_user_icon@2x.png",
             otherUserName: otherUser!.name ?? "Test Driver",
-          ))).then((_) {});
+          ))).then((_) {
+        _loader.hideLoader(context);
+
+      });
     });
   }
 

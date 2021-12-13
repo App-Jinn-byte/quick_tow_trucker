@@ -1,14 +1,20 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart' as maps;
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:quick_tow_trucker/ChatLogics/Chat_Message_Models/Chat_Room_Model.dart';
+import 'package:quick_tow_trucker/ChatLogics/View_Providers/Chat_Room_Provider.dart';
+import 'package:quick_tow_trucker/ChatLogics/View_Providers/User_Provider.dart';
+import 'package:quick_tow_trucker/ChatLogics/message_screens/message_screen.dart';
 import 'package:quick_tow_trucker/PopUps/pop_up_components.dart';
 import 'package:quick_tow_trucker/animations/slide_right.dart';
+import 'package:quick_tow_trucker/local_cache/utils.dart';
 import 'package:quick_tow_trucker/res/res.dart';
+import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/add_service_screens/add_service_screen.dart';
-import 'package:quick_tow_trucker/screens/main_home_screens/drawer_menu_screens/profile_screens/company_support_screens/company_support_screen.dart';
 import 'package:quick_tow_trucker/screens/main_home_screens/payment_total_screens/payment_total_screen.dart';
 import 'package:quick_tow_trucker/widgets/common_drawer_bar.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
+import 'package:quick_tow_trucker/widgets/loader.dart';
 
 class EndRideScreen extends StatefulWidget {
   const EndRideScreen({Key? key}) : super(key: key);
@@ -19,6 +25,7 @@ class EndRideScreen extends StatefulWidget {
 
 class _EndRideScreenState extends State<EndRideScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  final Loader _loader = Loader();
 
   final CameraPosition _initialLocation = const CameraPosition(
       target: LatLng(31.464796339004113, 74.38949657281934), zoom: 12.0);
@@ -101,9 +108,7 @@ class _EndRideScreenState extends State<EndRideScreen> {
                     "assets/png/en_route_location_maker@2x.png",
                     height: sizes!.heightRatio * 250.0,
                     width: sizes!.widthRatio * 250.0,
-                  )
-
-              ),
+                  )),
               // Positioned(
               //   top: sizes!.heightRatio * 230.0,
               //   left: sizes!.widthRatio * 20.0,
@@ -126,8 +131,7 @@ class _EndRideScreenState extends State<EndRideScreen> {
                   // right: sizes!.widthRatio * 45,
                   child: CommonWidgets.getBottomCardEndRideScreen(
                     onChatPress: () {
-                      Navigator.push(context,
-                          SlideRightRoute(page: const CompanySupportScreen()));
+                      goToMessageScreen(context: context);
                     },
                     onViewDetailPress: () {
                       viewDetailsPopUp(context);
@@ -146,15 +150,41 @@ class _EndRideScreenState extends State<EndRideScreen> {
     ));
   }
 
+  void goToMessageScreen({required BuildContext context}) async {
+    _loader.showLoader(context: context);
+    var getEmail = PreferenceUtils.getString(Strings.loginEmail);
+    debugPrint("getEmail: $getEmail");
+    dynamic otherUser =
+        await UserProvider().getUserWithEmail(email: "thor@jinnbyte.com");
+
+    //Trucker Side Email: thor@jinnbyte.com
+
+    String? currentUserID = UserProvider().getCurrentUserId();
+    await ChatRoomProvider()
+        .CreateNewRoomBetween(otherUser!.id!, currentUserID!)
+        .then((ChatRoomModel chatRoom) {
+      Navigator.push(
+          context,
+          SlideRightRoute(
+              page: MessageScreen(
+            chatRoom: chatRoom,
+            profileImage: "assets/png/avatar_user_icon@2x.png",
+            otherUserName: otherUser!.name ?? "Test Driver",
+          ))).then((_) {
+        _loader.hideLoader(context);
+      });
+    });
+  }
+
   void getTooltipBox() {
     Tooltip(
       message:
           "Marsa Malaz Kempinski Hotel Lower Ground Floor The Pearl, Doha, Sector FF Qatar",
-      waitDuration: Duration(seconds: 1),
-      showDuration: Duration(seconds: 2),
-      padding: EdgeInsets.all(5),
+      waitDuration: const Duration(seconds: 1),
+      showDuration: const Duration(seconds: 2),
+      padding: const EdgeInsets.all(5),
       height: 35,
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
           fontSize: 15, color: Colors.white, fontWeight: FontWeight.normal),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.green),
