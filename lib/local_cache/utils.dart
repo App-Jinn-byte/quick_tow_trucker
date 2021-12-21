@@ -1,5 +1,4 @@
 import 'dart:async' show Future;
-import 'package:quick_tow_trucker/models/auth/edit_profile_response.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

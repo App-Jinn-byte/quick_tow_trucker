@@ -6,6 +6,7 @@ import 'package:quick_tow_trucker/models/error_model/error_model.dart';
 import 'package:quick_tow_trucker/res/strings.dart';
 import 'package:quick_tow_trucker/res/toasts.dart';
 import 'models.dart';
+import 'package:flutter/material.dart';
 
 class MyApi {
   // Post
@@ -68,7 +69,7 @@ class MyApi {
         return null;
       }
     } on Exception catch (ex) {
-      print("Api Class : " + ex.toString());
+      debugPrint("Api Class : " + ex.toString());
       Toasts.getErrorToast(text: Strings.badHappenedError);
       return null;
     }

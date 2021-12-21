@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_tow_trucker/models/booking/booking_accepted_response.dart';
 import 'package:quick_tow_trucker/models/booking/booking_rejected_response.dart';
 import 'package:quick_tow_trucker/models/booking/get_all_booking_list_response.dart';
+import 'package:quick_tow_trucker/models/booking/user_requests/road_side_service_request_response.dart';
 import 'package:quick_tow_trucker/network_manager/api_url.dart';
 import 'package:quick_tow_trucker/network_manager/models.dart';
 import 'package:quick_tow_trucker/network_manager/my_api.dart';
@@ -17,6 +18,8 @@ class FindBookingProvider extends ChangeNotifier {
       GetAllBookingListResponse();
   BookingAcceptedResponse bookingAcceptedResponse = BookingAcceptedResponse();
   BookingRejectedResponse bookingRejectedResponse = BookingRejectedResponse();
+
+  RoadSideServiceRequestResponse roadSideServiceRequestResponse = RoadSideServiceRequestResponse();
 
   // final Loader _loader = Loader();
 

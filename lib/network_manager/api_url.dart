@@ -15,3 +15,7 @@ const String deleteVehicleApiUrl = "$baseUrl/api/Vehicle/DeleteVehicle/";
 const String getAllBookingListApiUrl = "$baseUrl/api/Request/GetAll/";
 const String bookingAcceptedApiUrl = "$baseUrl/api/Request/AcceptRequest/";
 const String bookingRejectedApiUrl = "$baseUrl/api/Request/RejectRequest/";
+
+// User Requests:
+const String roadSideServiceRequestApiUrl =
+    "$baseUrl/api/Request/GetAllRoadServiceRequest/";

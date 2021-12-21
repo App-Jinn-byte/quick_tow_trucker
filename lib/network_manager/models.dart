@@ -4,6 +4,7 @@ import 'package:quick_tow_trucker/models/auth/photo_upload_response.dart';
 import 'package:quick_tow_trucker/models/booking/booking_accepted_response.dart';
 import 'package:quick_tow_trucker/models/booking/booking_rejected_response.dart';
 import 'package:quick_tow_trucker/models/booking/get_all_booking_list_response.dart';
+import 'package:quick_tow_trucker/models/booking/user_requests/road_side_service_request_response.dart';
 import 'package:quick_tow_trucker/models/error_model/error_model.dart';
 import 'package:quick_tow_trucker/models/vehicle/delete_vehicle_response.dart';
 import 'package:quick_tow_trucker/models/vehicle/get_user_vehicle_response.dart';
@@ -25,6 +26,7 @@ class Models {
   static const String getAllBookingListModel = "GET_ALL_BOOKING_LIST_MODEL";
   static const String bookingAcceptedModel = "BOOKING_ACCEPTED_MODEL";
   static const String bookingRejectedModel = "BOOKING_REJECTED_MODEL";
+  static const String roadSideServiceRequestModel = "ROAD_SIDE_SERVICE";
 
   static Future<dynamic> getModelObject(
       String modelName, Map<String, dynamic> json) async {
@@ -47,6 +49,8 @@ class Models {
         return BookingAcceptedResponse.fromJson(json);
       case bookingRejectedModel:
         return BookingRejectedResponse.fromJson(json);
+      case roadSideServiceRequestModel:
+        return RoadSideServiceRequestResponse.fromJson(json);
       case errorModel:
         return ErrorResponse.fromJson(json);
     }
