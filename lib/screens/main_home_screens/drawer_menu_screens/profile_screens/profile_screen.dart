@@ -226,6 +226,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     right: sizes!.widthRatio * 30.0),
                 child: const Divider(),
               ),
+              // SizedBox(
+              //   height: sizes!.heightRatio * 10.0,
+              // ),
+              //
+              // Padding(
+              //   padding: EdgeInsets.only(
+              //       left: sizes!.widthRatio * 30.0,
+              //       right: sizes!.heightRatio * 30.0),
+              //   child: GestureDetector(
+              //     onTap: () {
+              //       Navigator.push(context,
+              //           SlideRightRoute(page: const InsuranceInfoScreen()));
+              //     },
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         TextView.getRegular13Text(
+              //             "Insurance Information", Assets.poppinsMedium,
+              //             color: AppColors.blackTextColor, lines: 1),
+              //         Image.asset(
+              //           "assets/png/profile_back_btn_icon@2x.png",
+              //           height: sizes!.heightRatio * 23.0,
+              //           width: sizes!.widthRatio * 23.0,
+              //         )
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              //
+              // SizedBox(
+              //   height: sizes!.heightRatio * 10.0,
+              // ),
+
+              // Padding(
+              //   padding: EdgeInsets.only(
+              //       left: sizes!.widthRatio * 30.0,
+              //       right: sizes!.widthRatio * 30.0),
+              //   child: const Divider(),
+              // ),
               SizedBox(
                 height: sizes!.heightRatio * 10.0,
               ),
@@ -237,46 +276,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        SlideRightRoute(page: const InsuranceInfoScreen()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextView.getRegular13Text(
-                          "Insurance Information", Assets.poppinsMedium,
-                          color: AppColors.blackTextColor, lines: 1),
-                      Image.asset(
-                        "assets/png/profile_back_btn_icon@2x.png",
-                        height: sizes!.heightRatio * 23.0,
-                        width: sizes!.widthRatio * 23.0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30.0,
-                    right: sizes!.widthRatio * 30.0),
-                child: const Divider(),
-              ),
-              SizedBox(
-                height: sizes!.heightRatio * 10.0,
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 30.0,
-                    right: sizes!.heightRatio * 30.0),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context, SlideRightRoute(page: const CompanySupportScreen()));
+                        SlideRightRoute(page: const CompanySupportScreen()));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -304,7 +304,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: const Divider(),
               ),
               SizedBox(
-                height: sizes!.heightRatio * 30.0,
+                height: sizes!.heightRatio * 20.0,
               ),
 
               Padding(
@@ -337,8 +337,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: sizes!.heightRatio * 20.0,
               ),
-
-              // CommonWidgets.getAppBarText(context, text: "text")
             ],
           ),
         ),
@@ -352,6 +350,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
         context, SlideRightRoute(page: const LoginScreen()));
     // const MyApp().restartApp(context: context);
   }
-
-
 }

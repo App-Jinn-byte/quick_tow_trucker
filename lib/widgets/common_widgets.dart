@@ -332,37 +332,39 @@ class CommonWidgets {
                     color: AppColors.openTheTruckerAppTextColor,
                     lines: 1,
                     fontWeight: FontWeight.bold),
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        if (onEditPress != null) {
-                          onEditPress.call();
-                        }
-                      },
-                      child: Image.asset(
-                        "assets/png/edit_icon@2x.png",
-                        height: sizes!.heightRatio * 25.0,
-                        width: sizes!.widthRatio * 25.0,
-                      ),
-                    ),
-                    SizedBox(
-                      width: sizes!.widthRatio * 8.0,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        if (onDeletePress != null) {
-                          onDeletePress.call();
-                        }
-                      },
-                      child: Image.asset(
-                        "assets/png/delete_icon@2x.png",
-                        height: sizes!.heightRatio * 25.0,
-                        width: sizes!.widthRatio * 25.0,
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     // GestureDetector(
+                //     //   onTap: () {
+                //     //     if (onEditPress != null) {
+                //     //       onEditPress.call();
+                //     //     }
+                //     //   },
+                //     //   child: Image.asset(
+                //     //     "assets/png/edit_icon@2x.png",
+                //     //     height: sizes!.heightRatio * 25.0,
+                //     //     width: sizes!.widthRatio * 25.0,
+                //     //   ),
+                //     // ),
+                //     // SizedBox(
+                //     //   width: sizes!.widthRatio * 8.0,
+                //     // ),
+                //     //
+                //     // GestureDetector(
+                //     //   onTap: () {
+                //     //     if (onDeletePress != null) {
+                //     //       onDeletePress.call();
+                //     //     }
+                //     //   },
+                //     //   child: Image.asset(
+                //     //     "assets/png/delete_icon@2x.png",
+                //     //     height: sizes!.heightRatio * 25.0,
+                //     //     width: sizes!.widthRatio * 25.0,
+                //     //   ),
+                //     // ),
+                //     //
+                //   ],
+                // ),
               ],
             ),
           ),
@@ -757,8 +759,7 @@ class CommonWidgets {
                 SizedBox(
                   width: sizes!.widthRatio * 10.0,
                 ),
-                CommonWidgets.getCustomBtn("Start Ride",
-                    onPress: () {
+                CommonWidgets.getCustomBtn("Start Ride", onPress: () {
                   if (onStartRidePress != null) {
                     onStartRidePress.call();
                   }
