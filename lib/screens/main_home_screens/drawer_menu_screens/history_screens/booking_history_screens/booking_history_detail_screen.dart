@@ -7,7 +7,6 @@ import 'package:quick_tow_trucker/res/res.dart';
 import 'package:quick_tow_trucker/widgets/common_widgets.dart';
 import 'package:quick_tow_trucker/widgets/text_views.dart';
 
-
 class BookingHistoryDetailScreen extends StatefulWidget {
   final int? userID;
 
@@ -27,7 +26,7 @@ class _BookingHistoryDetailScreenState
       body: Container(
         height: sizes!.height,
         width: sizes!.width,
-        decoration:  const BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(Assets.mainBgImage), fit: BoxFit.fill)),
         child: SingleChildScrollView(
@@ -240,7 +239,6 @@ class _BookingHistoryDetailScreenState
               SizedBox(
                 height: sizes!.heightRatio * 10.0,
               ),
-            
               Padding(
                 padding: CommonPadding.getCommonPaddingLeftAndRightWidth30,
                 child: Row(
