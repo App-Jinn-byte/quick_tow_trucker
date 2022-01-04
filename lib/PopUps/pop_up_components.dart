@@ -1073,12 +1073,17 @@ class PopUpComponents {
                                   ),
                                 ],
                               ),
-                              child: Center(
-                                child: TextView.getSmallBoldText12(
-                                    requestType ?? "Tow Request",
-                                    Assets.poppinsMedium,
-                                    color: AppColors.whiteTextColor,
-                                    lines: 1),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: sizes!.widthRatio * 2.0,
+                                    right: sizes!.widthRatio * 2.0),
+                                child: Center(
+                                  child: TextView.getSmallBoldText12(
+                                      requestType ?? "Tow Request",
+                                      Assets.poppinsMedium,
+                                      color: AppColors.whiteTextColor,
+                                      lines: 1),
+                                ),
                               ),
                             )
                           ],
