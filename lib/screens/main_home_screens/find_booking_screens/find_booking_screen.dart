@@ -54,7 +54,7 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
 
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       settingPopUp(context);
-      findBookingProvider.getAllBookingList().then((_) {
+      findBookingProvider.getAllBookingList(userId: _userId).then((_) {
         getLatestBooking(context);
       });
     });
@@ -145,21 +145,22 @@ class _FindBookingScreenState extends State<FindBookingScreen> {
   void getLatestBooking(context) {
     getAvailableBookingPopUp(context,
         userName:
-            "${findBookingProvider.getAllBookingListResponse.data![0].userFirstName} ${findBookingProvider.getAllBookingListResponse.data![0].userLastName}",
-        rating: findBookingProvider.getAllBookingListResponse.data![0].ratings
+            "${findBookingProvider.getAllBookingListResponse.data!.first.userFirstName} ${findBookingProvider.getAllBookingListResponse.data!.first.userLastName}",
+        rating: findBookingProvider
+            .getAllBookingListResponse.data!.first.ratings
             .toString(),
         requestType: findBookingProvider
-            .getAllBookingListResponse.data![0].serviceTypesTitle,
-        make:
-            findBookingProvider.getAllBookingListResponse.data![0].vehicleMake,
-        model:
-            findBookingProvider.getAllBookingListResponse.data![0].vehicleModel,
+            .getAllBookingListResponse.data!.first.serviceTypesTitle,
+        make: findBookingProvider
+            .getAllBookingListResponse.data!.first.vehicleMake,
+        model: findBookingProvider
+            .getAllBookingListResponse.data!.first.vehicleModel,
         plateNumber: findBookingProvider
-            .getAllBookingListResponse.data![0].vehicleLicensePlateNumber,
+            .getAllBookingListResponse.data!.first.vehicleLicensePlateNumber,
         category: findBookingProvider
-            .getAllBookingListResponse.data![0].vehicleTransmissionTypeId,
-        additionalNote: findBookingProvider.getAllBookingListResponse.data![0]
-            .vehicleAddtionalNotes, onDeclinePress: () {
+            .getAllBookingListResponse.data!.first.vehicleTransmissionTypeId,
+        additionalNote: findBookingProvider.getAllBookingListResponse.data!
+            .first.vehicleAddtionalNotes, onDeclinePress: () {
       rejectBooking();
     }, onAcceptPress: () {
       acceptBooking();

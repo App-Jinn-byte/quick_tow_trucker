@@ -19,7 +19,8 @@ class FindBookingProvider extends ChangeNotifier {
   BookingAcceptedResponse bookingAcceptedResponse = BookingAcceptedResponse();
   BookingRejectedResponse bookingRejectedResponse = BookingRejectedResponse();
 
-  RoadSideServiceRequestResponse roadSideServiceRequestResponse = RoadSideServiceRequestResponse();
+  RoadSideServiceRequestResponse roadSideServiceRequestResponse =
+      RoadSideServiceRequestResponse();
 
   // final Loader _loader = Loader();
 
@@ -97,13 +98,13 @@ class FindBookingProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> getAllBookingList() async {
+  Future<void> getAllBookingList({required String userId}) async {
     try {
       Map<String, dynamic> header = {"Content-Type": "application/json"};
 
-      debugPrint("URL: $getAllBookingListApiUrl");
+      debugPrint("URL: ${getAllBookingListApiUrl + userId} ");
       getAllBookingListResponse = await MyApi.callGetApi(
-          url: getAllBookingListApiUrl,
+          url: getAllBookingListApiUrl + userId,
           myHeaders: header,
           modelName: Models.getAllBookingListModel);
       // getAllBookingListResponse != null

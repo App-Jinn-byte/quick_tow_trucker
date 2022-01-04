@@ -12,7 +12,7 @@ const String updateVehicleApiUrl = "$baseUrl/api/Vehicle/UpdateVehicle";
 const String deleteVehicleApiUrl = "$baseUrl/api/Vehicle/DeleteVehicle/";
 
 //Booking
-const String getAllBookingListApiUrl = "$baseUrl/api/Request/GetAll/";
+const String getAllBookingListApiUrl = "$baseUrl/api/Request/GetAllTowRequest/";
 const String bookingAcceptedApiUrl = "$baseUrl/api/Request/AcceptRequest/";
 const String bookingRejectedApiUrl = "$baseUrl/api/Request/RejectRequest/";
 
